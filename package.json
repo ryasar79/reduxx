@@ -27,7 +27,4 @@
     "url": "https://github.com/msteckyefantis/reduxx/issues"
   },
   "homepage": "https://github.com/msteckyefantis/reduxx#readme",
-  "dependencies": {
-    "uuid": "^3.2.1"
-  }
 }

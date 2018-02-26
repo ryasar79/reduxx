@@ -141,6 +141,9 @@ module.exports = class App someDiv React.Component {
     }
 }
 ```
+This example also includes a `reduxX.getState` invocation. You can use this function anywhere and this function gets the requested value from the global state! Extreme #swaggy🐸🎅🏿👳🏽🐉!
+
+<br/><br/>
 
 
 Wow that's it, <b>so easy!</b>
