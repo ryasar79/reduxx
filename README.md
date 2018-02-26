@@ -12,7 +12,7 @@
 ## How it works:
 
 
-#### Step 1:
+### Step 1: Set Your Initial State
 
 In the directory of your main React component, the most parent component that contains all your other components, add the following `reduxx.js` file:
 
@@ -47,7 +47,7 @@ module.exports = ReduxX({
 
 
 
-#### Step 2:
+### Step 2: Set up ReduxX
 
 In the most parent component itself, the component that contains all your other components, add the following:
 
@@ -83,7 +83,7 @@ module.exports = class App extends React.Component {
 ```
 
 
-#### Step 3:
+### Step 3: Easily Get and Set Values to the Global State
 
 Now anywhere you normally do a React [setState](https://reactjs.org/docs/react-component.html#setstate), you can now setState with ReduxX to access a global state and never have to worry about collisions, so exciting!:
 
