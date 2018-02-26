@@ -88,15 +88,18 @@ module.exports = class App extends React.Component {
 Now anywhere you normally do a React [setState](https://reactjs.org/docs/react-component.html#setstate), you can now setState with ReduxX to access a global state and never have to worry about collisions, so exciting!:
 
 ```.js
-
 'use strict';
 
 // some other module
 
+const React = require( 'react' );
+
+const e = React.createElement;
+
+
 const reduxX = require( <path to reduxx.js file> );
 
 function handleClick() {
-
 
     // set the global state for one or more items like this:
 
@@ -130,11 +133,22 @@ function handleClick() {
     // should log: The reduxX monkey is 69cm tall!
 }
 
+
 module.exports = class SomeDiv extends React.Component {
 
     render() {
 
-        return <div onClick={handleClick}/>;
+        return e(
+
+            'div',
+
+            {
+                onClick: () => {
+
+                    handleClick();
+                }
+            }
+        );
     }
 }
 ```
