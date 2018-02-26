@@ -5,7 +5,7 @@
 ### ReduxX, similar to SpaceX and iPhoneX
 
 
-#### Way better React state management than [Dan Abramov's](https://twitter.com/dan_abramov?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor) super-overly-complicated [Redux](https://redux.js.org/introduction). 😉
+#### Way better React state management than [Dan Abramov](https://twitter.com/dan_abramov?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor)'s super-overly-complicated [Redux](https://redux.js.org/introduction). 😉
 
 
 
