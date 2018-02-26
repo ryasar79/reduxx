@@ -130,12 +130,9 @@ function handleClick() {
     // should log: The reduxX monkey is 69cm tall!
 }
 
-module.exports = class SomeDiv React.Component {
-
+module.exports = class SomeDiv extends React.Component {
 
     render() {
-
-        ...
 
         return <div onClick={handleClick}/>;
     }
