@@ -96,8 +96,8 @@ const React = require( 'react' );
 
 const e = React.createElement;
 
-
 const reduxX = require( <path to reduxx.js file> );
+
 
 function handleClick() {
 
