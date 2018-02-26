@@ -1,10 +1,52 @@
 'use strict';
 
+const {
 
-console.log(`
+    setMainComponent,
+    getStateKeyMapper,
+    getState,
+    setState,
+    setInitialState,
+
+} = require( './lib/index.js' );
 
 
-    hey hey hey wasa wasa wasa wassup, BITCONNECT!!!!
+module.exports = Object.freeze(
 
-    (https://www.youtube.com/watch?v=vabXXkZjKiw)
-`);
+    ({
+        initialState = []
+
+    }) => {
+
+        const reduxX = {};
+
+        const stateKeyMapper = getStateKeyMapper({
+
+            initialState
+        });
+
+        return {
+
+            setMainComponent: setMainComponent.bind({
+
+                reduxX,
+            }),
+            setInitialState: setInitialState.bind({
+
+                reduxX,
+                stateKeyMapper,
+                initialState
+            }),
+            getState: getState.bind({
+
+                reduxX,
+                stateKeyMapper
+            }),
+            setState: setState.bind({
+
+                reduxX,
+                stateKeyMapper
+            }),
+        }
+    }
+);
