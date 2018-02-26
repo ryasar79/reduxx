@@ -1,4 +1,4 @@
-# BitConnect
+# ReduxX
 
 [![npm version](https://badge.fury.io/js/reduxx.svg)](https://badge.fury.io/js/reduxx)
 
