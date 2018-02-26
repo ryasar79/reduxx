@@ -1,6 +1,6 @@
 {
   "name": "reduxx",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Way better React state management than Dan Abramov's super-overly-complicated Redux.",
   "main": "index.js",
   "scripts": {
