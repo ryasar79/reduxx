@@ -31,17 +31,20 @@ module.exports = Object.freeze(
 
                 reduxXCore,
             }),
+
             setInitialState: setInitialState.bind({
 
                 reduxXCore,
                 stateKeyMapper,
                 initialState
             }),
+
             getState: getState.bind({
 
                 reduxXCore,
                 stateKeyMapper
             }),
+            
             setState: setState.bind({
 
                 reduxXCore,
