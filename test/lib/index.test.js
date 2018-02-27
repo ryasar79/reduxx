@@ -17,6 +17,11 @@ describe( MODULE_PATH, function() {
 
     function getModule() {
 
+        const mockConfigureInitialState = {
+
+            cis: 'yes'
+        };
+
         const mockGetStateKeyMapper = {
 
             gskm: 'yes'
@@ -44,6 +49,7 @@ describe( MODULE_PATH, function() {
 
         const proxyquireStubs = {
 
+            './configure_initial_state.js': mockConfigureInitialState,
             './get_state_key_mapper.js': mockGetStateKeyMapper,
             './set_main_component.js': mockSetMainComponent,
             './set_initial_state.js': mockSetInitialState,
@@ -60,6 +66,10 @@ describe( MODULE_PATH, function() {
 
         expect( lib ).eql({
 
+            configureInitialState: {
+
+                cis: 'yes'
+            },
             getStateKeyMapper: {
 
                 gskm: 'yes'

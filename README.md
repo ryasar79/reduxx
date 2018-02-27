@@ -127,7 +127,7 @@ reduxX.setState(
 
 **Redux is the opposite of simple**, Dan Abramov makes things way too complicated. Don't believe me? Check out this screen capture:
 
-[![Screen_Shot_2018-02-26_at_8.11.50_PM.png](https://s18.postimg.org/gpnkvs589/Screen_Shot_2018-02-26_at_8.11.50_PM.png)](https://postimg.org/image/pkof6au0l/)
+[![Screen_Shot_2018-02-26_at_8.11.50_PM.png](https://s18.postimg.org/gpnkvs589/Screen_Shot_2018-02-26_at_8.11.50_PM.png)](https://lessonshop.net)
 
 **This is just the intro** to the [official Redux website](https://redux.js.org). 6 sections (plus an examples section) give me a break😂😂😂! Not to mention how pretentious his writing style is just based on looking at these section names, "Prior Art", "Three Principles"... come on, React state should be a really simple straightforwards thing.
 
@@ -175,6 +175,30 @@ module.exports = ReduxX({
 });
 ```
 
+Alternatively, you can set the initial state using the `initialStateObjectFormat` key. The following code sample will produce the same initial state as the code sample above:
+
+```.js
+'use strict';
+
+const ReduxX = require( 'reduxx' );
+
+
+module.exports = ReduxX({
+
+    initialStateObjectFormat: {
+
+        monkey: {
+
+            favoriteFood: 'banana',
+            height: '69cm',
+        },
+        hippo: {
+
+            favoriteFood: 'watermelon',
+        }
+    }   
+});
+```
 
 
 ### Step 2: Set up ReduxX

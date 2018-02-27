@@ -15,18 +15,25 @@ const sinon = require( 'sinon' );
 
 describe( MODULE_PATH, function() {
 
-    // let mockIndex;
-    let getStateKeyMapperIndex;
+    let configureInitialStateStub;
+
+    let getStateKeyMapperStub;
 
     function getModule( values ) {
 
-        getStateKeyMapperIndex = sinon.stub().returns(
+        configureInitialStateStub = sinon.stub().returns(
+
+            values.configureInitialStateResults
+        );
+
+        getStateKeyMapperStub = sinon.stub().returns(
 
             values.getStateKeyMapperResults
         );
 
-        const mockIndex = {
+        const mockLibIndex = {
 
+            configureInitialState: configureInitialStateStub,
             setMainComponent: function() {
 
                 return {
@@ -35,7 +42,7 @@ describe( MODULE_PATH, function() {
                     self: this
                 };
             },
-            getStateKeyMapper: getStateKeyMapperIndex,
+            getStateKeyMapper: getStateKeyMapperStub,
             getState: function() {
 
                 return {
@@ -64,7 +71,7 @@ describe( MODULE_PATH, function() {
 
         const proxyquireStubs = {
 
-            './lib/index.js': mockIndex,
+            './lib/index.js': mockLibIndex,
         };
 
         return proxyquire( FULL_MODULE_PATH, proxyquireStubs );
@@ -72,34 +79,52 @@ describe( MODULE_PATH, function() {
 
     it( 'normal operation', function() {
 
+        const initialState = [
+
+            {
+                theInitialState: 'yep'
+            },
+        ];
+
         const ReduxX = getModule({
 
             getStateKeyMapperResults: {
 
                 stateKeyMapper: 'yea'
-            }
+            },
+
+            configureInitialStateResults: initialState,
         });
 
         const reduxX = ReduxX({
 
-            initialState: [
-
-                {
-                    theInitialState: 'yep'
-                },
-            ]
+            initialState
         });
 
-        expect( getStateKeyMapperIndex.args.length ).equal( 1 );
-        expect( getStateKeyMapperIndex.args[0].length ).equal( 1 );
-        expect( getStateKeyMapperIndex.args[0][0] ).eql({
+        expect( configureInitialStateStub.args.length ).to.equal( 1 );
+        expect( configureInitialStateStub.args[0].length ).to.equal( 1 );
+        expect( configureInitialStateStub.args[0][0] ).to.eql({
 
             initialState: [
 
                 {
                     theInitialState: 'yep'
                 },
-            ]
+            ],
+
+            initialStateObjectFormat: undefined,
+        });
+
+        expect( getStateKeyMapperStub.args.length ).to.equal( 1 );
+        expect( getStateKeyMapperStub.args[0].length ).to.equal( 1 );
+        expect( getStateKeyMapperStub.args[0][0] ).to.eql({
+
+            initialState: [
+
+                {
+                    theInitialState: 'yep'
+                },
+            ],
         });
 
         const setMainComponentResult = reduxX.setMainComponent();

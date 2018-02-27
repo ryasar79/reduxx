@@ -2,6 +2,7 @@
 
 const {
 
+    configureInitialState,
     setMainComponent,
     getStateKeyMapper,
     getState,
@@ -14,9 +15,16 @@ const {
 module.exports = Object.freeze(
 
     ({
-        initialState = []
+        initialState,
+        initialStateObjectFormat,
 
     }) => {
+
+        initialState = configureInitialState({
+
+            initialState,
+            initialStateObjectFormat,
+        });
 
         const reduxXCore = {};
 
@@ -44,7 +52,7 @@ module.exports = Object.freeze(
                 reduxXCore,
                 stateKeyMapper
             }),
-            
+
             setState: setState.bind({
 
                 reduxXCore,
