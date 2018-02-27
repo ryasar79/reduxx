@@ -4,7 +4,7 @@
   "description": "Way better React state management than Dan Abramov's super-overly-complicated Redux.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./test/scripts/test_with_coverage.sh"
   },
   "repository": {
     "type": "git",
@@ -22,9 +22,16 @@
     "mobx"
   ],
   "author": "Michael Stecky-Efantis",
-  "license": "BSD 3-Clause License",
+  "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/msteckyefantis/reduxx/issues"
   },
-  "homepage": "https://github.com/msteckyefantis/reduxx#readme"
+  "homepage": "https://github.com/msteckyefantis/reduxx#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "istanbul": "^0.4.5",
+    "mocha": "^5.0.1",
+    "proxyquire": "^1.8.0",
+    "sinon": "^4.4.2"
+  }
 }

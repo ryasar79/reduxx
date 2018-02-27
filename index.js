@@ -25,7 +25,7 @@ module.exports = Object.freeze(
             initialState
         });
 
-        return {
+        return Object.freeze({
 
             setMainComponent: setMainComponent.bind({
 
@@ -47,6 +47,6 @@ module.exports = Object.freeze(
                 reduxX,
                 stateKeyMapper
             }),
-        }
+        });
     }
 );
