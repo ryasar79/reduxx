@@ -18,7 +18,7 @@ module.exports = Object.freeze(
 
     }) => {
 
-        const reduxX = {};
+        const reduxXCore = {};
 
         const stateKeyMapper = getStateKeyMapper({
 
@@ -29,22 +29,22 @@ module.exports = Object.freeze(
 
             setMainComponent: setMainComponent.bind({
 
-                reduxX,
+                reduxXCore,
             }),
             setInitialState: setInitialState.bind({
 
-                reduxX,
+                reduxXCore,
                 stateKeyMapper,
                 initialState
             }),
             getState: getState.bind({
 
-                reduxX,
+                reduxXCore,
                 stateKeyMapper
             }),
             setState: setState.bind({
 
-                reduxX,
+                reduxXCore,
                 stateKeyMapper
             }),
         });

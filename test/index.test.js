@@ -109,7 +109,7 @@ describe( MODULE_PATH, function() {
             setMainComponent: 'yes',
             self: {
 
-                reduxX: {}
+                reduxXCore: {}
             }
         });
 
@@ -120,7 +120,7 @@ describe( MODULE_PATH, function() {
             setInitialState: 'yes',
             self: {
 
-                reduxX: {},
+                reduxXCore: {},
                 stateKeyMapper: {
 
                     stateKeyMapper: 'yea'
@@ -141,7 +141,7 @@ describe( MODULE_PATH, function() {
             getState: 'yes',
             self: {
 
-                reduxX: {},
+                reduxXCore: {},
                 stateKeyMapper: {
 
                     stateKeyMapper: 'yea'
@@ -156,7 +156,7 @@ describe( MODULE_PATH, function() {
             setState: 'yes',
             self: {
 
-                reduxX: {},
+                reduxXCore: {},
                 stateKeyMapper: {
 
                     stateKeyMapper: 'yea'

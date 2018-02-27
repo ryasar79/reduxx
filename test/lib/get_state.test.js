@@ -21,7 +21,7 @@ describe( MODULE_PATH, function() {
 
         const getState = getStateFresh.bind({
 
-            reduxX: {
+            reduxXCore: {
 
                 mainComponent: {
 
@@ -54,7 +54,7 @@ describe( MODULE_PATH, function() {
 
         const getState = getStateFresh.bind({
 
-            reduxX: {
+            reduxXCore: {
 
                 mainComponent: {
 

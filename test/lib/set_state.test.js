@@ -25,7 +25,7 @@ describe( MODULE_PATH, function() {
 
         const setState = setStateFresh.bind({
 
-            reduxX: {
+            reduxXCore: {
 
                 mainComponent: {
 
@@ -94,7 +94,7 @@ describe( MODULE_PATH, function() {
 
         const setState = setStateFresh.bind({
 
-            reduxX: {},
+            reduxXCore: {},
 
             stateKeyMapper: {
 
@@ -163,7 +163,7 @@ describe( MODULE_PATH, function() {
 
         const setState = setStateFresh.bind({
 
-            reduxX: {
+            reduxXCore: {
 
                 mainComponent: {
 

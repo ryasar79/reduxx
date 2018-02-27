@@ -19,11 +19,11 @@ describe( MODULE_PATH, function() {
 
     it( 'normal operation', function() {
 
-        const mockReduxX = {};
+        const mockReduxXCore = {};
 
         const setMainComponent = setMainComponentFresh.bind({
 
-            reduxX: mockReduxX,
+            reduxXCore: mockReduxXCore,
         });
 
         const mockMainComponent = {
@@ -33,7 +33,7 @@ describe( MODULE_PATH, function() {
 
         setMainComponent( mockMainComponent )
 
-        expect( mockReduxX.mainComponent ).to.eql({
+        expect( mockReduxXCore.mainComponent ).to.eql({
 
             mainComponent: 'yea bruv'
         });
