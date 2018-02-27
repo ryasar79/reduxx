@@ -7,7 +7,7 @@
 
 **(with 100% code coverage😉👍🏿👍🏽👍🏻)**
 
-#### Way better React state management than [Dan Abramov](https://twitter.com/dan_abramov?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor)'s super-overly-complicated [Redux](https://redux.js.org/introduction). 😉
+#### Way better larger-app React state management than [Dan Abramov](https://twitter.com/dan_abramov?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor)'s super-overly-complicated [Redux](https://redux.js.org/introduction). 😉
 
 
 ### Table of Contents:
@@ -19,7 +19,7 @@
 
 ## Why Use ReduxX:
 
-In larger React apps it's really nice to have global state (global as in globally accesible, **NOT** stored as a global browser varible). But normally dealing with a global state object you may encounter a problem, your state looks like this:
+In larger React apps, it's really nice to have global state (global as in globally accessible, **NOT** stored as a global browser variable). But when normally dealing with a global state object you may encounter a problem, your state looks like this:
 
 ```
 ...
@@ -49,7 +49,7 @@ Ewww, that's not very nice.😰
 
 #### Don't fear, ReduxX is here to save the day!🐉🐬🐙
 
-with ReduxX, the same state as above can look somthing like this:
+with ReduxX, the same state as above can look something like this:
 
 ```
 ...
@@ -58,7 +58,7 @@ myAccount-popoverAnchorElement: null
 myAccount-emailResent: true
 ...
 ```
-and to get and set the state you just need to do this:
+and to get and set the state, you just need to do this:
 
 
 ```.js
@@ -87,10 +87,10 @@ reduxX.setState(
 
 #### Why is this better than the old fashioned Redux module?
 
-ReduxX incredibly simple to install and learn. Everything you need to know is contained in this README.md file. **For ReduxX you only need to follow the 3 simple steps in the [How it Works Section](#how-it-works) below!** Essentially, you only need to worry about two functions `reduxX.getState`, and `reduxX.setState`, and these functions work exactly like the normal React state except you can use them to access a global state.
+**ReduxX is incredibly simple** to install and learn. Everything you need to know is contained in this README.md file. **For ReduxX you only need to follow the 3 simple steps in the [How it Works Section](#how-it-works) below!** Essentially, you only need to worry about two functions: `reduxX.getState`, and `reduxX.setState`. These functions work exactly like normal React state, except you can use them to access a global state, wow!
 
 
-Redux is the opposite of simple, Dan Abramov makes things way too complicated. Don't believe me? Check out this screen capture:
+**Redux is the opposite of simple**, Dan Abramov makes things way too complicated. Don't believe me? Check out this screen capture:
 
 [![Screen_Shot_2018-02-26_at_8.11.50_PM.png](https://s18.postimg.org/gpnkvs589/Screen_Shot_2018-02-26_at_8.11.50_PM.png)](https://postimg.org/image/pkof6au0l/)
 
