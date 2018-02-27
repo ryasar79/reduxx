@@ -1,7 +1,7 @@
 {
   "name": "reduxx",
   "version": "1.0.31",
-  "description": "Way better React state management than Dan Abramov's super-overly-complicated Redux.",
+  "description": "ReduxX is a lightweight yet super-powerful alternative to the overly complicated and bloated Redux.",
   "main": "index.js",
   "scripts": {
     "test": "./test/scripts/test_with_coverage.sh"

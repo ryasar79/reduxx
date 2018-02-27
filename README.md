@@ -7,9 +7,7 @@
 
 **(with 100% code coverage😉👍🏿👍🏽👍🏻)**
 
-#### Way better larger-app React state management than [Dan Abramov](https://twitter.com/dan_abramov?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor)'s super-overly-complicated [Redux](https://redux.js.org/introduction). 😉
-
-**Note to [Dan Abramov](https://medium.com/@dan_abramov):** This is nothing personal. This module was created for the honor of virtuous code, virtuous "[art](https://redux.js.org/introduction/prior-art)" as you put it. You have desecrated this ancient practice with your misdeeds, misdeeds which are exemplified in the extremely popular NPM module [Redux](https://www.npmjs.com/package/redux). (read the "[Why Use ReduxX](#why-use-reduxx)" section below to find out more about what this is referring to)
+#### ReduxX is a lightweight yet super-powerful alternative to the overly complicated and bloated [Redux](https://redux.js.org/introduction). 😉
 
 
 ### Table of Contents:
@@ -123,11 +121,11 @@ reduxX.setState({
 **ReduxX is incredibly simple** to install and learn. Everything you need to know is contained in this README.md file. **For ReduxX you only need to follow the 3 simple steps in the [How it Works Section](#how-it-works) below!** Essentially, you only need to be concerned with two functions: `reduxX.getState`, and `reduxX.setState`. These functions work exactly like normal React state, except you can use them anywhere in your code to access a global state, wow!
 
 
-**Redux is the opposite of simple**, Dan Abramov makes things way too complicated. Don't believe me? Check out this screen capture:
+**Redux is the opposite of simple**, Redux makes things way too complicated. Don't believe me? Check out this screen capture:
 
 [![Screen_Shot_2018-02-26_at_8.11.50_PM.png](https://s18.postimg.org/gpnkvs589/Screen_Shot_2018-02-26_at_8.11.50_PM.png)](https://lessonshop.net)
 
-**This is just the intro** to the [official Redux website](https://redux.js.org). 6 sections (plus an examples section) give me a break😂😂😂! Not to mention how pretentious his writing style is just based on looking at these section names, "Prior Art", "Three Principles"... come on, React state should be a really simple straightforwards thing.
+**This is just the intro** to the [official Redux website](https://redux.js.org). 6 sections (plus an examples section) give me a break😂😂😂! Not to mention how pretentious the writing style is just based on looking at these section names, "Prior Art", "Three Principles"... come on, I think React state should be a really simple straightforwards thing. We don't need a real library's amount of literature on a simple NodeJs library.😉 
 
 
 <br>
