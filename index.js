@@ -16,14 +16,12 @@ module.exports = Object.freeze(
 
     ({
         initialState,
-        initialStateObjectFormat,
 
     }) => {
 
         initialState = configureInitialState({
 
             initialState,
-            initialStateObjectFormat,
         });
 
         const reduxXCore = {};

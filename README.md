@@ -175,7 +175,7 @@ module.exports = ReduxX({
 });
 ```
 
-Alternatively, you can set the initial state using the `initialStateObjectFormat` key. The following code sample will produce the same initial state as the code sample above:
+Alternatively, you can set the initial state using an object. The following code sample will produce the same initial state as the code sample above:
 
 ```.js
 'use strict';
@@ -185,7 +185,7 @@ const ReduxX = require( 'reduxx' );
 
 module.exports = ReduxX({
 
-    initialStateObjectFormat: {
+    initialState: {
 
         monkey: {
 

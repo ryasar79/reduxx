@@ -65,7 +65,7 @@ describe( MODULE_PATH, function() {
 
         const result = configureInitialState({
 
-            initialStateObjectFormat: {
+            initialState: {
 
                 monkey: {
 
@@ -99,74 +99,74 @@ describe( MODULE_PATH, function() {
         ]);
     });
 
-    it( 'error in setup, have both initial state formats', function() {
-
-        let error = null;
-
-        try {
-
-            configureInitialState({
-
-                initialState: [
-
-                    {
-                        key1: 'monkey',
-                        key2: 'favoriteFood',
-                        initialValue: 'banana',
-                    },
-                    {
-                        key1: 'monkey',
-                        key2: 'height',
-                        initialValue: '69cm',
-                    },
-                    {
-                        key1: 'hippo',
-                        key2: 'favoriteFood',
-                        initialValue: 'watermelon',
-                    }
-                ],
-
-                initialStateObjectFormat: {
-
-                    monkey: {
-
-                        favoriteFood: 'banana',
-                        height: '69cm',
-                    },
-                    hippo: {
-
-                        favoriteFood: 'watermelon',
-                    }
-                }
-            });
-
-        } catch( err ) {
-
-            error = err
-        }
-
-        expect( error.message ).to.equal(
-
-            'incorrect ReduxX initial state setup'
-        );
-    });
-
-    it( 'error in setup, have neither initial state formats', function() {
-
-        let error = null;
-
-        try {
-
-            configureInitialState({});
-
-        } catch( err ) {
-
-            error = err
-        }
-
-        expect( error.message ).to.equal(
-
-            'incorrect ReduxX initial state setup'
-        );
-    });
+    // it( 'error in setup, have both initial state formats', function() {
+    //
+    //     let error = null;
+    //
+    //     try {
+    //
+    //         configureInitialState({
+    //
+    //             initialState: [
+    //
+    //                 {
+    //                     key1: 'monkey',
+    //                     key2: 'favoriteFood',
+    //                     initialValue: 'banana',
+    //                 },
+    //                 {
+    //                     key1: 'monkey',
+    //                     key2: 'height',
+    //                     initialValue: '69cm',
+    //                 },
+    //                 {
+    //                     key1: 'hippo',
+    //                     key2: 'favoriteFood',
+    //                     initialValue: 'watermelon',
+    //                 }
+    //             ],
+    //
+    //             initialStateObjectFormat: {
+    //
+    //                 monkey: {
+    //
+    //                     favoriteFood: 'banana',
+    //                     height: '69cm',
+    //                 },
+    //                 hippo: {
+    //
+    //                     favoriteFood: 'watermelon',
+    //                 }
+    //             }
+    //         });
+    //
+    //     } catch( err ) {
+    //
+    //         error = err
+    //     }
+    //
+    //     expect( error.message ).to.equal(
+    //
+    //         'incorrect ReduxX initial state setup'
+    //     );
+    // });
+    //
+    // it( 'error in setup, have neither initial state formats', function() {
+    //
+    //     let error = null;
+    //
+    //     try {
+    //
+    //         configureInitialState({});
+    //
+    //     } catch( err ) {
+    //
+    //         error = err
+    //     }
+    //
+    //     expect( error.message ).to.equal(
+    //
+    //         'incorrect ReduxX initial state setup'
+    //     );
+    // });
 });

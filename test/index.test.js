@@ -112,7 +112,7 @@ describe( MODULE_PATH, function() {
                 },
             ],
 
-            initialStateObjectFormat: undefined,
+            // initialStateObjectFormat: undefined,
         });
 
         expect( getStateKeyMapperStub.args.length ).to.equal( 1 );
