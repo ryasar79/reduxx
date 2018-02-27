@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/reduxx.svg)](https://badge.fury.io/js/reduxx) [![Build Status](https://travis-ci.org/msteckyefantis/reduxx.svg?branch=master)](https://travis-ci.org/msteckyefantis/reduxx)
 
-[![ReduxX](https://s18.postimg.org/643pjzgyx/Redux_X_1.png)](https://postimg.org/image/xep0rwjvp/)
+[![ReduxX](https://s18.postimg.org/643pjzgyx/Redux_X_1.png)](https://lessonshop.net)
 ### ReduxX, similar to SpaceX and iPhoneX
 
 **(with 100% code coverage😉👍🏿👍🏽👍🏻)**
