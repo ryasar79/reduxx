@@ -59,7 +59,7 @@ the old way: updating a nested component
 
 
     Below is how you would update
-    a single property of the monkey object
+    a single property of the userProfile object
     while preserving the other properties
 */
 this.setState( previousState => {
