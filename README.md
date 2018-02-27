@@ -125,7 +125,7 @@ reduxX.setState({
 
 [![Screen_Shot_2018-02-26_at_8.11.50_PM.png](https://s18.postimg.org/gpnkvs589/Screen_Shot_2018-02-26_at_8.11.50_PM.png)](https://lessonshop.net)
 
-**This is just the intro** to the [official Redux website](https://redux.js.org). 6 sections (plus an examples section) give me a break😂😂😂! Not to mention how pretentious the writing style is just based on looking at these section names, "Prior Art", "Three Principles"... come on, I think React state should be a really simple straightforwards thing. We don't need a real library's amount of literature on a simple NodeJs library.😉 
+**This is just the intro** to the [official Redux website](https://redux.js.org). 6 sections (plus an examples section) give me a break😂😂😂! Not to mention how pretentious the writing style is just based on looking at these section names, "Prior Art", "Three Principles"... come on, I think React state should be a really simple straightforwards thing. We don't need a real library's amount of literature on what should be a simple NodeJs library.😉 
 
 
 <br>
