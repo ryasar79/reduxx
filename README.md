@@ -25,9 +25,9 @@ In larger React apps, it's really nice to have global state (global as in global
 
 ```
 ...
-myAccountOpenPopoverId: 'abc'
-myAccountPopoverAnchorElement: null
-myAccountEmailResent: true
+userProfileMainPicture: null
+userProfileFirstName: 'Danny'
+accountSettingsEmailVerified: true
 ...
 ```
 
@@ -35,15 +35,15 @@ And when getting and setting the global state, it looks something like this:
 
 ```.js
 // the old way: getting value from the global state
-const anchorElement = (
+const mainPicture = (
 
-    globalStateStore.state.myAccountPopoverAnchorElement
+    globalStateStore.state.userProfileMainPicture
 );
 
 // the old way: setting a value in the global state
 globalStateStore.setState({
 
-	myAccountPopoverAnchorElement: { abc: 123 }
+    userProfileMainPicture: 'https://image.png'
 });
 ```
 
@@ -53,7 +53,7 @@ Alternatively, you can use nested React state to have nicer variable names to de
 /*
 the old way: updating a nested component
 
-    in this example, assume the state key "monkey"
+    in this example, assume the state key "userProfile"
     has an associated value which is an
     object with several properties
 
@@ -70,10 +70,10 @@ this.setState( previousState => {
 
             {},
 
-            previousState.monkey,
+            previousState.userProfile,
 
             {
-                favoriteFood: 'apple'
+                mainPicture: 'https://image.png'
             }
         )
     };
@@ -84,13 +84,13 @@ this.setState( previousState => {
 
 #### Don't fear, ReduxX is here to save the day!🐉🐬🐙
 
-with ReduxX, the same state as above can look something like this:
+with ReduxX, the same state as above is automatically generated and it will look something like this:
 
 ```
 ...
-myAccount-openPopoverId: 'abc'
-myAccount-popoverAnchorElement: null
-myAccount-emailResent: true
+userProfile-mainPicture: null
+userProfile-firstName: 'Danny'
+accountSettings-emailVerified: true
 ...
 ```
 and to get and set the state, you just need to do this:
@@ -99,23 +99,21 @@ and to get and set the state, you just need to do this:
 ```.js
 // cleanly get a global state value with ReduxX:
 
-const anchorElement = reduxX.getState({
+const mainPicture = reduxX.getState({
 
-    key1: 'myAccount',
-    key2: 'popoverAnchorElement'
+    key1: 'userProfile',
+    key2: 'mainPicture'
 });
 
 
 // smoothly set a global state value with ReduxX:
 
-reduxX.setState(
+reduxX.setState({
 
-    {
-        key1: 'myAccount',
-        key2: 'popoverAnchorElement',
-        value: { abc: 123 }
-    }
-);
+    key1: 'userProfile',
+    key2: 'mainPicture',
+    value: 'https://image.png'
+});
 
 ```
 
