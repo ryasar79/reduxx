@@ -9,7 +9,7 @@
 
 #### Way better larger-app React state management than [Dan Abramov](https://twitter.com/dan_abramov?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor)'s super-overly-complicated [Redux](https://redux.js.org/introduction). 😉
 
-**Note to [Dan Abramov](https://medium.com/@dan_abramov):** This is nothing personal. This module was created for the honor of virtuous code, virtuous "[art](https://redux.js.org/introduction/prior-art)" as you put it. You have desecrated this ancient practice with your misdeeds, misdeeds which are exemplified in the extremely popular NPM module [Redux](https://www.npmjs.com/package/redux).
+**Note to [Dan Abramov](https://medium.com/@dan_abramov):** This is nothing personal. This module was created for the honor of virtuous code, virtuous "[art](https://redux.js.org/introduction/prior-art)" as you put it. You have desecrated this ancient practice with your misdeeds, misdeeds which are exemplified in the extremely popular NPM module [Redux](https://www.npmjs.com/package/redux). (read the "[Why Use ReduxX](#why-use-reduxx)" section below to find out more about what this is referring to)
 
 
 ### Table of Contents:
