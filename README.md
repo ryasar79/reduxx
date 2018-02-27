@@ -66,7 +66,7 @@ this.setState( previousState => {
 
     return {
 
-        monkey: Object.assign(
+        userProfile: Object.assign(
 
             {},
 
