@@ -9,6 +9,8 @@
 
 #### Way better larger-app React state management than [Dan Abramov](https://twitter.com/dan_abramov?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor)'s super-overly-complicated [Redux](https://redux.js.org/introduction). 😉
 
+**Note to [Dan Abramov](https://medium.com/@dan_abramov):** This is nothing personal. This module was created for the honor of virtuous code, virtuous "[art](https://redux.js.org/introduction/prior-art)" as you put it. You has desecrated this ancient practice with your misdeeds, misdeeds which are exemplified in the extremely popular NPM module [Redux](https://www.npmjs.com/package/redux).
+
 
 ### Table of Contents:
 
@@ -32,20 +34,53 @@ myAccountEmailResent: true
 And when getting and setting the global state, it looks something like this:
 
 ```.js
-// getting value from global state, the old way
+// the old way: getting value from the global state
 const anchorElement = (
 
     globalStateStore.state.myAccountPopoverAnchorElement
 );
 
-// setting global state, the old way
+// the old way: setting a value in the global state
 globalStateStore.setState({
 
 	myAccountPopoverAnchorElement: { abc: 123 }
 });
 ```
-Ewww, that's not very nice.😰
 
+Alternatively, you can use nested React state to have nicer variable names to deal with. The problem with that is it gets unnecessarily confusing and messy looking:
+
+```.js
+/*
+the old way: updating a nested component
+
+    in this example, assume the state key "monkey"
+    has an associated value which is an
+    object with several properties
+
+
+    Below is how you would update
+    a single property of the monkey object
+    while preserving the other properties
+*/
+this.setState( previousState => {
+
+    return {
+
+        monkey: Object.assign(
+
+            {},
+
+            previousState.monkey,
+
+            {
+                favoriteFood: 'apple'
+            }
+        )
+    };
+});
+```
+
+🙈Ewww, that's not very nice.😰
 
 #### Don't fear, ReduxX is here to save the day!🐉🐬🐙
 
@@ -191,7 +226,7 @@ const React = require( 'react' );
 
 const e = React.createElement;
 
-const reduxX = require( <path to reduxx.js file> );
+const reduxX = require( <path to reduxx.js file, the file created in Step 1> );
 
 
 function handleClick() {
