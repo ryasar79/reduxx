@@ -7,14 +7,14 @@
 
 **(with 100% code coverage😉👍🏿👍🏽👍🏻)**
 
-#### ReduxX is a lightweight yet super-powerful, very easy to learn and setup alternative to the other overly complicated and bloated React state management libraries. 😉
+#### ReduxX is a lightweight yet super-powerful, very easy to learn and to setup alternative to the other overly complicated and bloated React state management libraries. 😉
 
 
 ### Table of Contents:
 
 #### 1. [Why Use ReduxX](#why-use-reduxx)
 
-#### 2. [How it Works](#how-it-works)
+#### 2. [How ReduxX Works](#how-reduxx-works)
 
 
 ## Why Use ReduxX:
@@ -116,9 +116,9 @@ reduxX.setState({
 ```
 
 
-#### Why is this better than the old fashioned Redux module?
+#### Why is ReduxX better than the old fashioned Redux NPM module?
 
-**ReduxX is incredibly simple** to install and learn. Everything you need to know is contained in this README.md file. **For ReduxX you only need to follow the 3 simple steps in the [How it Works Section](#how-it-works) below!** Essentially, you only need to be concerned with two functions: `reduxX.getState`, and `reduxX.setState`. These functions work exactly like normal React state, except you can use them anywhere in your code to access a global state, wow!
+**ReduxX is incredibly simple** to install and learn. Everything you need to know is contained in this README.md file. **For ReduxX you only need to follow the 3 simple steps in the [How ReduxX Works Section](#how-reduxx-works) below!** Essentially, you only need to be concerned with two functions: `reduxX.getState`, and `reduxX.setState`. These functions work exactly like normal React state, except you can use them anywhere in your code to access a global state, wow!
 
 
 **Redux is the opposite of simple**, Redux makes things way too complicated. Don't believe me? Check out this screen capture:
@@ -130,7 +130,7 @@ reduxX.setState({
 
 <br>
 
-## How it works:
+## How ReduxX works:
 
 
 ### Step 1: Install ReduxX and Set Your Initial State

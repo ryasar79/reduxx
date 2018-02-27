@@ -1,7 +1,7 @@
 {
   "name": "reduxx",
   "version": "1.0.34",
-  "description": "ReduxX is a lightweight yet super-powerful, very easy to learn and setup alternative to the other overly complicated and bloated React state management libraries.",
+  "description": "ReduxX is a lightweight yet super-powerful, very easy to learn and to setup alternative to the other overly complicated and bloated React state management libraries.",
   "main": "index.js",
   "scripts": {
     "test": "./test/scripts/test_with_coverage.sh"
