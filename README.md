@@ -2,12 +2,102 @@
 
 [![npm version](https://badge.fury.io/js/reduxx.svg)](https://badge.fury.io/js/reduxx) [![Build Status](https://travis-ci.org/msteckyefantis/reduxx.svg?branch=master)](https://travis-ci.org/msteckyefantis/reduxx)
 
-### ReduxX, similar to SpaceX and iPhoneX, with 100% code coverage👍🏿👍🏽👍🏻
+[![ReduxX](https://s18.postimg.org/643pjzgyx/Redux_X_1.png)](https://postimg.org/image/xep0rwjvp/)
+### ReduxX, similar to SpaceX and iPhoneX
 
+**(with 100% code coverage😉👍🏿👍🏽👍🏻)**
 
 #### Way better React state management than [Dan Abramov](https://twitter.com/dan_abramov?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor)'s super-overly-complicated [Redux](https://redux.js.org/introduction). 😉
 
 
+### Table of Contents:
+
+#### 1. [Why Use ReduxX](#why-use-reduxx)
+
+#### 2. [How it Works](#how-it-works)
+
+
+## Why Use ReduxX:
+
+In larger React apps it's really nice to have global state (global as in globally accesible, **NOT** stored as a global browser varible). But normally dealing with a global state object you may encounter a problem, your state looks like this:
+
+```
+...
+myAccountOpenPopoverId: 'abc'
+myAccountPopoverAnchorElement: null
+myAccountEmailResent: true
+...
+```
+
+And when getting and setting the global state, it looks something like this:
+
+```.js
+// getting value from global state, the old way
+const anchorElement = (
+
+    globalStateStore.state.myAccountPopoverAnchorElement
+);
+
+// setting global state, the old way
+globalStateStore.setState({
+
+	myAccountPopoverAnchorElement: { abc: 123 }
+});
+```
+Ewww, that's not very nice.😰
+
+
+#### Don't fear, ReduxX is here to save the day!🐉🐬🐙
+
+with ReduxX, the same state as above can look somthing like this:
+
+```
+...
+myAccount-openPopoverId: 'abc'
+myAccount-popoverAnchorElement: null
+myAccount-emailResent: true
+...
+```
+and to get and set the state you just need to do this:
+
+
+```.js
+// cleanly get a global state value with ReduxX:
+
+const anchorElement = reduxX.getState({
+
+    key1: 'myAccount',
+    key2: 'popoverAnchorElement'
+});
+
+
+// smoothly set a global state value with ReduxX:
+
+reduxX.setState(
+
+    {
+        key1: 'myAccount',
+        key2: 'popoverAnchorElement',
+        value: { abc: 123 }
+    }
+);
+
+```
+
+
+#### Why is this better than the old fashioned Redux module?
+
+ReduxX incredibly simple to install and learn. Everything you need to know is contained in this README.md file. **For ReduxX you only need to follow the 3 simple steps in the [How it Works Section](#how-it-works) below!** Essentially, you only need to worry about two functions `reduxX.getState`, and `reduxX.setState`, and these functions work exactly like the normal React state except you can use them to access a global state.
+
+
+Redux is the opposite of simple, Dan Abramov makes things way too complicated. Don't believe me? Check out this screen capture:
+
+[![Screen_Shot_2018-02-26_at_8.11.50_PM.png](https://s18.postimg.org/gpnkvs589/Screen_Shot_2018-02-26_at_8.11.50_PM.png)](https://postimg.org/image/pkof6au0l/)
+
+**This is just the intro** to the official Redux website. 6 sections (plus an examples section) give me a break😂😂😂! Not to mention how pretentious his writing style is just based on looking at these section names, "Prior Art", "Three Principles"... come on, React state should be a really simple straightforwards thing.
+
+
+<br>
 
 ## How it works:
 

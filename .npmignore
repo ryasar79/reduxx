@@ -56,3 +56,4 @@ scripts
 test
 .env
 .jshintrc
+.travis.yml
