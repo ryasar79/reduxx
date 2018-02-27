@@ -102,7 +102,12 @@ reduxX.setState(
 ## How it works:
 
 
-### Step 1: Set Your Initial State
+### Step 1: Install ReduxX and Set Your Initial State
+
+To install ReduxX, input the following npm command:
+```
+npm install reduxx --save
+```
 
 In the directory of your main React component, the most parent component that contains all your other components, add the following `reduxx.js` file:
 
