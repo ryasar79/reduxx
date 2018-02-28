@@ -11,7 +11,6 @@
 
 ### ReduxX News: ReduxX v2 coming soon! Still keeping it very simple, with a few key modifications that seem to be the natural next steps for this tool.
 
-
 ### Table of Contents:
 
 #### 1. [Why Use ReduxX](#why-use-reduxx)
