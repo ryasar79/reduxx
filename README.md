@@ -7,7 +7,7 @@
 
 **(with 100% code coverage😉👍🏿👍🏽👍🏻)**
 
-#### ReduxX is a lightweight yet super-powerful and very easy to learn and very easy to setup React state management library.
+#### ReduxX is a lightweight yet super-powerful, very easy to learn, and very easy to set up React state management library.
 
 
 ### Table of Contents:
