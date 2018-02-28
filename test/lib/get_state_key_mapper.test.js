@@ -26,17 +26,34 @@ describe( MODULE_PATH, function() {
                 {
                     key1: 'monkey',
                     key2: 'favoriteFood',
-                    initialValue: 'banana',
+                    key3: 'favoriteDesert',
+                    key4: 'favoriteDesertTime',
+                    value: 'anytime',
+                },
+                {
+                    key1: 'monkey',
+                    key2: 'favoriteFood',
+                    key3: 'favoriteDesert',
+                    value: 'banana split',
+                },
+                {
+                    key1: 'monkey',
+                    key2: 'favoriteFood',
+                    value: 'banana',
+                },
+                {
+                    key1: 'monkey',
+                    value: true,
                 },
                 {
                     key1: 'monkey',
                     key2: 'height',
-                    initialValue: '69cm',
+                    value: '69cm',
                 },
                 {
                     key1: 'hippo',
                     key2: 'favoriteFood',
-                    initialValue: 'watermelon',
+                    value: 'watermelon',
                 }
             ]
         });
@@ -45,13 +62,37 @@ describe( MODULE_PATH, function() {
 
             monkey: {
 
-                favoriteFood: 'monkey-favoriteFood',
-                height: 'monkey-height',
+                '@reduxXKey': 'monkey',
+
+                favoriteFood: {
+
+                    '@reduxXKey': 'monkey-favoriteFood',
+
+                    favoriteDesert: {
+
+                        '@reduxXKey': 'monkey-favoriteFood-favoriteDesert',
+
+                        favoriteDesertTime: {
+
+                            '@reduxXKey': 'monkey-favoriteFood-favoriteDesert-favoriteDesertTime',
+                        }
+                    }
+                },
+
+                height: {
+
+                    '@reduxXKey': 'monkey-height'
+                },
             },
 
             hippo: {
 
-                favoriteFood: 'hippo-favoriteFood',
+                '@reduxXKey': 'hippo',
+
+                favoriteFood: {
+
+                    '@reduxXKey': 'hippo-favoriteFood'
+                },
             }
         });
     });
@@ -68,17 +109,16 @@ describe( MODULE_PATH, function() {
 
                     {
                         key1: 'monkey',
-                        initialValue: 'banana',
+                        value: 'banana',
                     },
                     {
-                        key1: 'monkey',
                         key2: 'height',
-                        initialValue: '69cm',
+                        value: '69cm',
                     },
                     {
                         key1: 'hippo',
                         key2: 'favoriteFood',
-                        initialValue: 'watermelon',
+                        value: 'watermelon',
                     }
                 ]
             });

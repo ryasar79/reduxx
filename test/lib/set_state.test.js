@@ -27,9 +27,19 @@ describe( MODULE_PATH, function() {
 
             reduxXCore: {
 
-                mainComponent: {
+                globalStateComponent: {
 
-                    setState: setStateStub
+                    setState: setStateStub,
+
+                    state: {
+
+                        'monkey': true,
+                        'monkey-favoriteFood': 'banana',
+                        'monkey-favoriteFood-favoriteDesert': 'banana split',
+                        'monkey-favoriteFood-favoriteDesert-favoriteDesertTime': 'anytime',
+                        'monkey-height': null,
+                        'hippo-favoriteFood': 'watermelon',
+                    }
                 }
             },
 
@@ -37,34 +47,39 @@ describe( MODULE_PATH, function() {
 
                 monkey: {
 
-                    favoriteFood: 'monkey-favoriteFood',
-                    height: 'monkey-height',
+                    '@reduxXKey': 'monkey',
+
+                    favoriteFood: {
+
+                        '@reduxXKey': 'monkey-favoriteFood',
+
+                        favoriteDesert: {
+
+                            '@reduxXKey': 'monkey-favoriteFood-favoriteDesert',
+
+                            favoriteDesertTime: {
+
+                                '@reduxXKey': 'monkey-favoriteFood-favoriteDesert-favoriteDesertTime',
+                            }
+                        }
+                    },
+
+                    height: {
+
+                        '@reduxXKey': 'monkey-height'
+                    },
                 },
 
                 hippo: {
 
-                    favoriteFood: 'hippo-favoriteFood',
-                }
-            },
+                    '@reduxXKey': 'hippo',
 
-            initialState: [
+                    favoriteFood: {
 
-                {
-                    key1: 'monkey',
-                    key2: 'favoriteFood',
-                    initialValue: 'banana',
-                },
-                {
-                    key1: 'monkey',
-                    key2: 'height',
-                    initialValue: '69cm',
-                },
-                {
-                    key1: 'hippo',
-                    key2: 'favoriteFood',
-                    initialValue: 'watermelon',
+                        '@reduxXKey': 'hippo-favoriteFood'
+                    },
                 }
-            ]
+            }
         });
 
         setState(
@@ -72,12 +87,20 @@ describe( MODULE_PATH, function() {
             {
                 key1: 'monkey',
                 key2: 'favoriteFood',
+                key3: 'favoriteDesert',
                 value: 'apple',
+            },
+            {
+                key1: 'monkey',
+                value: 2,
             },
             {
                 key1: 'hippo',
                 key2: 'favoriteFood',
-                value: undefined,
+                value: 'megaBanana',
+            },
+            {
+                key1: 'hippo',
             }
         );
 
@@ -85,49 +108,22 @@ describe( MODULE_PATH, function() {
         expect( setStateStub.args[0].length ).to.equal( 1 );
         expect( setStateStub.args[0][0] ).to.eql({
 
-            'monkey-favoriteFood': 'apple',
-            'hippo-favoriteFood': undefined,
+            'monkey-favoriteFood-favoriteDesert': 'apple',
+            'hippo-favoriteFood': 'megaBanana',
+            'monkey': 2,
+            'hippo': undefined,
         });
     });
 
-    it( 'trying to set state when main component not set up yet', function() {
+    it( 'trying to set state when global state component not set up yet', function() {
 
         const setState = setStateFresh.bind({
 
             reduxXCore: {},
 
-            stateKeyMapper: {
+            stateKeyMapper: {},
 
-                monkey: {
-
-                    favoriteFood: 'monkey-favoriteFood',
-                    height: 'monkey-height',
-                },
-
-                hippo: {
-
-                    favoriteFood: 'hippo-favoriteFood',
-                }
-            },
-
-            initialState: [
-
-                {
-                    key1: 'monkey',
-                    key2: 'favoriteFood',
-                    initialValue: 'banana',
-                },
-                {
-                    key1: 'monkey',
-                    key2: 'height',
-                    initialValue: '69cm',
-                },
-                {
-                    key1: 'hippo',
-                    key2: 'favoriteFood',
-                    initialValue: 'watermelon',
-                }
-            ]
+            initialState: []
         });
 
         let error = null;
@@ -155,7 +151,7 @@ describe( MODULE_PATH, function() {
 
         expect( error.message ).to.equal(
 
-            'error in ReduxX setState: main component not setup'
+            'error in ReduxX setState: global state component not setup'
         );
     });
 
@@ -165,9 +161,19 @@ describe( MODULE_PATH, function() {
 
             reduxXCore: {
 
-                mainComponent: {
+                globalStateComponent: {
 
-                    setState: setStateStub
+                    setState: setStateStub,
+
+                    state: {
+
+                        'monkey': true,
+                        'monkey-favoriteFood': 'banana',
+                        'monkey-favoriteFood-favoriteDesert': 'banana split',
+                        'monkey-favoriteFood-favoriteDesert-favoriteDesertTime': 'anytime',
+                        'monkey-height': null,
+                        'hippo-favoriteFood': 'watermelon',
+                    }
                 }
             },
 
@@ -175,34 +181,39 @@ describe( MODULE_PATH, function() {
 
                 monkey: {
 
-                    favoriteFood: 'monkey-favoriteFood',
-                    height: 'monkey-height',
+                    '@reduxXKey': 'monkey',
+
+                    favoriteFood: {
+
+                        '@reduxXKey': 'monkey-favoriteFood',
+
+                        favoriteDesert: {
+
+                            '@reduxXKey': 'monkey-favoriteFood-favoriteDesert',
+
+                            favoriteDesertTime: {
+
+                                '@reduxXKey': 'monkey-favoriteFood-favoriteDesert-favoriteDesertTime',
+                            }
+                        }
+                    },
+
+                    height: {
+
+                        '@reduxXKey': 'monkey-height'
+                    },
                 },
 
                 hippo: {
 
-                    favoriteFood: 'hippo-favoriteFood',
-                }
-            },
+                    '@reduxXKey': 'hippo',
 
-            initialState: [
+                    favoriteFood: {
 
-                {
-                    key1: 'monkey',
-                    key2: 'favoriteFood',
-                    initialValue: 'banana',
-                },
-                {
-                    key1: 'monkey',
-                    key2: 'height',
-                    initialValue: '69cm',
-                },
-                {
-                    key1: 'hippo',
-                    key2: 'favoriteFood',
-                    initialValue: 'watermelon',
+                        '@reduxXKey': 'hippo-favoriteFood'
+                    },
                 }
-            ]
+            }
         });
 
         let error = null;
@@ -215,11 +226,6 @@ describe( MODULE_PATH, function() {
                     key1: 'monkey',
                     key2: 'favoriteFoodz',
                     value: 'apple',
-                },
-                {
-                    key1: 'hippo',
-                    key2: 'favoriteFood',
-                    value: undefined,
                 }
             );
 
@@ -230,8 +236,7 @@ describe( MODULE_PATH, function() {
 
         expect( error.message ).to.equal(
 
-            `error in ReduxX setState: ` +
-            `cannot set state with keys not in initial state`
+            'error in ReduxX setState: invalid key specified'
         );
     });
 });

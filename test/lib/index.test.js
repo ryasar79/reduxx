@@ -17,7 +17,7 @@ describe( MODULE_PATH, function() {
 
     function getModule() {
 
-        const mockConfigureInitialState = {
+        const mockGetConfiguredInitialState = {
 
             cis: 'yes'
         };
@@ -27,9 +27,14 @@ describe( MODULE_PATH, function() {
             gskm: 'yes'
         };
 
-        const mockSetMainComponent = {
+        const mockSetGlobalStateComponent = {
 
             msmc: 'yes'
+        };
+
+        const mockGetGlobalStateComponent = {
+
+            mggsc: 'yes'
         };
 
         const mockSetInitialState = {
@@ -49,9 +54,10 @@ describe( MODULE_PATH, function() {
 
         const proxyquireStubs = {
 
-            './configure_initial_state.js': mockConfigureInitialState,
+            './get_configured_initial_state.js': mockGetConfiguredInitialState,
             './get_state_key_mapper.js': mockGetStateKeyMapper,
-            './set_main_component.js': mockSetMainComponent,
+            './set_global_state_component.js': mockSetGlobalStateComponent,
+            './get_global_state_component.js': mockGetGlobalStateComponent,
             './set_initial_state.js': mockSetInitialState,
             './get_state.js': mockGetState,
             './set_state.js': mockSetState,
@@ -66,7 +72,7 @@ describe( MODULE_PATH, function() {
 
         expect( lib ).eql({
 
-            configureInitialState: {
+            getConfiguredInitialState: {
 
                 cis: 'yes'
             },
@@ -74,9 +80,13 @@ describe( MODULE_PATH, function() {
 
                 gskm: 'yes'
             },
-            setMainComponent: {
+            setGlobalStateComponent: {
 
                 msmc: 'yes'
+            },
+            getGlobalStateComponent: {
+
+                mggsc: 'yes'
             },
             setInitialState: {
 

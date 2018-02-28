@@ -15,15 +15,15 @@ const sinon = require( 'sinon' );
 
 describe( MODULE_PATH, function() {
 
-    let configureInitialStateStub;
+    let getConfiguredInitialStateStub;
 
     let getStateKeyMapperStub;
 
     function getModule( values ) {
 
-        configureInitialStateStub = sinon.stub().returns(
+        getConfiguredInitialStateStub = sinon.stub().returns(
 
-            values.configureInitialStateResults
+            values.getConfiguredInitialStateResults
         );
 
         getStateKeyMapperStub = sinon.stub().returns(
@@ -33,13 +33,20 @@ describe( MODULE_PATH, function() {
 
         const mockLibIndex = {
 
-            configureInitialState: configureInitialStateStub,
-            setMainComponent: function() {
+            getConfiguredInitialState: getConfiguredInitialStateStub,
+            setGlobalStateComponent: function() {
 
                 return {
 
-                    setMainComponent: 'yes',
+                    setGlobalStateComponent: 'yes',
                     self: this
+                };
+            },
+            getGlobalStateComponent: function() {
+
+                return {
+
+                    globalStateComponent: 'yes',
                 };
             },
             getStateKeyMapper: getStateKeyMapperStub,
@@ -93,7 +100,7 @@ describe( MODULE_PATH, function() {
                 stateKeyMapper: 'yea'
             },
 
-            configureInitialStateResults: initialState,
+            getConfiguredInitialStateResults: initialState,
         });
 
         const reduxX = ReduxX({
@@ -101,9 +108,9 @@ describe( MODULE_PATH, function() {
             initialState
         });
 
-        expect( configureInitialStateStub.args.length ).to.equal( 1 );
-        expect( configureInitialStateStub.args[0].length ).to.equal( 1 );
-        expect( configureInitialStateStub.args[0][0] ).to.eql({
+        expect( getConfiguredInitialStateStub.args.length ).to.equal( 1 );
+        expect( getConfiguredInitialStateStub.args[0].length ).to.equal( 1 );
+        expect( getConfiguredInitialStateStub.args[0][0] ).to.eql({
 
             initialState: [
 
@@ -127,15 +134,22 @@ describe( MODULE_PATH, function() {
             ],
         });
 
-        const setMainComponentResult = reduxX.setMainComponent();
+        const setGlobalStateComponentResult = reduxX.setGlobalStateComponent();
 
-        expect( setMainComponentResult ).eql({
+        expect( setGlobalStateComponentResult ).eql({
 
-            setMainComponent: 'yes',
+            setGlobalStateComponent: 'yes',
             self: {
 
                 reduxXCore: {}
             }
+        });
+
+        const globalStateComponentResult = reduxX.globalStateComponent;
+
+        expect( globalStateComponentResult ).eql({
+
+            globalStateComponent: 'yes',
         });
 
         const setInitialStateResult = reduxX.setInitialState();

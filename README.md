@@ -3,13 +3,31 @@
 [![npm version](https://badge.fury.io/js/reduxx.svg)](https://badge.fury.io/js/reduxx) [![Build Status](https://travis-ci.org/msteckyefantis/reduxx.svg?branch=master)](https://travis-ci.org/msteckyefantis/reduxx)
 
 [![ReduxX](https://s18.postimg.org/643pjzgyx/Redux_X_1.png)](https://lessonshop.net)
-### ReduxX, similar to SpaceX and iPhoneX
+### **ReduxX**, similar to SpaceX and iPhoneX, ReduxX is the **next generation** React state management tool.
 
 **(with 100% code coverage😉👍🏿👍🏽👍🏻)**
 
 #### ReduxX is a lightweight yet super-powerful, very easy to learn, and very easy to set up React state management library.
 
-### ReduxX News: ReduxX v2 coming soon! Still keeping it very simple, with a few key modifications that seem to be the natural next steps for this tool.
+---
+#### **ReduxX News:** ReduxX v2 out now!
+
+##### Breaking Changes:
+
+1. `reduxX.setMainComponent` has been renamed to  `reduxX.setGlobalStateComponent`
+
+2. The object format for `initialState` is no longer supported. (for the time being)
+
+3. The `initialState` array format still works the same as before, except for the array element objects, the key `initialValue` has been renamed to `value`
+
+##### Updates:
+Read the brief documentation to see the 🐸🐉 **powerful new updates!!** 🐉🐸
+
+#####
+
+
+---
+
 
 ### Table of Contents:
 
@@ -17,6 +35,9 @@
 
 #### 2. [How ReduxX Works](#how-reduxx-works)
 
+- [Step 1: Install ReduxX and Set Your Initial Global State](#step-1-install-reduxx-and-set-your-initial-global-state)
+- [Step 2: Set up ReduxX](#step-2-set-up-reduxx)
+- [Step 3: Easily Get and Set Values to the Global State](#step-3-easily-get-and-set-values-to-the-global-state)
 
 ## Why Use ReduxX:
 
@@ -24,9 +45,11 @@ In larger React apps, it's really nice to have global state (global as in global
 
 ```
 ...
-userProfileMainPicture: null
-userProfileFirstName: 'Danny'
 accountSettingsEmailVerified: true
+user: 'dandan69',
+userProfileFirstName: 'Danny'
+userProfileMainPicture: null
+userProfileMainPictureIsPublic: true
 ...
 ```
 
@@ -36,11 +59,11 @@ And when getting and setting the global state, it looks something like this:
 // the old way: getting value from the global state
 const mainPicture = (
 
-    globalStateStore.state.userProfileMainPicture
+    globalStateComponent.state.userProfileMainPicture
 );
 
 // the old way: setting a value in the global state
-globalStateStore.setState({
+globalStateComponent.setState({
 
     userProfileMainPicture: 'https://image.png'
 });
@@ -50,26 +73,26 @@ Alternatively, you can use nested React state to have nicer variable names to de
 
 ```.js
 /*
-the old way: updating a nested component
+  the old way: updating a nested component
 
-    in this example, assume the state key "userProfile"
+    in this example, assume the state key "pictures"
     has an associated value which is an
     object with several properties
 
 
     Below is how you would update
-    a single property of the userProfile object
+    a single property of the pictures object
     while preserving the other properties
 */
-this.setState( previousState => {
+globalStateComponent.setState( previousState => {
 
     return {
 
-        userProfile: Object.assign(
+        pictures: Object.assign(
 
             {},
 
-            previousState.userProfile,
+            previousState.account,
 
             {
                 mainPicture: 'https://image.png'
@@ -87,9 +110,11 @@ with ReduxX, the same state as above is automatically generated and it will look
 
 ```
 ...
-userProfile-mainPicture: null
-userProfile-firstName: 'Danny'
-accountSettings-emailVerified: true
+accountSettings-EmailVerified: true
+user: 'dandan69',
+user-profile-firstName: 'Danny'
+user-profile-mainPicture: null
+user-profile-mainPicture-isPublic: true
 ...
 ```
 and to get and set the state, you just need to do this:
@@ -100,20 +125,24 @@ and to get and set the state, you just need to do this:
 
 const mainPicture = reduxX.getState({
 
-    key1: 'userProfile',
-    key2: 'mainPicture'
+    key1: 'user',
+    key2: 'profile',
+    key3: 'mainPicture'
 });
-
 
 // smoothly set a global state value with ReduxX:
 
 reduxX.setState({
 
-    key1: 'userProfile',
-    key2: 'mainPicture',
+    key1: 'user',
+    key2: 'profile',
+    key3: 'mainPicture',
     value: 'https://image.png'
 });
 
+
+// Note: you can use any number of keys
+// to set and get values from the global state
 ```
 
 
@@ -127,7 +156,7 @@ reduxX.setState({
 ## How ReduxX works:
 
 
-### Step 1: Install ReduxX and Set Your Initial State
+### Step 1: Install ReduxX and Set Your Initial Global State
 
 To install ReduxX, input the following npm command:
 ```
@@ -149,47 +178,28 @@ module.exports = ReduxX({
         {
             key1: 'monkey',
             key2: 'favoriteFood',
-            initialValue: 'banana',
+            value: 'banana',
+        },
+        {
+            key1: 'monkey',
+            value: 'curious george',
         },
         {
             key1: 'monkey',
             key2: 'height',
-            initialValue: '69cm',
+            value: '69cm',
         },
         {
             key1: 'hippo',
-            key2: 'favoriteFood',
-            initialValue: 'watermelon',
+            key2: 'status',
+            key3: 'mood',
+            value: 'hungry',
         }
     ]    
 });
+
+// Note: you can use any number of keys
 ```
-
-Alternatively, you can set the initial state using an object. The following code sample works exactly the same as the code sample above:
-
-```.js
-'use strict';
-
-const ReduxX = require( 'reduxx' );
-
-
-module.exports = ReduxX({
-
-    initialState: {
-
-        monkey: {
-
-            favoriteFood: 'banana',
-            height: '69cm',
-        },
-        hippo: {
-
-            favoriteFood: 'watermelon',
-        }
-    }   
-});
-```
-
 
 ### Step 2: Set up ReduxX
 
@@ -200,7 +210,8 @@ In the most parent component itself, the component that contains all your other 
 
 const React = require( 'react' );
 
-const reduxX = require( './reduxx.js' );
+// import the file you created in Step 1
+const reduxX = require( './reduxx.js' ); 
 
 
 module.exports = class App extends React.Component {
@@ -210,7 +221,7 @@ module.exports = class App extends React.Component {
         super( props );
 
         // Step 2: a) add this here
-        reduxX.setMainComponent( this );
+        reduxX.setGlobalStateComponent( this );
     }
 
     componentDidMount() {
@@ -245,6 +256,10 @@ const reduxX = require( /*path to reduxx.js file, the file created in Step 1*/ )
 
 function handleClick() {
 
+    /*
+       ReduxX Effortless State Setting and Getting
+    */
+
     // set the global state for one or more items like this:
 
     reduxX.setState(
@@ -256,8 +271,9 @@ function handleClick() {
         },
         {
             key1: 'hippo',
-            key2: 'favoriteFood',
-            value: undefined,
+            key2: 'status',
+            key3: 'mood',
+            value: 'full',
         }
     );
 
@@ -275,6 +291,38 @@ function handleClick() {
     );
 
     // should log: The reduxX monkey is 69cm tall!
+
+
+
+    /*
+      Old Fashioned State Changing:
+
+        You can also access and alter the global state manually
+        The globalStateComponent (and its state)
+        is just a normal React component (and state).
+    */
+
+    const globalStateComponent = reduxX.globalStateComponent;
+
+    // setting the state:
+    // this will produce the same state change as above
+    
+    globalStateComponent.setState({
+
+        'monkey-favoriteFood': 'apple',
+        'hippo-status-mood': 'full',
+    });
+    
+    // getting the state:
+    // once again its the same as getting the state like above
+
+    const secondMonkeyHeight = (
+
+    	globalStateComponent.state[ 'monkey-height' ]
+
+    );
+
+    // (monkeyHeight === secondMonkeyHeight) is true
 }
 
 

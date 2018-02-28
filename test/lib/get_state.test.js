@@ -23,11 +23,16 @@ describe( MODULE_PATH, function() {
 
             reduxXCore: {
 
-                mainComponent: {
+                globalStateComponent: {
 
                     state: {
 
-                        'monkey-favoriteFood': 'banana'
+                        'monkey': true,
+                        'monkey-favoriteFood': 'banana',
+                        'monkey-favoriteFood-favoriteDesert': 'banana split',
+                        'monkey-favoriteFood-favoriteDesert-favoriteDesertTime': 'anytime',
+                        'monkey-height': null,
+                        'hippo-favoriteFood': 'watermelon',
                     }
                 }
             },
@@ -36,18 +41,64 @@ describe( MODULE_PATH, function() {
 
                 monkey: {
 
-                    favoriteFood: 'monkey-favoriteFood'
+                    '@reduxXKey': 'monkey',
+
+                    favoriteFood: {
+
+                        '@reduxXKey': 'monkey-favoriteFood',
+
+                        favoriteDesert: {
+
+                            '@reduxXKey': 'monkey-favoriteFood-favoriteDesert',
+
+                            favoriteDesertTime: {
+
+                                '@reduxXKey': 'monkey-favoriteFood-favoriteDesert-favoriteDesertTime',
+                            }
+                        }
+                    },
+
+                    height: {
+
+                        '@reduxXKey': 'monkey-height'
+                    },
+                },
+
+                hippo: {
+
+                    '@reduxXKey': 'hippo',
+
+                    favoriteFood: {
+
+                        '@reduxXKey': 'hippo-favoriteFood'
+                    },
                 }
             }
         });
 
-        const monkeysFavoriteFood = getState({
+        const value1 = getState({
 
             key1: 'monkey',
-            key2: 'favoriteFood'
+            key2: 'favoriteFood',
+            key3: 'favoriteDesert'
         });
 
-        expect( monkeysFavoriteFood ).to.equal( 'banana' );
+        expect( value1 ).to.equal( 'banana split' );
+
+        const value2 = getState({
+
+            key1: 'monkey',
+            key2: 'favoriteFood',
+        });
+
+        expect( value2 ).to.equal( 'banana' );
+
+        const value3 = getState({
+
+            key1: 'monkey',
+        });
+
+        expect( value3 ).to.equal( true );
     });
 
     it( 'trying to get non-existant state value', function() {
@@ -56,11 +107,16 @@ describe( MODULE_PATH, function() {
 
             reduxXCore: {
 
-                mainComponent: {
+                globalStateComponent: {
 
                     state: {
 
-                        'monkey-favoriteFood': 'banana'
+                        'monkey': true,
+                        'monkey-favoriteFood': 'banana',
+                        'monkey-favoriteFood-favoriteDesert': 'banana split',
+                        'monkey-favoriteFood-favoriteDesert-favoriteDesertTime': 'anytime',
+                        'monkey-height': null,
+                        'hippo-favoriteFood': 'watermelon',
                     }
                 }
             },
@@ -69,7 +125,37 @@ describe( MODULE_PATH, function() {
 
                 monkey: {
 
-                    favoriteFood: 'monkey-favoriteFood'
+                    '@reduxXKey': 'monkey',
+
+                    favoriteFood: {
+
+                        '@reduxXKey': 'monkey-favoriteFood',
+
+                        favoriteDesert: {
+
+                            '@reduxXKey': 'monkey-favoriteFood-favoriteDesert',
+
+                            favoriteDesertTime: {
+
+                                '@reduxXKey': 'monkey-favoriteFood-favoriteDesert-favoriteDesertTime',
+                            }
+                        }
+                    },
+
+                    height: {
+
+                        '@reduxXKey': 'monkey-height'
+                    },
+                },
+
+                hippo: {
+
+                    '@reduxXKey': 'hippo',
+
+                    favoriteFood: {
+
+                        '@reduxXKey': 'hippo-favoriteFood'
+                    },
                 }
             }
         });
@@ -91,7 +177,73 @@ describe( MODULE_PATH, function() {
 
         expect( error.message ).to.equal(
 
-            'error in ReduxX getState'
+            'error in ReduxX getState: invalid key(s) specified'
+        );
+    });
+
+    it( 'missing global state component', function() {
+
+        const getState = getStateFresh.bind({
+
+            reduxXCore: {},
+
+            stateKeyMapper: {
+
+                monkey: {
+
+                    '@reduxXKey': 'monkey',
+
+                    favoriteFood: {
+
+                        '@reduxXKey': 'monkey-favoriteFood',
+
+                        favoriteDesert: {
+
+                            '@reduxXKey': 'monkey-favoriteFood-favoriteDesert',
+
+                            favoriteDesertTime: {
+
+                                '@reduxXKey': 'monkey-favoriteFood-favoriteDesert-favoriteDesertTime',
+                            }
+                        }
+                    },
+
+                    height: {
+
+                        '@reduxXKey': 'monkey-height'
+                    },
+                },
+
+                hippo: {
+
+                    '@reduxXKey': 'hippo',
+
+                    favoriteFood: {
+
+                        '@reduxXKey': 'hippo-favoriteFood'
+                    },
+                }
+            }
+        });
+
+        let error = null;
+
+        try {
+
+            getState({
+
+                key1: 'monkey',
+                key2: 'favoriteFoodie'
+            });
+
+        } catch( err ) {
+
+            error = err
+        }
+
+        expect( error.message ).to.equal(
+
+            'error in ReduxX getState: global state component not set'
         );
     });
 });

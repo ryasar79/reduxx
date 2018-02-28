@@ -2,12 +2,13 @@
 
 const {
 
-    configureInitialState,
-    setMainComponent,
+    getConfiguredInitialState,
+    setGlobalStateComponent,
     getStateKeyMapper,
     getState,
     setState,
     setInitialState,
+    getGlobalStateComponent,
 
 } = require( './lib/index.js' );
 
@@ -19,7 +20,7 @@ module.exports = Object.freeze(
 
     }) => {
 
-        initialState = configureInitialState({
+        initialState = getConfiguredInitialState({
 
             initialState,
         });
@@ -33,7 +34,7 @@ module.exports = Object.freeze(
 
         return Object.freeze({
 
-            setMainComponent: setMainComponent.bind({
+            setGlobalStateComponent: setGlobalStateComponent.bind({
 
                 reduxXCore,
             }),
@@ -56,6 +57,14 @@ module.exports = Object.freeze(
                 reduxXCore,
                 stateKeyMapper
             }),
+
+            get globalStateComponent() {
+
+                return getGlobalStateComponent({
+
+                    reduxXCore
+                });
+            }
         });
     }
 );
