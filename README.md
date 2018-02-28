@@ -116,7 +116,7 @@ reduxX.setState({
 ```
 
 
-### Why is ReduxX better than the other old fashioned React state management libraries?
+#### Why is ReduxX better than the other old fashioned React state management libraries?
 
 **ReduxX is incredibly simple** to install and learn. Everything you need to know is contained in this README.md file. **For ReduxX you only need to follow the 3 simple steps in the [How ReduxX Works Section](#how-reduxx-works) below!** Essentially, you only need to be concerned with two functions: `reduxX.getState`, and `reduxX.setState`. These functions work exactly like normal React state, except you can use them anywhere in your code to access a global state, wow!
 
