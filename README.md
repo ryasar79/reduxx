@@ -116,15 +116,7 @@ reduxX.setState({
 ```
 
 
-#### Why is ReduxX better than the old fashioned Redux NPM module?
-
-**Redux is the opposite of simple**, Redux makes things way too complicated. Don't believe me? Check out this screen capture:
-
-[![Screen_Shot_2018-02-26_at_8.11.50_PM.png](https://s18.postimg.org/gpnkvs589/Screen_Shot_2018-02-26_at_8.11.50_PM.png)](https://lessonshop.net)
-
-**This is just the intro** to the [official Redux website](https://redux.js.org). 6 sections (plus an examples section) give me a break😂😂😂! Not to mention how verbose and pretentious the writing style is just based on looking at these section names, "Prior Art", "Three Principles"... come on, I think React state should be a really simple straightforwards thing. We don't need a real library's amount of literature on what should be a simple NodeJs library.😉
-
-<br>
+### Why is ReduxX better than the other old fashioned React state management libraries?
 
 **ReduxX is incredibly simple** to install and learn. Everything you need to know is contained in this README.md file. **For ReduxX you only need to follow the 3 simple steps in the [How ReduxX Works Section](#how-reduxx-works) below!** Essentially, you only need to be concerned with two functions: `reduxX.getState`, and `reduxX.setState`. These functions work exactly like normal React state, except you can use them anywhere in your code to access a global state, wow!
 
