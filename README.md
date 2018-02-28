@@ -41,7 +41,7 @@ Read the brief documentation to see the 🐸🐉 **powerful new updates!!** 🐉
 
 ## Why Use ReduxX:
 
-In larger React apps, it's really nice to have global state (global as in globally accessible, **NOT** stored as a global browser variable). But when normally dealing with a global state object you may encounter a problem, your state looks like this:
+In larger React apps, it's really nice to have global state (global as in globally accessible, **NOT** stored as a global browser variable). But when normally dealing with a global state object, you may encounter a problem, your state may look something like this:
 
 ```
 ...
@@ -211,7 +211,7 @@ In the most parent component itself, the component that contains all your other 
 const React = require( 'react' );
 
 // import the file you created in Step 1
-const reduxX = require( './reduxx.js' ); 
+const reduxX = require( './reduxx.js' );
 
 
 module.exports = class App extends React.Component {
@@ -306,13 +306,13 @@ function handleClick() {
 
     // setting the state:
     // this will produce the same state change as above
-    
+
     globalStateComponent.setState({
 
         'monkey-favoriteFood': 'apple',
         'hippo-status-mood': 'full',
     });
-    
+
     // getting the state:
     // once again its the same as getting the state like above
 
