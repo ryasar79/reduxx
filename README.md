@@ -92,7 +92,7 @@ globalStateComponent.setState( previousState => {
 
             {},
 
-            previousState.account,
+            previousState.pictures,
 
             {
                 mainPicture: 'https://image.png'
