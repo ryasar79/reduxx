@@ -22,11 +22,20 @@ describe( MODULE_PATH, function() {
 
     function getModule() {
 
+        createElementStub = sinon.stub();
+
+        const MockReact = {
+
+            Component: class {},
+            createElement: createElementStub,
+        };
+
         setGlobalStateStorageInstanceStub = sinon.stub();
         setInitialStateStub = sinon.stub();
 
         const proxyquireStubs = {
 
+            'react': MockReact,
             './set_global_state_storage_instance.js': setGlobalStateStorageInstanceStub,
             './set_initial_state.js': setInitialStateStub
         };
@@ -38,17 +47,8 @@ describe( MODULE_PATH, function() {
 
         const module = getModule();
 
-        createElementStub = sinon.stub();
-
-        const MockReact = {
-
-            Component: class {},
-            createElement: createElementStub,
-        }
-
         const TheComponent = module({
 
-            React: MockReact,
             reduxXCore: { theReduxXCore: 'yes' },
             initialState: { theInitialState: 'yes' },
             stateKeyMapper: { theStateKeyMapper: 'yes' }

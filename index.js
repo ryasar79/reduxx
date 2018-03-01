@@ -15,7 +15,6 @@ const {
 module.exports = Object.freeze(
 
     ({
-        React,
         initialState,
 
     }) => {
@@ -34,7 +33,6 @@ module.exports = Object.freeze(
 
         const StateStorageComponent = getStateStorageComponent({
 
-            React,
             reduxXCore,
             initialState,
             stateKeyMapper

@@ -166,14 +166,10 @@ In the directory of your main React component, the most parent component that co
 ```.js
 'use strict';
 
-const React = require( 'react' );
-
 const ReduxX = require( 'reduxx' );
 
 
 module.exports = ReduxX({
-
-    React,
 
     initialState: [
 
@@ -201,10 +197,14 @@ module.exports = ReduxX({
 });
 ```
 > Notes:
+> 
+> a) ReduxX assumes React is installed
 >
-> a) you can use any number of keys
+> b) you can use any number of keys
 >
-> b) technically you can put this reduxx.js file anywhere, but it makes the most sense to put it in your root folder based on how you access it (in Step 3)
+> c) technically you can put this reduxx.js file anywhere, but it makes the most sense to put it in your root folder based on how you access it (in Step 3)
+> 
+> 
 
 ### Step 2: Set up ReduxX
 
