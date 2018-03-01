@@ -31,9 +31,10 @@ Read the brief documentation to see the 🐸🐉 **powerful new updates!!** 🐉
 - [Step 2: Set up ReduxX](#step-2-set-up-reduxx)
 - [Step 3: Easily Get and Set Values to the Global State](#step-3-easily-get-and-set-values-to-the-global-state)
 
-#### 3. [Optional Configuration](#optional-configuration)
+#### 3. [Fun Bonus Features](#fun-bonus-features)
 
 - [Obscure Your State Keys](#obscure-your-state-keys)
+- [Old Fashioned State Managment](#old-fashioned-state-managment)
 
 ## Why Use ReduxX:
 
@@ -304,63 +305,6 @@ function handleClick() {
     );
 
     // should log: The reduxX monkey is 69cm tall!
-
-
-
-    /*
-      OPTIONAL - Old Fashioned State Changing:
-
-        You can also access and alter the global state manually.
-        The globalStateStorageInstance (and its state)
-        is just a normal React Component instance (and state).
-    */
-
-    const {
-
-        globalStateStorageInstance,
-        stateKeyMapper,
-        REDUXX_SPECIAL_KEY
-
-    } = reduxX;
-
-    // setting the state:
-    // this will produce the same state change as above
-
-    /*
-        Note: using the stateKeyMapper and the REDUXX_SPECIAL_KEY
-              lets you work with regular OR obscured state keys.
-              See the "Obscure Your State Keys" section below
-              for more information about that topic.
-    */
-
-    const newState = {};
-
-    newState[
-
-        stateKeyMapper.monkey.favoriteFood[ REDUXX_SPECIAL_KEY ]
-
-    ] = 'apple';
-
-    newState[
-
-        stateKeyMapper.hippo.status.mood[ REDUXX_SPECIAL_KEY ]
-
-    ] = 'full';
-
-    globalStateStorageInstance.setState( newState );
-
-    // getting the state:
-    // once again its the same as getting the state like above
-
-    const secondMonkeyHeight = (
-
-        globalStateStorageInstance.state[
-
-            stateKeyMapper.monkey.height[ REDUXX_SPECIAL_KEY ]
-        ]
-    );
-
-    // (monkeyHeight === secondMonkeyHeight) is true
 }
 
 
@@ -384,7 +328,7 @@ All you need to do is require your `./reduxx.js` file you created in Step 1 and 
 ![ReduxX Rocks!](https://media1.tenor.com/images/8d99bca02126d5d1e16a6000efb34e7b/tenor.gif "Jar Jar Approves!")
 
 ---
-## Optional Configuration
+## Fun Bonus Features
 
 ### Obscure Your State Keys
 
@@ -429,6 +373,112 @@ module.exports = ReduxX({
         ... // the same initial state objects go here
     ],    
 });
+```
+
+
+### Old Fashioned State Managment
+
+You can also access and alter the global state manually.
+The globalStateStorageInstance (and its state)
+is just a normal React Component instance (and state).
+
+```.js
+'use strict';
+
+// some other module
+
+const React = require( 'react' );
+
+const reduxX = require( /*path to reduxx.js file, the file created in Step 1*/ );
+
+
+function handleClick() {
+
+    /*
+       Old Fashioned State Setting and Getting:
+    */
+
+    const {
+
+        globalStateStorageInstance,
+        stateKeyMapper,
+        REDUXX_SPECIAL_KEY
+
+    } = reduxX;
+
+    // setting the state:
+    // this will produce the same state change as in Step 3
+
+    /*
+        Note: using the stateKeyMapper and
+              using the REDUXX_SPECIAL_KEY
+              lets you work with regular OR obscured state keys.
+              See the "Obscure Your State Keys" section above
+              for more information about that topic.
+    */
+
+    const newState = {};
+
+    newState[
+
+        stateKeyMapper.monkey.favoriteFood[ REDUXX_SPECIAL_KEY ]
+
+    ] = 'apple';
+
+    newState[
+
+        stateKeyMapper.hippo.status.mood[ REDUXX_SPECIAL_KEY ]
+
+    ] = 'full';
+
+    globalStateStorageInstance.setState( newState );
+
+    // getting the state:
+    // once again its the same as getting the state like in Step 3
+
+    const monkeyHeight = (
+
+        globalStateStorageInstance.state[
+
+            stateKeyMapper.monkey.height[ REDUXX_SPECIAL_KEY ]
+        ]
+    );
+
+    console.log(
+
+        `The reduxX monkey is ${ monkeyHeight } tall!`
+    );
+
+    // should log: The reduxX monkey is 69cm tall!
+
+
+    // You can also get and set "normal" state keys too
+    // in the global state:
+
+    globalStateStorageInstance.setState({
+
+        hello: 'world'
+    });
+
+    setTimeout( () => {
+
+        const world = globalStateStorageInstance.state.hello;
+
+        console.log( 'hello:', world, '🌏🐙🐼👽🐲🌍' );
+
+        // should log: hello: world 🌏🐙🐼👽🐲🌍
+
+    }, 0 );
+}
+
+
+module.exports = class SomeDiv extends React.Component {
+
+    render() {
+
+        return <div onClick={this.handleClick} />;
+    }
+}
 ```
 
 ---
