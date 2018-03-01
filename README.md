@@ -166,7 +166,7 @@ In the directory of your main React component, the most parent component that co
 ```.js
 'use strict';
 
-const React = require( 'React' );
+const React = require( 'react' );
 
 const ReduxX = require( 'reduxx' );
 
