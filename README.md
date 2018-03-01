@@ -337,7 +337,7 @@ Recalling our state from before:
 ```
 ...
 accountSettings-EmailVerified: true
-user: 'dandan69',
+user: 'dandan69'
 user-profile-firstName: 'Danny'
 user-profile-mainPicture: null
 user-profile-mainPicture-isPublic: true
