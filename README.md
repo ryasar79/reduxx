@@ -398,6 +398,33 @@ function handleClick() {
        Old Fashioned State Setting and Getting:
     */
 
+    // You can get and set regular state keys
+    // in the global state storage component instance:
+
+    globalStateStorageInstance.setState({
+
+        hello: 'world'
+    });
+
+    setTimeout( () => {
+
+        const world = globalStateStorageInstance.state.hello;
+
+        console.log( 'hello:', world, '🌏🐙🐼👽🐲🌍' );
+
+        // should log: hello: world 🌏🐙🐼👽🐲🌍
+
+    }, 0 );
+
+    /*
+        Using the stateKeyMapper and
+        using the REDUXX_SPECIAL_KEY,
+        you can work with regular ReduxX type keys
+        OR obscured state keys.
+        See the "Obscure Your State Keys" section above
+        for more information about that topic.
+    */
+
     const {
 
         globalStateStorageInstance,
@@ -408,14 +435,6 @@ function handleClick() {
 
     // setting the state:
     // this will produce the same state change as in Step 3
-
-    /*
-        Note: using the stateKeyMapper and
-              using the REDUXX_SPECIAL_KEY
-              lets you work with regular OR obscured state keys.
-              See the "Obscure Your State Keys" section above
-              for more information about that topic.
-    */
 
     const newState = {};
 
@@ -450,25 +469,6 @@ function handleClick() {
     );
 
     // should log: The reduxX monkey is 69cm tall!
-
-
-    // You can also get and set "normal" state keys too
-    // in the global state:
-
-    globalStateStorageInstance.setState({
-
-        hello: 'world'
-    });
-
-    setTimeout( () => {
-
-        const world = globalStateStorageInstance.state.hello;
-
-        console.log( 'hello:', world, '🌏🐙🐼👽🐲🌍' );
-
-        // should log: hello: world 🌏🐙🐼👽🐲🌍
-
-    }, 0 );
 }
 
 
