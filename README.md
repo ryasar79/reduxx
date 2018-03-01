@@ -231,12 +231,14 @@ const AnotherOneOfYourComponents = require( '...' );
 const { StateStorageComponent } = require( './reduxx.js' );
 
 
+// Your "most parent" component
 module.exports = class App extends React.Component {
 
     render() {
 
         return (
-            <div> // Element created from your "most parent" component
+	         
+            <div> 
 
                 <YourOtherComponent/> // placeholder elements
                 <AnotherOneOfYourComponents/>
@@ -250,7 +252,7 @@ module.exports = class App extends React.Component {
     }
 }
 ```
-Essentially, to always have access to the global state, you just need to create this React element using the StateStorageComponent and mount it in a place where it will always stay mounted. That's why placing it as a child in your most parent component is likely a good place to put it.
+Essentially, to always have access to the global state, you just need to create this React element using the StateStorageComponent and mount it in a place where it will always stay mounted. That's why mounting it as a child element in your most parent component is likely a good way to mount it.
 
 
 ### Step 3: Easily Get and Set Values to the Global State
