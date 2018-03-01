@@ -308,7 +308,7 @@ function handleClick() {
 
 
     /*
-      Old Fashioned State Changing:
+      OPTIONAL - Old Fashioned State Changing:
 
         You can also access and alter the global state manually.
         The globalStateStorageInstance (and its state)
