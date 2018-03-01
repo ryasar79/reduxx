@@ -3,7 +3,7 @@
 [![npm version](https://badge.fury.io/js/reduxx.svg)](https://badge.fury.io/js/reduxx) [![Build Status](https://travis-ci.org/msteckyefantis/reduxx.svg?branch=master)](https://travis-ci.org/msteckyefantis/reduxx)
 
 [![ReduxX](https://s18.postimg.org/643pjzgyx/Redux_X_1.png)](https://lessonshop.net)
-### **ReduxX**, similar to SpaceX and iPhoneX, ReduxX is the **next generation** React state management tool.
+### Similar to SpaceX and iPhoneX, ReduxX is the **next generation** React state management tool.
 
 **(with 100% code coverage😉👍🏿👍🏽👍🏻)**
 
