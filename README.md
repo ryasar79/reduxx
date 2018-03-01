@@ -44,7 +44,7 @@ In larger React apps, it's really nice to have global state (global as in global
 ```
 ...
 accountSettingsEmailVerified: true
-user: 'dandan69',
+user: 'dandan69'
 userProfileFirstName: 'Danny'
 userProfileMainPicture: null
 userProfileMainPictureIsPublic: true
