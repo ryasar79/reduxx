@@ -31,7 +31,7 @@ Read the brief documentation to see the 🐸🐉 **powerful new updates!!** 🐉
 - [Step 2: Set up ReduxX](#step-2-set-up-reduxx)
 - [Step 3: Easily Get and Set Values to the Global State](#step-3-easily-get-and-set-values-to-the-global-state)
 
-#### 3. [Fun Bonus Features](#fun-bonus-features)
+#### 3. [Bonus Features](#bonus-features)
 
 - [Obscure Your State Keys](#obscure-your-state-keys)
 - [Old Fashioned State Managment](#old-fashioned-state-managment)
@@ -328,7 +328,7 @@ All you need to do is require your `./reduxx.js` file you created in Step 1 and 
 ![ReduxX Rocks!](https://media1.tenor.com/images/8d99bca02126d5d1e16a6000efb34e7b/tenor.gif "Jar Jar Approves!")
 
 ---
-## Fun Bonus Features
+## Bonus Features
 
 ### Obscure Your State Keys
 
