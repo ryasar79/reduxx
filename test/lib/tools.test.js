@@ -23,4 +23,10 @@ describe( MODULE_PATH, function() {
         expect( tools.utils.getKeyName( 2 ) ).to.equal( 'key2' );
         expect( tools.utils.getKeyName( 3 ) ).to.equal( 'key3' );
     });
+
+    it( '.utils.getGuid', function() {
+
+        expect( tools.utils.getGuid().length ).to.equal( 36 );
+        expect( tools.utils.getGuid().replace(/[^\-]/g, "").length ).to.equal( 4 );
+    });
 });

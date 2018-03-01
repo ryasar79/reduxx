@@ -10,13 +10,7 @@
 #### ReduxX is a lightweight yet super-powerful, very easy to learn, and very easy to set up React state management library.
 
 ---
-#### **ReduxX News:** ReduxX v3 out now!
-
-##### Breaking Changes:
-
-1. The section [How ReduxX Works - Step 2: Set up ReduxX](#step-2-set-up-reduxx), now works differently
-
-2. `globalStateComponent` has been renamed to `globalStateStorageInstance`
+#### **ReduxX News:** ReduxX v5 out now!
 
 ##### Updates:
 Read the brief documentation to see the 🐸🐉 **powerful new updates!!** 🐉🐸
@@ -36,6 +30,10 @@ Read the brief documentation to see the 🐸🐉 **powerful new updates!!** 🐉
 - [Step 1: Install ReduxX and Set Your Initial Global State](#step-1-install-reduxx-and-set-your-initial-global-state)
 - [Step 2: Set up ReduxX](#step-2-set-up-reduxx)
 - [Step 3: Easily Get and Set Values to the Global State](#step-3-easily-get-and-set-values-to-the-global-state)
+
+#### 3. [Optional Configuration](#optional-configuration)
+
+- [Obscure Your State Keys](#obscure-your-state-keys)
 
 ## Why Use ReduxX:
 
@@ -197,14 +195,14 @@ module.exports = ReduxX({
 });
 ```
 > Notes:
-> 
+>
 > a) ReduxX assumes React is installed
 >
 > b) you can use any number of keys
 >
 > c) technically you can put this reduxx.js file anywhere, but it makes the most sense to put it in your root folder based on how you access it (in Step 3)
-> 
-> 
+>
+>
 
 ### Step 2: Set up ReduxX
 
@@ -219,7 +217,7 @@ const React = require( 'react' );
 /*
  Note: you don't actually have to put components
  like the following two here. They are placeholders.
- This is just to show how the StateStorageComponent
+ This is just to show how the ReduxXStateStorageComponent
  might fit in with your other code.
 */
 const YourOtherComponent = require( '...' );
@@ -228,7 +226,7 @@ const AnotherOneOfYourComponents = require( '...' );
 // import the following component from the file you created in Step 1
 // (Note: this particular path below assumes the reduxx.js file
 // is in the same directory as this file)
-const { StateStorageComponent } = require( './reduxx.js' );
+const { ReduxXStateStorageComponent } = require( './reduxx.js' );
 
 
 // Your "most parent" component
@@ -237,8 +235,8 @@ module.exports = class App extends React.Component {
     render() {
 
         return (
-	         
-            <div> 
+
+            <div>
 
                 <YourOtherComponent/> // placeholder elements
                 <AnotherOneOfYourComponents/>
@@ -246,13 +244,13 @@ module.exports = class App extends React.Component {
                	// Step 2) create the required
                	//        ReduxX React element
                	//                  like this:
-                <StateStorageComponent/>
+                <ReduxXStateStorageComponent/>
             </div>
         )
     }
 }
 ```
-Essentially, to always have access to the global state, you just need to create this React element using the StateStorageComponent and mount it in a place where it will always stay mounted. That's why mounting it as a child element in your most parent component is likely a good way to mount it.
+Essentially, to always have access to the global state, you just need to create this React element using the ReduxXStateStorageComponent and mount it in a place where it will always stay mounted. That's why mounting it as a child element in your most parent component is likely a good way to mount it.
 
 
 ### Step 3: Easily Get and Set Values to the Global State
@@ -317,25 +315,49 @@ function handleClick() {
         is just a normal React Component instance (and state).
     */
 
-    const { globalStateStorageInstance } = reduxX;
+    const {
+
+        globalStateStorageInstance,
+        stateKeyMapper,
+        REDUXX_SPECIAL_KEY
+
+    } = reduxX;
 
     // setting the state:
     // this will produce the same state change as above
 
-    globalStateStorageInstance.setState({
+    const newState = {};
 
-        'monkey-favoriteFood': 'apple',
-        'hippo-status-mood': 'full',
-    });
+    newState[
+
+        stateKeyMapper.monkey.favoriteFood[ REDUXX_SPECIAL_KEY ]
+
+    ] = 'apple';
+
+    newState[
+
+        stateKeyMapper.hippo.status.mood[ REDUXX_SPECIAL_KEY ]
+
+    ] = 'full';
+
+    globalStateStorageInstance.setState( newState );
 
     // getting the state:
     // once again its the same as getting the state like above
 
     const secondMonkeyHeight = (
 
-    	globalStateStorageInstance.state[ 'monkey-height' ]
+        globalStateStorageInstance.state[
 
+            stateKeyMapper.monkey.height[ REDUXX_SPECIAL_KEY ]
+        ]
     );
+    /*
+        Note: using the stateKeyMapper and REDUXX_SPECIAL_KEY
+              lets you work with regular OR obscured state keys.
+              See the "Obscure Your State Keys" section below
+              for more information about that topic.
+    */
 
     // (monkeyHeight === secondMonkeyHeight) is true
 }
@@ -361,6 +383,55 @@ All you need to do is require your `./reduxx.js` file you created in Step 1 and 
 ![ReduxX Rocks!](https://media1.tenor.com/images/8d99bca02126d5d1e16a6000efb34e7b/tenor.gif "Jar Jar Approves!")
 
 ---
+## Optional Configuration
+
+### Obscure Your State Keys
+
+Recalling our state from before:
+
+```
+...
+accountSettings-EmailVerified: true
+user: 'dandan69',
+user-profile-firstName: 'Danny'
+user-profile-mainPicture: null
+user-profile-mainPicture-isPublic: true
+...
+```
+
+You can obscure your state keys by automatically turning them into GUIDs so that your state will look something like this:
+
+```
+...
+206ca40e-e643-17b6-da3c-616b90800f4e: true
+335a8849-9bff-bd2c-9a1a-6f26d61e0f88: 'dandan69'
+ae771d1a-f563-c876-3132-b958e62ca205: 'Danny'
+1721716f-4d92-ea42-56ca-5df95c175413: null
+e04659d7-38a6-bae8-b513-36cfcb300ba7: true
+...
+```
+To obscure your keys, simply set up your ReduxX ([Step 1](#step-1-install-reduxx-and-set-your-initial-global-state)), like this:
+
+```.js
+'use strict';
+
+const ReduxX = require( 'reduxx' );
+
+
+module.exports = ReduxX({
+
+    // adding this will obscure your state keys
+    obscureStateKeys: true,
+
+    initialState: [
+
+        ... // the same initial state objects go here
+    ],    
+});
+```
+
+---
+
 
 Check out [LessonShop.net](https://lessonshop.net) to take or teach coding lessons!!
 Market yourself as a developer teacher for free and get free marketing!

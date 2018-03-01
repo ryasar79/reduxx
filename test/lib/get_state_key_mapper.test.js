@@ -8,9 +8,9 @@ const FULL_MODULE_PATH = ROOT_PATH + MODULE_PATH;
 
 const expect = require( 'chai' ).expect;
 
-// const proxyquire = require( 'proxyquire' ).noCallThru();
+const proxyquire = require( 'proxyquire' ).noCallThru();
 
-// const sinon = require( 'sinon' );
+const sinon = require( 'sinon' );
 
 const getStateKeyMapper = require( FULL_MODULE_PATH );
 
@@ -92,6 +92,112 @@ describe( MODULE_PATH, function() {
                 favoriteFood: {
 
                     '@reduxXKey': 'hippo-favoriteFood'
+                },
+            }
+        });
+    });
+
+    it( 'normal operation: obscured keys', function() {
+
+        const getGuidStub = sinon.stub().returns( 'xxx' );
+
+        const mockTools = {
+
+            utils: {
+
+                getGuid: getGuidStub,
+
+                getKeyName: (number => `key${ number }`),
+            },
+
+            constants: {
+
+                REDUXX_SPECIAL_KEY: '@reduxXKey'
+            }
+        };
+
+        const proxyquireStubs = {
+
+            './tools.js': mockTools
+        };
+
+        const proxyGetStateKeyMapper = proxyquire( FULL_MODULE_PATH, proxyquireStubs );
+
+        const stateKeyMapper = proxyGetStateKeyMapper({
+
+            obscureStateKeys: true,
+
+            initialState: [
+
+                {
+                    key1: 'monkey',
+                    key2: 'favoriteFood',
+                    key3: 'favoriteDesert',
+                    key4: 'favoriteDesertTime',
+                    value: 'anytime',
+                },
+                {
+                    key1: 'monkey',
+                    key2: 'favoriteFood',
+                    key3: 'favoriteDesert',
+                    value: 'banana split',
+                },
+                {
+                    key1: 'monkey',
+                    key2: 'favoriteFood',
+                    value: 'banana',
+                },
+                {
+                    key1: 'monkey',
+                    value: true,
+                },
+                {
+                    key1: 'monkey',
+                    key2: 'height',
+                    value: '69cm',
+                },
+                {
+                    key1: 'hippo',
+                    key2: 'favoriteFood',
+                    value: 'watermelon',
+                }
+            ]
+        });
+
+        expect( stateKeyMapper ).eql({
+
+            monkey: {
+
+                '@reduxXKey': 'xxx',
+
+                favoriteFood: {
+
+                    '@reduxXKey': 'xxx',
+
+                    favoriteDesert: {
+
+                        '@reduxXKey': 'xxx',
+
+                        favoriteDesertTime: {
+
+                            '@reduxXKey': 'xxx',
+                        }
+                    }
+                },
+
+                height: {
+
+                    '@reduxXKey': 'xxx'
+                },
+            },
+
+            hippo: {
+
+                '@reduxXKey': 'xxx',
+
+                favoriteFood: {
+
+                    '@reduxXKey': 'xxx'
                 },
             }
         });

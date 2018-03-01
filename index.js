@@ -8,6 +8,7 @@ const {
     getState,
     setState,
     getGlobalStateStorageInstance,
+    tools,
 
 } = require( './lib/index.js' );
 
@@ -16,6 +17,7 @@ module.exports = Object.freeze(
 
     ({
         initialState,
+        obscureStateKeys,
 
     }) => {
 
@@ -28,10 +30,11 @@ module.exports = Object.freeze(
 
         const stateKeyMapper = getStateKeyMapper({
 
-            initialState
+            initialState,
+            obscureStateKeys
         });
 
-        const StateStorageComponent = getStateStorageComponent({
+        const ReduxXStateStorageComponent = getStateStorageComponent({
 
             reduxXCore,
             initialState,
@@ -40,7 +43,11 @@ module.exports = Object.freeze(
 
         return Object.freeze({
 
-            StateStorageComponent,
+            ReduxXStateStorageComponent,
+
+            stateKeyMapper,
+
+            REDUXX_SPECIAL_KEY: tools.constants.REDUXX_SPECIAL_KEY,
 
             getState: getState.bind({
 

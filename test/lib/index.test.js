@@ -47,6 +47,11 @@ describe( MODULE_PATH, function() {
             mss: 'yes'
         };
 
+        const mockTools = {
+
+            mt: 'yes'
+        };
+
         const proxyquireStubs = {
 
             './get_configured_initial_state.js': mockGetConfiguredInitialState,
@@ -55,6 +60,7 @@ describe( MODULE_PATH, function() {
             './get_state.js': mockGetState,
             './set_state.js': mockSetState,
             './get_state_storage_component/index.js': getStateStorageComponent,
+            './tools.js': mockTools,
         };
 
         return proxyquire( FULL_MODULE_PATH, proxyquireStubs );
@@ -89,6 +95,10 @@ describe( MODULE_PATH, function() {
             setState: {
 
                 mss: 'yes'
+            },
+            tools: {
+
+                mt: 'yes'
             },
         });
     });

@@ -21,6 +21,9 @@ describe( MODULE_PATH, function() {
 
     let getStateStorageComponentStub;
 
+    let getStateFunction;
+    let setStateFunction;
+
     function getModule( values ) {
 
         getConfiguredInitialStateStub = sinon.stub().returns(
@@ -38,7 +41,32 @@ describe( MODULE_PATH, function() {
             values.getStateStorageComponentResults
         );
 
+        getStateFunction = function() {
+
+            return {
+
+                getState: 'yes',
+                self: this
+            };
+        };
+        setStateFunction = function() {
+
+            return {
+
+                setState: 'yes',
+                self: this
+            };
+        };
+
         const mockLibIndex = {
+
+            tools: {
+
+                constants: {
+
+                    REDUXX_SPECIAL_KEY: 'abc'
+                }
+            },
 
             getStateStorageComponent: getStateStorageComponentStub,
 
@@ -52,22 +80,8 @@ describe( MODULE_PATH, function() {
                 };
             },
             getStateKeyMapper: getStateKeyMapperStub,
-            getState: function() {
-
-                return {
-
-                    getState: 'yes',
-                    self: this
-                };
-            },
-            setState: function() {
-
-                return {
-
-                    setState: 'yes',
-                    self: this
-                };
-            },
+            getState: getStateFunction,
+            setState: setStateFunction,
         };
 
         const proxyquireStubs = {
@@ -95,12 +109,36 @@ describe( MODULE_PATH, function() {
             },
 
             getConfiguredInitialStateResults: initialState,
+
+            getStateStorageComponentResults: {
+
+                theStorageComponent: 'yes'
+            },
         });
 
         const reduxX = ReduxX({
 
-            initialState
+            initialState,
+
+            obscureStateKeys: true,
         });
+
+        expect( reduxX.ReduxXStateStorageComponent ).to.eql({
+
+            theStorageComponent: 'yes'
+        });
+
+        expect( reduxX.stateKeyMapper ).to.eql({
+
+            stateKeyMapper: 'yea'
+        });
+
+        expect( reduxX.globalStateStorageInstance ).to.eql({
+
+            globalStateStorageInstance: 'yes'
+        });
+
+        expect( reduxX.REDUXX_SPECIAL_KEY ).to.equal( 'abc' );
 
         expect( getConfiguredInitialStateStub.args.length ).to.equal( 1 );
         expect( getConfiguredInitialStateStub.args[0].length ).to.equal( 1 );
@@ -135,6 +173,8 @@ describe( MODULE_PATH, function() {
         expect( getStateKeyMapperStub.args.length ).to.equal( 1 );
         expect( getStateKeyMapperStub.args[0].length ).to.equal( 1 );
         expect( getStateKeyMapperStub.args[0][0] ).to.eql({
+
+            obscureStateKeys: true,
 
             initialState: [
 
