@@ -216,12 +216,17 @@ In the most parent component itself, the component that contains all your other 
 
 const React = require( 'react' );
 
+/*
+ Note: you don't actually have to put components
+ like the following two here. They are placeholders.
+ This is just to show how the StateStorageComponent
+ might fit in with your other code.
+*/
 const YourOtherComponent = require( '...' );
-
 const AnotherOneOfYourComponents = require( '...' );
 
 // import the following component from the file you created in Step 1
-// (note: this particular path below assumes the reduxx.js file
+// (Note: this particular path below assumes the reduxx.js file
 // is in the same directory as this file)
 const { StateStorageComponent } = require( './reduxx.js' );
 
@@ -231,20 +236,21 @@ module.exports = class App extends React.Component {
     render() {
 
         return (
-            <div id="Your Main Component">
+            <div> // Element created from your "most parent" component
 
-                <YourOtherComponent/>
-
+                <YourOtherComponent/> // placeholder elements
                 <AnotherOneOfYourComponents/>
 
-               	// Step 2) create the React element like this
+               	// Step 2) create the required
+               	//        ReduxX React element
+               	//                  like this:
                 <StateStorageComponent/>
             </div>
         )
     }
 }
 ```
-Essentially, to always have access to the global state, you just need to create and mount this React element in a place where it will always stay mounted.
+Essentially, to always have access to the global state, you just need to create this React element using the StateStorageComponent and mount it in a place where it will always stay mounted. That's why placing it as a child in your most parent component is likely a good place to put it.
 
 
 ### Step 3: Easily Get and Set Values to the Global State
