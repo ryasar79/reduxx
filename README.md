@@ -201,9 +201,9 @@ module.exports = ReduxX({
 });
 ```
 > Notes:
-> 
+>
 > a) you can use any number of keys
-> 
+>
 > b) technically you can put this reduxx.js file anywhere, but it makes most sense to put it in your root folder based on how you access it (in Step 3)
 
 ### Step 2: Set up ReduxX
@@ -220,7 +220,7 @@ const YourOtherComponent = require( '...' );
 
 const AnotherOneOfYourComponents = require( '...' );
 
-// import the follow component from the file you created in Step 1
+// import the following component from the file you created in Step 1
 // (note: this particular path below assumes the reduxx.js file
 // is in the same directory as this file)
 const { StateStorageComponent } = require( './reduxx.js' );
@@ -232,11 +232,11 @@ module.exports = class App extends React.Component {
 
         return (
             <div id="Your Main Component">
-            
+
                 <YourOtherComponent/>
-            
+
                 <AnotherOneOfYourComponents/>
-               
+
                	// Step 2) create the React element like this
                 <StateStorageComponent/>
             </div>
