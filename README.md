@@ -57,11 +57,11 @@ And when getting and setting the global state, it looks something like this:
 // the old way: getting value from the global state
 const mainPicture = (
 
-    globalStateComponent.state.userProfileMainPicture
+    globalStateStorageInstance.state.userProfileMainPicture
 );
 
 // the old way: setting a value in the global state
-globalStateComponent.setState({
+globalStateStorageInstance.setState({
 
     userProfileMainPicture: 'https://image.png'
 });
