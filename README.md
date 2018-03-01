@@ -206,7 +206,7 @@ module.exports = ReduxX({
 
 ### Step 2: Set up ReduxX
 
-In the most parent component itself, the component that contains all your other components, create a React element using the `StateStorageComponent` and add this element as a child of your most parent component:
+In the most parent component itself, the component that contains all your other components, create a React element using the `ReduxXStateStorageComponent` and add this element as a child of your most parent component:
 
 
 ```.js
