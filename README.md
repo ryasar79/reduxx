@@ -327,7 +327,7 @@ function handleClick() {
     // this will produce the same state change as above
 
     /*
-        Note: using the stateKeyMapper and REDUXX_SPECIAL_KEY
+        Note: using the stateKeyMapper and the REDUXX_SPECIAL_KEY
               lets you work with regular OR obscured state keys.
               See the "Obscure Your State Keys" section below
               for more information about that topic.
