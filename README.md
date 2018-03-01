@@ -398,6 +398,8 @@ function handleClick() {
        Old Fashioned State Setting and Getting:
     */
 
+    const { globalStateStorageInstance } = reduxX;
+
     // You can get and set regular state keys
     // in the global state storage component instance:
 
@@ -427,7 +429,6 @@ function handleClick() {
 
     const {
 
-        globalStateStorageInstance,
         stateKeyMapper,
         REDUXX_SPECIAL_KEY
 
