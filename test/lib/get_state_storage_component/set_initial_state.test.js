@@ -1,8 +1,8 @@
 'use strict';
 
-const ROOT_PATH = '../../';
+const ROOT_PATH = '../../../';
 
-const MODULE_PATH = 'lib/set_initial_state';
+const MODULE_PATH = 'lib/get_state_storage_component/set_initial_state';
 
 const FULL_MODULE_PATH = ROOT_PATH + MODULE_PATH;
 
@@ -12,7 +12,7 @@ const expect = require( 'chai' ).expect;
 
 const sinon = require( 'sinon' );
 
-const setInitialStateFresh = require( FULL_MODULE_PATH );
+const setInitialState = require( FULL_MODULE_PATH );
 
 
 describe( MODULE_PATH, function() {
@@ -23,7 +23,7 @@ describe( MODULE_PATH, function() {
 
         setStateStub = sinon.stub();
 
-        const setInitialState = setInitialStateFresh.bind({
+        const setInitialStateParams = {
 
             reduxXCore: {
 
@@ -105,9 +105,9 @@ describe( MODULE_PATH, function() {
                     value: 'watermelon',
                 }
             ]
-        });
+        };
 
-        setInitialState();
+        setInitialState( setInitialStateParams );
 
         expect( setStateStub.args.length ).to.equal( 1 );
         expect( setStateStub.args[0].length ).to.equal( 1 );
@@ -124,20 +124,20 @@ describe( MODULE_PATH, function() {
 
     it( 'trying to set initial state when global state component not set up yet', function() {
 
-        const setInitialState = setInitialStateFresh.bind({
+        const setInitialStateParams = {
 
             reduxXCore: {},
 
             stateKeyMapper: {},
 
             initialState: []
-        });
+        };
 
         let error = null;
 
         try {
 
-            setInitialState();
+            setInitialState( setInitialStateParams );
 
         } catch( err ) {
 

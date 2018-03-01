@@ -27,19 +27,14 @@ describe( MODULE_PATH, function() {
             gskm: 'yes'
         };
 
-        const mockSetGlobalStateComponent = {
+        const getStateStorageComponent = {
 
-            msmc: 'yes'
+            msmzc: 'yes'
         };
 
         const mockGetGlobalStateComponent = {
 
             mggsc: 'yes'
-        };
-
-        const mockSetInitialState = {
-
-            msis: 'yes'
         };
 
         const mockGetState = {
@@ -56,11 +51,10 @@ describe( MODULE_PATH, function() {
 
             './get_configured_initial_state.js': mockGetConfiguredInitialState,
             './get_state_key_mapper.js': mockGetStateKeyMapper,
-            './set_global_state_component.js': mockSetGlobalStateComponent,
             './get_global_state_component.js': mockGetGlobalStateComponent,
-            './set_initial_state.js': mockSetInitialState,
             './get_state.js': mockGetState,
             './set_state.js': mockSetState,
+            './get_state_storage_component/index.js': getStateStorageComponent,
         };
 
         return proxyquire( FULL_MODULE_PATH, proxyquireStubs );
@@ -80,17 +74,13 @@ describe( MODULE_PATH, function() {
 
                 gskm: 'yes'
             },
-            setGlobalStateComponent: {
+            getStateStorageComponent: {
 
-                msmc: 'yes'
+                msmzc: 'yes'
             },
             getGlobalStateComponent: {
 
                 mggsc: 'yes'
-            },
-            setInitialState: {
-
-                msis: 'yes'
             },
             getState: {
 

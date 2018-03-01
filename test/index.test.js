@@ -19,6 +19,8 @@ describe( MODULE_PATH, function() {
 
     let getStateKeyMapperStub;
 
+    let getStateStorageComponentStub;
+
     function getModule( values ) {
 
         getConfiguredInitialStateStub = sinon.stub().returns(
@@ -31,17 +33,24 @@ describe( MODULE_PATH, function() {
             values.getStateKeyMapperResults
         );
 
+        getStateStorageComponentStub = sinon.stub().returns(
+
+            values.getStateStorageComponentResults
+        );
+
         const mockLibIndex = {
 
+            getStateStorageComponent: getStateStorageComponentStub,
+
             getConfiguredInitialState: getConfiguredInitialStateStub,
-            setGlobalStateComponent: function() {
-
-                return {
-
-                    setGlobalStateComponent: 'yes',
-                    self: this
-                };
-            },
+            // setGlobalStateComponent: function() {
+            //
+            //     return {
+            //
+            //         setGlobalStateComponent: 'yes',
+            //         self: this
+            //     };
+            // },
             getGlobalStateComponent: function() {
 
                 return {
@@ -66,14 +75,14 @@ describe( MODULE_PATH, function() {
                     self: this
                 };
             },
-            setInitialState: function() {
-
-                return {
-
-                    setInitialState: 'yes',
-                    self: this
-                };
-            },
+            // setInitialState: function() {
+            //
+            //     return {
+            //
+            //         setInitialState: 'yes',
+            //         self: this
+            //     };
+            // },
         };
 
         const proxyquireStubs = {
@@ -105,6 +114,10 @@ describe( MODULE_PATH, function() {
 
         const reduxX = ReduxX({
 
+            React: {
+
+                theReact: 'ya'
+            },
             initialState
         });
 
@@ -122,6 +135,28 @@ describe( MODULE_PATH, function() {
             // initialStateObjectFormat: undefined,
         });
 
+
+        expect( getStateStorageComponentStub.args.length ).to.equal( 1 );
+        expect( getStateStorageComponentStub.args[0].length ).to.equal( 1 );
+        expect( getStateStorageComponentStub.args[0][0] ).to.eql({
+
+            React: {
+
+                theReact: 'ya'
+            },
+            reduxXCore: {},
+            initialState: [
+
+                {
+                    theInitialState: 'yep'
+                },
+            ],
+            stateKeyMapper: {
+
+                stateKeyMapper: 'yea'
+            },
+        });
+
         expect( getStateKeyMapperStub.args.length ).to.equal( 1 );
         expect( getStateKeyMapperStub.args[0].length ).to.equal( 1 );
         expect( getStateKeyMapperStub.args[0][0] ).to.eql({
@@ -133,17 +168,17 @@ describe( MODULE_PATH, function() {
                 },
             ],
         });
-
-        const setGlobalStateComponentResult = reduxX.setGlobalStateComponent();
-
-        expect( setGlobalStateComponentResult ).eql({
-
-            setGlobalStateComponent: 'yes',
-            self: {
-
-                reduxXCore: {}
-            }
-        });
+        //
+        // const setGlobalStateComponentResult = reduxX.setGlobalStateComponent();
+        //
+        // expect( setGlobalStateComponentResult ).eql({
+        //
+        //     setGlobalStateComponent: 'yes',
+        //     self: {
+        //
+        //         reduxXCore: {}
+        //     }
+        // });
 
         const globalStateComponentResult = reduxX.globalStateComponent;
 
@@ -152,26 +187,26 @@ describe( MODULE_PATH, function() {
             globalStateComponent: 'yes',
         });
 
-        const setInitialStateResult = reduxX.setInitialState();
-
-        expect( setInitialStateResult ).eql({
-
-            setInitialState: 'yes',
-            self: {
-
-                reduxXCore: {},
-                stateKeyMapper: {
-
-                    stateKeyMapper: 'yea'
-                },
-                initialState: [
-
-                    {
-                        theInitialState: 'yep'
-                    },
-                ]
-            }
-        });
+        // const setInitialStateResult = reduxX.setInitialState();
+        //
+        // expect( setInitialStateResult ).eql({
+        //
+        //     setInitialState: 'yes',
+        //     self: {
+        //
+        //         reduxXCore: {},
+        //         stateKeyMapper: {
+        //
+        //             stateKeyMapper: 'yea'
+        //         },
+        //         initialState: [
+        //
+        //             {
+        //                 theInitialState: 'yep'
+        //             },
+        //         ]
+        //     }
+        // });
 
         const getStateResult = reduxX.getState();
 

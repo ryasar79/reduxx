@@ -1,8 +1,8 @@
 'use strict';
 
-const ROOT_PATH = '../../';
+const ROOT_PATH = '../../../';
 
-const MODULE_PATH = 'lib/set_global_state_component';
+const MODULE_PATH = 'lib/get_state_storage_component/set_global_state_component';
 
 const FULL_MODULE_PATH = ROOT_PATH + MODULE_PATH;
 
@@ -12,7 +12,7 @@ const expect = require( 'chai' ).expect;
 
 // const sinon = require( 'sinon' );
 
-const setGlobalStateComponentFresh = require( FULL_MODULE_PATH );
+const setGlobalStateComponent = require( FULL_MODULE_PATH );
 
 
 describe( MODULE_PATH, function() {
@@ -21,17 +21,16 @@ describe( MODULE_PATH, function() {
 
         const mockReduxXCore = {};
 
-        const setGlobalStateComponent = setGlobalStateComponentFresh.bind({
-
-            reduxXCore: mockReduxXCore,
-        });
-
         const mockGlobalStateComponent = {
 
             globalStateComponent: 'yea bruv'
         };
 
-        setGlobalStateComponent( mockGlobalStateComponent )
+        setGlobalStateComponent({
+
+            reduxXCore: mockReduxXCore,
+            globalStateComponent: mockGlobalStateComponent,
+        });
 
         expect( mockReduxXCore.globalStateComponent ).to.eql({
 

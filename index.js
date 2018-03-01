@@ -2,12 +2,11 @@
 
 const {
 
+    getStateStorageComponent,
     getConfiguredInitialState,
-    setGlobalStateComponent,
     getStateKeyMapper,
     getState,
     setState,
-    setInitialState,
     getGlobalStateComponent,
 
 } = require( './lib/index.js' );
@@ -16,6 +15,7 @@ const {
 module.exports = Object.freeze(
 
     ({
+        React,
         initialState,
 
     }) => {
@@ -32,19 +32,17 @@ module.exports = Object.freeze(
             initialState
         });
 
+        const StateStorageComponent = getStateStorageComponent({
+
+            React,
+            reduxXCore,
+            initialState,
+            stateKeyMapper
+        });
+
         return Object.freeze({
 
-            setGlobalStateComponent: setGlobalStateComponent.bind({
-
-                reduxXCore,
-            }),
-
-            setInitialState: setInitialState.bind({
-
-                reduxXCore,
-                stateKeyMapper,
-                initialState
-            }),
+            StateStorageComponent,
 
             getState: getState.bind({
 
