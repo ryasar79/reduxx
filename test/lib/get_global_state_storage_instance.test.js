@@ -2,7 +2,7 @@
 
 const ROOT_PATH = '../../';
 
-const MODULE_PATH = 'lib/get_global_state_component';
+const MODULE_PATH = 'lib/get_global_state_storage_instance';
 
 const FULL_MODULE_PATH = ROOT_PATH + MODULE_PATH;
 
@@ -12,7 +12,7 @@ const expect = require( 'chai' ).expect;
 
 // const sinon = require( 'sinon' );
 
-const getGlobalStateComponent = require( FULL_MODULE_PATH );
+const getGlobalStateStorageInstance = require( FULL_MODULE_PATH );
 
 
 describe( MODULE_PATH, function() {
@@ -21,20 +21,20 @@ describe( MODULE_PATH, function() {
 
         const mockReduxXCore = {
 
-            globalStateComponent: {
+            globalStateStorageInstance: {
 
-                theGlobalStateComponent: 'dan abromov'
+                theGlobalStateStorageInstance: 'dan abromov'
             }
         };
 
-        const results = getGlobalStateComponent({
+        const results = getGlobalStateStorageInstance({
 
             reduxXCore: mockReduxXCore
         });
 
         expect( results ).to.eql({
 
-            theGlobalStateComponent: 'dan abromov'
+            theGlobalStateStorageInstance: 'dan abromov'
         });
     });
 
@@ -46,7 +46,7 @@ describe( MODULE_PATH, function() {
 
         try {
 
-            getGlobalStateComponent({
+            getGlobalStateStorageInstance({
 
                 reduxXCore: mockReduxXCore
             });
@@ -57,6 +57,6 @@ describe( MODULE_PATH, function() {
 
         }
 
-        expect( error.message ).to.equal( 'ReduxX error: global state component not set' );
+        expect( error.message ).to.equal( 'ReduxX error: global state storage instance not set' );
     });
 });

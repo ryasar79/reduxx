@@ -27,7 +27,7 @@ describe( MODULE_PATH, function() {
 
             reduxXCore: {
 
-                globalStateComponent: {
+                globalStateStorageInstance: {
 
                     setState: setStateStub,
 
@@ -151,7 +151,7 @@ describe( MODULE_PATH, function() {
 
         expect( error.message ).to.equal(
 
-            'error in ReduxX setState: global state component not setup'
+            'error in ReduxX setState: global state storage instance not setup'
         );
     });
 
@@ -161,7 +161,7 @@ describe( MODULE_PATH, function() {
 
             reduxXCore: {
 
-                globalStateComponent: {
+                globalStateStorageInstance: {
 
                     setState: setStateStub,
 

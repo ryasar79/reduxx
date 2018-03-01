@@ -16,18 +16,18 @@ const sinon = require( 'sinon' );
 
 describe( MODULE_PATH, function() {
 
-    let setGlobalStateComponentStub;
+    let setGlobalStateStorageInstanceStub;
     let setInitialStateStub;
     let createElementStub;
 
     function getModule() {
 
-        setGlobalStateComponentStub = sinon.stub();
+        setGlobalStateStorageInstanceStub = sinon.stub();
         setInitialStateStub = sinon.stub();
 
         const proxyquireStubs = {
 
-            './set_global_state_component.js': setGlobalStateComponentStub,
+            './set_global_state_storage_instance.js': setGlobalStateStorageInstanceStub,
             './set_initial_state.js': setInitialStateStub
         };
 
@@ -54,19 +54,19 @@ describe( MODULE_PATH, function() {
             stateKeyMapper: { theStateKeyMapper: 'yes' }
         });
 
-        const theElement = new TheComponent();
+        const theInstance = new TheComponent();
 
-        expect( theElement.constructor.name ).to.equal( 'ReduxXStateStorageComponent' );
+        expect( theInstance.constructor.name ).to.equal( 'ReduxXStateStorageComponent' );
 
-        expect( setGlobalStateComponentStub.args.length ).to.equal( 1 );
-        expect( setGlobalStateComponentStub.args[0].length ).to.equal( 1 );
-        expect( setGlobalStateComponentStub.args[0][0] ).to.eql({
+        expect( setGlobalStateStorageInstanceStub.args.length ).to.equal( 1 );
+        expect( setGlobalStateStorageInstanceStub.args[0].length ).to.equal( 1 );
+        expect( setGlobalStateStorageInstanceStub.args[0][0] ).to.eql({
 
             reduxXCore: { theReduxXCore: 'yes' },
-            globalStateComponent: theElement
+            globalStateStorageInstance: theInstance
         });
 
-        theElement.componentDidMount();
+        theInstance.componentDidMount();
 
         expect( setInitialStateStub.args.length ).to.equal( 1 );
         expect( setInitialStateStub.args[0].length ).to.equal( 1 );
@@ -77,7 +77,7 @@ describe( MODULE_PATH, function() {
             stateKeyMapper: { theStateKeyMapper: 'yes' }
         });
 
-        theElement.render();
+        theInstance.render();
 
         expect( createElementStub.args.length ).to.equal( 1 );
         expect( createElementStub.args[0].length ).to.equal( 1 );

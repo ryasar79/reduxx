@@ -51,11 +51,11 @@ describe( MODULE_PATH, function() {
             //         self: this
             //     };
             // },
-            getGlobalStateComponent: function() {
+            getGlobalStateStorageInstance: function() {
 
                 return {
 
-                    globalStateComponent: 'yes',
+                    globalStateStorageInstance: 'yes',
                 };
             },
             getStateKeyMapper: getStateKeyMapperStub,
@@ -180,11 +180,11 @@ describe( MODULE_PATH, function() {
         //     }
         // });
 
-        const globalStateComponentResult = reduxX.globalStateComponent;
+        const globalStateStorageInstanceResult = reduxX.globalStateStorageInstance;
 
-        expect( globalStateComponentResult ).eql({
+        expect( globalStateStorageInstanceResult ).eql({
 
-            globalStateComponent: 'yes',
+            globalStateStorageInstance: 'yes',
         });
 
         // const setInitialStateResult = reduxX.setInitialState();

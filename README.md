@@ -10,15 +10,13 @@
 #### ReduxX is a lightweight yet super-powerful, very easy to learn, and very easy to set up React state management library.
 
 ---
-#### **ReduxX News:** ReduxX v2 out now!
+#### **ReduxX News:** ReduxX v3 out now!
 
 ##### Breaking Changes:
 
-1. `reduxX.setMainComponent` has been renamed to  `reduxX.setGlobalStateComponent`
+1. The section [How ReduxX Works - Step 2: Set up ReduxX](#step-2-set-up-reduxx), now works differently
 
-2. The object format for `initialState` is no longer supported. (for the time being)
-
-3. The `initialState` array format still works the same as before, except for the array element objects, the key `initialValue` has been renamed to `value`
+2. `globalStateComponent` has been renamed to `globalStateStorageInstance`
 
 ##### Updates:
 Read the brief documentation to see the 🐸🐉 **powerful new updates!!** 🐉🐸
@@ -168,10 +166,14 @@ In the directory of your main React component, the most parent component that co
 ```.js
 'use strict';
 
+const React;
+
 const ReduxX = require( 'reduxx' );
 
 
 module.exports = ReduxX({
+
+    React,
 
     initialState: [
 
@@ -197,45 +199,52 @@ module.exports = ReduxX({
         }
     ]    
 });
-
-// Note: you can use any number of keys
 ```
+> Notes:
+> 
+> a) you can use any number of keys
+> 
+> b) technically you can put this reduxx.js file anywhere, but it makes most sense to put it in your root folder based on how you access it (in Step 3)
 
 ### Step 2: Set up ReduxX
 
-In the most parent component itself, the component that contains all your other components, add the following:
+In the most parent component itself, the component that contains all your other components, create a React element using the `StateStorageComponent` and add this element as a child of your most parent component:
+
 
 ```.js
 'use strict';
 
 const React = require( 'react' );
 
-// import the file you created in Step 1
-const reduxX = require( './reduxx.js' );
+const YourOtherComponent = require( '...' );
+
+const AnotherOneOfYourComponents = require( '...' );
+
+// import the follow component from the file you created in Step 1
+// (note: this particular path below assumes the reduxx.js file
+// is in the same directory as this file)
+const { StateStorageComponent } = require( './reduxx.js' );
 
 
 module.exports = class App extends React.Component {
 
-    constructor( props ) {
-
-        super( props );
-
-        // Step 2: a) add this here
-        reduxX.setGlobalStateComponent( this );
-    }
-
-    componentDidMount() {
-
-        // Step 2: b) also add this here
-        reduxX.setInitialState();
-    }
-
     render() {
 
-        ...
+        return (
+            <div id="Your Main Component">
+            
+                <YourOtherComponent/>
+            
+                <AnotherOneOfYourComponents/>
+               
+               	// Step 2) create the React element like this
+                <StateStorageComponent/>
+            </div>
+        )
     }
 }
 ```
+Essentially, to always have access to the global state, you just need to create and mount this React element in a place where it will always stay mounted.
 
 
 ### Step 3: Easily Get and Set Values to the Global State
@@ -248,8 +257,6 @@ Now anywhere you normally do a React [setState](https://reactjs.org/docs/react-c
 // some other module
 
 const React = require( 'react' );
-
-const e = React.createElement;
 
 const reduxX = require( /*path to reduxx.js file, the file created in Step 1*/ );
 
@@ -297,17 +304,17 @@ function handleClick() {
     /*
       Old Fashioned State Changing:
 
-        You can also access and alter the global state manually
-        The globalStateComponent (and its state)
-        is just a normal React component (and state).
+        You can also access and alter the global state manually.
+        The globalStateStorageInstance (and its state)
+        is just a normal React Component instance (and state).
     */
 
-    const globalStateComponent = reduxX.globalStateComponent;
+    const { globalStateStorageInstance } = reduxX;
 
     // setting the state:
     // this will produce the same state change as above
 
-    globalStateComponent.setState({
+    globalStateStorageInstance.setState({
 
         'monkey-favoriteFood': 'apple',
         'hippo-status-mood': 'full',
@@ -318,7 +325,7 @@ function handleClick() {
 
     const secondMonkeyHeight = (
 
-    	globalStateComponent.state[ 'monkey-height' ]
+    	globalStateStorageInstance.state[ 'monkey-height' ]
 
     );
 
@@ -330,17 +337,7 @@ module.exports = class SomeDiv extends React.Component {
 
     render() {
 
-        return e(
-
-            'div',
-
-            {
-                onClick: () => {
-
-                    handleClick();
-                }
-            }
-        );
+        return <div onClick={this.handleClick} />;
     }
 }
 ```

@@ -7,7 +7,7 @@ const {
     getStateKeyMapper,
     getState,
     setState,
-    getGlobalStateComponent,
+    getGlobalStateStorageInstance,
 
 } = require( './lib/index.js' );
 
@@ -56,9 +56,9 @@ module.exports = Object.freeze(
                 stateKeyMapper
             }),
 
-            get globalStateComponent() {
+            get globalStateStorageInstance() {
 
-                return getGlobalStateComponent({
+                return getGlobalStateStorageInstance({
 
                     reduxXCore
                 });

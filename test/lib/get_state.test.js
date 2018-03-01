@@ -23,7 +23,7 @@ describe( MODULE_PATH, function() {
 
             reduxXCore: {
 
-                globalStateComponent: {
+                globalStateStorageInstance: {
 
                     state: {
 
@@ -107,7 +107,7 @@ describe( MODULE_PATH, function() {
 
             reduxXCore: {
 
-                globalStateComponent: {
+                globalStateStorageInstance: {
 
                     state: {
 
@@ -243,7 +243,7 @@ describe( MODULE_PATH, function() {
 
         expect( error.message ).to.equal(
 
-            'error in ReduxX getState: global state component not set'
+            'error in ReduxX getState: global state storage instance not set'
         );
     });
 });

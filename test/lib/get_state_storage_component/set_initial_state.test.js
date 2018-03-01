@@ -27,7 +27,7 @@ describe( MODULE_PATH, function() {
 
             reduxXCore: {
 
-                globalStateComponent: {
+                globalStateStorageInstance: {
 
                     setState: setStateStub
                 }
