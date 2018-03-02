@@ -37,6 +37,11 @@ describe( MODULE_PATH, function() {
             mggsc: 'yes'
         };
 
+        const mockGetGlobalStateStorageInstance = {
+
+            mggsc: 'yes'
+        };
+
         const mockGetState = {
 
             mgs: 'yes'
@@ -62,6 +67,7 @@ describe( MODULE_PATH, function() {
             './get_configured_initial_state.js': mockGetConfiguredInitialState,
             './get_state_key_mapper.js': mockGetStateKeyMapper,
             './set_global_state_storage_instance.js': mockSetGlobalStateStorageInstance,
+            './get_global_state_storage_instance.js': mockGetGlobalStateStorageInstance,
             './get_state.js': mockGetState,
             './set_state.js': mockSetState,
             // './get_state_storage_component/index.js': getStateStorageComponent,
@@ -91,6 +97,10 @@ describe( MODULE_PATH, function() {
             //     msmzc: 'yes'
             // },
             setGlobalStateStorageInstance: {
+
+                mggsc: 'yes'
+            },
+            getGlobalStateStorageInstance: {
 
                 mggsc: 'yes'
             },
