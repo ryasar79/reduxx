@@ -1,8 +1,8 @@
 'use strict';
 
-const ROOT_PATH = '../../../';
+const ROOT_PATH = '../../';
 
-const MODULE_PATH = 'lib/get_state_storage_component/set_global_state_storage_instance';
+const MODULE_PATH = 'lib/set_global_state_storage_instance';
 
 const FULL_MODULE_PATH = ROOT_PATH + MODULE_PATH;
 
@@ -26,11 +26,12 @@ describe( MODULE_PATH, function() {
             globalStateStorageInstance: 'yea bruv'
         };
 
-        setGlobalStateStorageInstance({
+        setGlobalStateStorageInstance.call(
 
-            reduxXCore: mockReduxXCore,
-            globalStateStorageInstance: mockGlobalStateStorageInstance,
-        });
+            { reduxXCore: mockReduxXCore },
+
+            mockGlobalStateStorageInstance
+        );
 
         expect( mockReduxXCore.globalStateStorageInstance ).to.eql({
 

@@ -13,9 +13,8 @@
 
 #### **ReduxX News:**
 
-## [Please use ReduxX version 2.0.4](https://github.com/msteckyefantis/reduxx/tree/6f4bfccb928b14fffdd35d92e357a9ed77850b2d),
+Read the brief documentation to see the 🐸🐉 powerful new updates!! 🐉🐸
 
- ReduxX is currently going through experimental development and versions 3 and up have some issues that need to be resolved and these versions are not guaranteed to work, version 2.0.4 should work fine.
 #####
 
 ---
@@ -207,45 +206,42 @@ module.exports = ReduxX({
 
 ### Step 2: Set up ReduxX
 
-In the most parent component itself, the component that contains all your other components, create a React element using the `ReduxXStateStorageComponent` and this will be a wrapper component for your other components:
+In the most parent component itself, the component that contains all your other components, set up the ReduxX global state like the following:
 
 ```.js
 'use strict';
 
 const React = require( 'react' );
 
-/*
- Note: you don't actually have to put components
- like the following two here. They are placeholders.
- This is just to show how the ReduxXStateStorageComponent
- might fit in with your other code.
-*/
-const YourOtherComponent = require( '...' );
-const AnotherOneOfYourComponents = require( '...' );
-
-// import the following component from the file you created in Step 1
+// Import the following component from the file you created in Step 1
 // (Note: this particular path below assumes the reduxx.js file
 // is in the same directory as this file)
-const { ReduxXStateStorageComponent } = require( './reduxx.js' );
+const {
+
+    setGlobalStateStorageInstance,
+    setInitialState
+
+} = require( './reduxx.js' );
 
 
 // Your "most parent" component
 module.exports = class App extends React.Component {
 
+    constructor( props ) {
+
+        super( props );
+
+        setGlobalStateStorageInstance( this );
+    }
+
     render() {
 
-        return (
+        ...
+    }
 
-            // Step 2) create the required
-            //        ReduxX React element
-            //                  like this:
-            <ReduxXStateStorageComponent>
+    componentDidMount() {
 
-                <YourOtherComponent/> // placeholder elements
-                <AnotherOneOfYourComponents/>
-
-            </ReduxXStateStorageComponent>
-        )
+        setInitialState();
     }
 }
 ```

@@ -2,13 +2,14 @@
 
 const {
 
-    getStateStorageComponent,
     getConfiguredInitialState,
     getStateKeyMapper,
     getState,
     setState,
     getGlobalStateStorageInstance,
     tools,
+    setGlobalStateStorageInstance,
+    setInitialState
 
 } = require( './lib/index.js' );
 
@@ -34,16 +35,19 @@ module.exports = Object.freeze(
             obscureStateKeys
         });
 
-        const ReduxXStateStorageComponent = getStateStorageComponent({
-
-            reduxXCore,
-            initialState,
-            stateKeyMapper
-        });
-
         return Object.freeze({
 
-            ReduxXStateStorageComponent,
+            setGlobalStateStorageInstance: setGlobalStateStorageInstance.bind({
+
+                reduxXCore,
+            }),
+
+            setInitialState: setInitialState.bind({
+
+                reduxXCore,
+                initialState,
+                stateKeyMapper
+            }),
 
             stateKeyMapper,
 

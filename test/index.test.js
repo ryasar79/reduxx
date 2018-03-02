@@ -19,10 +19,13 @@ describe( MODULE_PATH, function() {
 
     let getStateKeyMapperStub;
 
-    let getStateStorageComponentStub;
+
+    let getGlobalStateStorageInstanceStub;
 
     let getStateFunction;
     let setStateFunction;
+    let setInitialStateFunction;
+    let setGlobalStateStorageInstanceFunction;
 
     function getModule( values ) {
 
@@ -36,10 +39,15 @@ describe( MODULE_PATH, function() {
             values.getStateKeyMapperResults
         );
 
-        getStateStorageComponentStub = sinon.stub().returns(
+        getGlobalStateStorageInstanceStub = sinon.stub().returns({
 
-            values.getStateStorageComponentResults
-        );
+            gssi: 'yes'
+        });
+
+        // getStateStorageComponentStub = sinon.stub().returns(
+        //
+        //     values.getStateStorageComponentResults
+        // );
 
         getStateFunction = function() {
 
@@ -57,6 +65,22 @@ describe( MODULE_PATH, function() {
                 self: this
             };
         };
+        setInitialStateFunction = function() {
+
+            return {
+
+                setInitialState: 'yes',
+                self: this
+            };
+        };
+        setGlobalStateStorageInstanceFunction = function() {
+
+            return {
+
+                setGlobalStateStorageInstance: 'yes',
+                self: this
+            };
+        };
 
         const mockLibIndex = {
 
@@ -68,20 +92,17 @@ describe( MODULE_PATH, function() {
                 }
             },
 
-            getStateStorageComponent: getStateStorageComponentStub,
+            getGlobalStateStorageInstance: getGlobalStateStorageInstanceStub,
+
+            // getStateStorageComponent: getStateStorageComponentStub,
 
             getConfiguredInitialState: getConfiguredInitialStateStub,
 
-            getGlobalStateStorageInstance: function() {
-
-                return {
-
-                    globalStateStorageInstance: 'yes',
-                };
-            },
             getStateKeyMapper: getStateKeyMapperStub,
             getState: getStateFunction,
             setState: setStateFunction,
+            setGlobalStateStorageInstance: setGlobalStateStorageInstanceFunction,
+            setInitialState: setInitialStateFunction,
         };
 
         const proxyquireStubs = {
@@ -123,20 +144,11 @@ describe( MODULE_PATH, function() {
             obscureStateKeys: true,
         });
 
-        expect( reduxX.ReduxXStateStorageComponent ).to.eql({
-
-            theStorageComponent: 'yes'
-        });
-
         expect( reduxX.stateKeyMapper ).to.eql({
 
             stateKeyMapper: 'yea'
         });
 
-        expect( reduxX.globalStateStorageInstance ).to.eql({
-
-            globalStateStorageInstance: 'yes'
-        });
 
         expect( reduxX.REDUXX_SPECIAL_KEY ).to.equal( 'abc' );
 
@@ -153,22 +165,7 @@ describe( MODULE_PATH, function() {
         });
 
 
-        expect( getStateStorageComponentStub.args.length ).to.equal( 1 );
-        expect( getStateStorageComponentStub.args[0].length ).to.equal( 1 );
-        expect( getStateStorageComponentStub.args[0][0] ).to.eql({
 
-            reduxXCore: {},
-            initialState: [
-
-                {
-                    theInitialState: 'yep'
-                },
-            ],
-            stateKeyMapper: {
-
-                stateKeyMapper: 'yea'
-            },
-        });
 
         expect( getStateKeyMapperStub.args.length ).to.equal( 1 );
         expect( getStateKeyMapperStub.args[0].length ).to.equal( 1 );
@@ -182,13 +179,6 @@ describe( MODULE_PATH, function() {
                     theInitialState: 'yep'
                 },
             ],
-        });
-
-        const globalStateStorageInstanceResult = reduxX.globalStateStorageInstance;
-
-        expect( globalStateStorageInstanceResult ).eql({
-
-            globalStateStorageInstance: 'yes',
         });
 
         const getStateResult = reduxX.getState();
@@ -219,6 +209,43 @@ describe( MODULE_PATH, function() {
                     stateKeyMapper: 'yea'
                 },
             }
+        });
+
+        const setInitialStateResult = reduxX.setInitialState();
+
+        expect( setInitialStateResult ).eql({
+
+            setInitialState: 'yes',
+            self: {
+
+                reduxXCore: {},
+                stateKeyMapper: {
+
+                    stateKeyMapper: 'yea'
+                },
+                initialState: [
+
+                    {
+                        'theInitialState': 'yep'
+                    }
+                ]
+            }
+        });
+
+        const setGlobalStateStorageInstanceResult = reduxX.setGlobalStateStorageInstance();
+
+        expect( setGlobalStateStorageInstanceResult ).eql({
+
+            setGlobalStateStorageInstance: 'yes',
+            self: {
+
+                reduxXCore: {},
+            }
+        });
+
+        expect( reduxX.globalStateStorageInstance ).to.eql({
+
+            gssi: 'yes'
         });
     });
 });

@@ -1,8 +1,8 @@
 'use strict';
 
-const ROOT_PATH = '../../../';
+const ROOT_PATH = '../../';
 
-const MODULE_PATH = 'lib/get_state_storage_component/set_initial_state';
+const MODULE_PATH = 'lib/set_initial_state';
 
 const FULL_MODULE_PATH = ROOT_PATH + MODULE_PATH;
 
@@ -107,7 +107,10 @@ describe( MODULE_PATH, function() {
             ]
         };
 
-        setInitialState( setInitialStateParams );
+        setInitialState.call(
+
+            setInitialStateParams
+        );
 
         expect( setStateStub.args.length ).to.equal( 1 );
         expect( setStateStub.args[0].length ).to.equal( 1 );
@@ -137,7 +140,7 @@ describe( MODULE_PATH, function() {
 
         try {
 
-            setInitialState( setInitialStateParams );
+            setInitialState.call( setInitialStateParams );
 
         } catch( err ) {
 
