@@ -10,17 +10,11 @@
 #### ReduxX is a lightweight yet super-powerful, very easy to learn, and very easy to set up React state management library.
 
 ---
-#### **IMPORTANT ReduxX News:**
 
+#### **ReduxX News:**
 
-## [Please use ReduxX version 2.0.4](https://github.com/msteckyefantis/reduxx/tree/6f4bfccb928b14fffdd35d92e357a9ed77850b2d),
-
-ReduxX is currently going through experimental development and version 5 has some issues that need to be resolved and it is not guaranteed to work, version 2.0.4 should work fine.
-
-
-Thanks for your understanding!
+Read the brief documentation to see the 🐸🐉 **powerful new updates!!** 🐉🐸
 #####
-
 
 ---
 
@@ -211,8 +205,7 @@ module.exports = ReduxX({
 
 ### Step 2: Set up ReduxX
 
-In the most parent component itself, the component that contains all your other components, create a React element using the `ReduxXStateStorageComponent` and add this element as a child of your most parent component:
-
+In the most parent component itself, the component that contains all your other components, create a React element using the `ReduxXStateStorageComponent` and this will be a wrapper component for your other components:
 
 ```.js
 'use strict';
@@ -241,21 +234,19 @@ module.exports = class App extends React.Component {
 
         return (
 
-            <div>
+            // Step 2) create the required
+            //        ReduxX React element
+            //                  like this:
+            <ReduxXStateStorageComponent>
 
                 <YourOtherComponent/> // placeholder elements
                 <AnotherOneOfYourComponents/>
 
-               	// Step 2) create the required
-               	//        ReduxX React element
-               	//                  like this:
-                <ReduxXStateStorageComponent/>
-            </div>
+            </ReduxXStateStorageComponent>
         )
     }
 }
 ```
-Essentially, to always have access to the global state, you just need to create this React element using the ReduxXStateStorageComponent and mount it in a place where it will always stay mounted. That's why mounting it as a child element in your most parent component is likely a good way to mount it.
 
 
 ### Step 3: Easily Get and Set Values to the Global State

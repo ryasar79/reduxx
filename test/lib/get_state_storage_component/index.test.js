@@ -26,7 +26,16 @@ describe( MODULE_PATH, function() {
 
         const MockReact = {
 
-            Component: class {},
+            Component: class {
+
+                constructor() {
+
+                    this.props = {
+
+                        children: [ 'a', 'b', 'c' ]
+                    }
+                }
+            },
             createElement: createElementStub,
         };
 
@@ -80,7 +89,9 @@ describe( MODULE_PATH, function() {
         theInstance.render();
 
         expect( createElementStub.args.length ).to.equal( 1 );
-        expect( createElementStub.args[0].length ).to.equal( 1 );
-        expect( createElementStub.args[0][0] ).to.eql( 'div' );
+        expect( createElementStub.args[0].length ).to.equal( 3 );
+        expect( createElementStub.args[0][0] ).to.equal( 'div' );
+        expect( createElementStub.args[0][1] ).to.eql( {} );
+        expect( createElementStub.args[0][2] ).to.eql( [ 'a', 'b', 'c' ] );
     });
 });
