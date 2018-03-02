@@ -13,12 +13,12 @@
 #### **IMPORTANT ReduxX News:**
 
 
-## (Please use ReduxX version 2.0.4)[https://github.com/msteckyefantis/reduxx/tree/6f4bfccb928b14fffdd35d92e357a9ed77850b2d],
+## [Please use ReduxX version 2.0.4](https://github.com/msteckyefantis/reduxx/tree/6f4bfccb928b14fffdd35d92e357a9ed77850b2d),
 
 ReduxX is currently going through experimental development and version 5 has some issues that need to be resolved and it is not guaranteed to work, version 2.0.4 should work fine.
 
 
-Thanks for your understanding
+Thanks for your understanding!
 #####
 
 
