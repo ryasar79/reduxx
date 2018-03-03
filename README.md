@@ -24,7 +24,7 @@
 
 - [Obscure Your State Keys](#obscure-your-state-keys)
 - [Old Fashioned State Managment](#old-fashioned-state-managment)
-- [Optimize Your ReduxX App](#optimize-your-reduxX-app)
+- [Optimize Your ReduxX App](#optimize-your-reduxx-app)
 
 
 ## Why Use ReduxX:
