@@ -213,15 +213,17 @@ In the most parent component itself, the component that contains all your other 
 
 const React = require( 'react' );
 
-// Import the following component from the file you created in Step 1
-// (Note: this particular path below assumes the reduxx.js file
-// is in the same directory as this file)
+
+// Step 2: a) Import the following functions
+//            from the file you created in Step 1.
 const {
 
     setGlobalStateStorageInstance,
     setInitialState
 
 } = require( './reduxx.js' );
+// Note: this particular path assumes the reduxx.js file
+//       is in the same directory as this file
 
 
 // Your "most parent" component
@@ -231,6 +233,7 @@ module.exports = class App extends React.Component {
 
         super( props );
 
+        // Step 2: b) Add this function here,
         setGlobalStateStorageInstance( this );
     }
 
@@ -241,6 +244,7 @@ module.exports = class App extends React.Component {
 
     componentDidMount() {
 
+        // Step 2: c) Also Add this function here,
         setInitialState();
     }
 }
