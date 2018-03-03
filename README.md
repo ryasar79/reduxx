@@ -554,8 +554,6 @@ To avoid this, what you need to do is set the `pText` as a prop of the `MegaPCom
 
 const React = require( 'react' );
 
-const e = React.createElement;
-
 
 module.exports = class MegaPComponent extends React.PureComponent {
 
@@ -590,10 +588,10 @@ module.exports = class Container extends React.Component {
     render() {
 
         const {
-        
+
             backgroundColor,
             pText
-            
+
         } = globalStateStorageInstance.state;
 
         const divStyle = { backgroundColor };
