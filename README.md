@@ -9,16 +9,6 @@
 
 #### ReduxX is a lightweight yet super-powerful, very easy to learn, and very easy to set up React state management library.
 
----
-
-#### **ReduxX News:**
-
-Read the brief documentation to see the 🐸🐉 powerful new updates!! 🐉🐸
-
-#####
-
----
-
 
 ### Table of Contents:
 
@@ -34,6 +24,8 @@ Read the brief documentation to see the 🐸🐉 powerful new updates!! 🐉🐸
 
 - [Obscure Your State Keys](#obscure-your-state-keys)
 - [Old Fashioned State Managment](#old-fashioned-state-managment)
+- [Optimize Your ReduxX App](#optimize-your-reduxX-app)
+
 
 ## Why Use ReduxX:
 
@@ -226,7 +218,7 @@ const {
 //       is in the same directory as this file
 
 
-// Your "most parent" component
+// Your "most parent" component`
 module.exports = class App extends React.Component {
 
     constructor( props ) {
@@ -478,6 +470,140 @@ module.exports = class SomeDiv extends React.Component {
     }
 }
 ```
+
+
+### Optimize Your ReduxX App
+
+One of ReduxX's *principles* is to be very easy to learn and to work in a similar way to React's regular state. As a result, optimizing your web app that uses ReduxX is similar to optimizing any other React app.
+
+One thing to note is that with having a global state in the most parent component means all the children of that parent component can re-render upon **any** state change. This re-rendering occurs even if those children aren't being changed themselves due to a state change (the component will render the same element but it won't change the DOM because the new rendered element was the same as the last). This results in "wasted" renders. As noted in the [Official React Optimization Documentation](https://reactjs.org/docs/optimizing-performance.html#avoid-reconciliation), these "wasted" renders in many cases don't affect performance.
+
+In the case where you would like to optimize your ReduxX app, here is a way to optimize your components to avoid unnecessary re-rendering:
+
+
+###### Example: Optimizing a "p" Based Component that Displays Text
+
+Suppose you have a "p" (html paragraph) based component that displays text. Next suppose that text is based on the global state value whose key is `pText` and you only want that "p" component to re-render when `pText` changes.
+
+First of all here is what our original unoptimized "p" component looks like, let's call it `MegaPComponent`:
+
+```.js
+'use strict';
+
+const React = require( 'react' );
+
+const {
+
+    globalStateStorageInstance
+
+} = require( '../path to reduxx.js file created in Step 1' );
+
+
+module.exports = class MegaPComponent extends React.Component {
+
+    render() {
+
+        const { pText } = globalStateStorageInstance.state;
+
+        return <p> {pText} </p>;
+    }
+}
+```
+
+Here is what you do, put that "p" component in a div container, lets call that container `Container`:
+
+```.js
+'use strict';
+
+const React = require( 'react' );
+
+const MegaPComponent = require( '...path to MegaPComponent' );
+
+const {
+
+    globalStateStorageInstance
+
+} = require( /*path to reduxx.js file, the file created in Step 1*/ );
+
+
+module.exports = class Container extends React.Component {
+
+    render() {
+
+        const { backgroundColor } = globalStateStorageInstance.state;
+
+        const divStyle = { backgroundColor };
+
+        return(
+            <div style={divStyle}>
+
+                <MegaPComponent>
+
+            </div>
+        );
+    }
+}
+```
+
+This is still unoptimized, the `MegaPComponent` will do a no-op render (a "wasted" render) if the `backgroundColor` state value or any other global state value changes.
+
+To avoid this, what you need to do is set the `pText` as a prop of the `MegaPComponent`, and extend the `MegaPComponent` from the `React.PureComponent` class like this:
+
+```.js
+'use strict';
+
+const React = require( 'react' );
+
+const e = React.createElement;
+
+
+module.exports = class MegaPComponent extends React.PureComponent {
+
+    render() {
+
+        const { pText } = this.props;
+
+        return <p> {pText} </p>;
+    }
+}
+
+```
+
+and change your `Container` to be like this:
+
+```.js
+'use strict';
+
+const React = require( 'react' );
+
+const MegaPComponent = require( '...path to MegaPComponent' );
+
+const {
+
+    globalStateStorageInstance
+
+} = require( /*path to reduxx.js file, the file created in Step 1*/ );
+
+
+module.exports = class Container extends React.Component {
+
+    render() {
+
+        const { backgroundColor, pText } = globalStateStorageInstance;
+
+        const divStyle = { backgroundColor };
+
+        return(
+            <div style={divStyle}>
+
+                <MegaPComponent pText={pText}>
+
+            </div>
+        );
+    }
+}
+```
+In the `MegaPComponent`, by setting the `pText` value as a prop, and by making the `MegaPComponent` extend from the `React.PureComponent` class, it will now only change when the `pText` value changes. You can apply this optimization technique to any case where you want to avoid "wasted" renders. In some cases, you may need to adjust the `shouldComponentUpdate` React component method in order to achieve the same effect because React PureComponents only do a shallow comparison of the previous and next props and state. Here is a more detailed explanation of how this works from the [Official React Documentation on Pure Components](https://reactjs.org/docs/react-api.html#reactpurecomponent).
 
 ---
 
