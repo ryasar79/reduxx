@@ -476,7 +476,7 @@ module.exports = class SomeDiv extends React.Component {
 
 One of ReduxX's *principles* is to be very easy to learn and to work in a similar way to React's regular state. As a result, optimizing your web app that uses ReduxX is similar to optimizing any other React app.
 
-One thing to note is that with having a global state in the most parent component means all the children of that parent component can re-render upon **any** state change. This re-rendering occurs even if those children aren't being changed themselves due to a state change (the component will render the same element but it won't change the DOM because the new rendered element was the same as the last). This results in "wasted" renders. As noted in the [Official React Optimization Documentation](https://reactjs.org/docs/optimizing-performance.html#avoid-reconciliation), these "wasted" renders in many cases don't affect performance.
+One thing to note is having a global state in the most parent component means that all the children of that parent component can re-render upon **any** state change. This re-rendering occurs even if those children don't need to be changed themselves due to a state change (the component will render the same element but it won't change the DOM because the new rendered element was the same as the last). This results in "wasted" renders. As noted in the [Official React Optimization Documentation](https://reactjs.org/docs/optimizing-performance.html#avoid-reconciliation), these "wasted" renders in many cases don't affect performance.
 
 In the case where you would like to optimize your ReduxX app, here is a way to optimize your components to avoid unnecessary re-rendering:
 
@@ -485,7 +485,7 @@ In the case where you would like to optimize your ReduxX app, here is a way to o
 
 Suppose you have a "p" (html paragraph) based component that displays text. Next suppose that text is based on the global state value whose key is `pText` and you only want that "p" component to re-render when `pText` changes.
 
-First of all here is what our original unoptimized "p" component looks like, let's call it `MegaPComponent`:
+First of all, here is what our original unoptimized "p" component looks like, let's call it the `MegaPComponent`:
 
 ```.js
 'use strict';
@@ -589,7 +589,12 @@ module.exports = class Container extends React.Component {
 
     render() {
 
-        const { backgroundColor, pText } = globalStateStorageInstance;
+        const {
+        
+            backgroundColor,
+            pText
+            
+        } = globalStateStorageInstance.state;
 
         const divStyle = { backgroundColor };
 
@@ -603,7 +608,7 @@ module.exports = class Container extends React.Component {
     }
 }
 ```
-In the `MegaPComponent`, by setting the `pText` value as a prop, and by making the `MegaPComponent` extend from the `React.PureComponent` class, it will now only change when the `pText` value changes. You can apply this optimization technique to any case where you want to avoid "wasted" renders. In some cases, you may need to adjust the `shouldComponentUpdate` React component method in order to achieve the same effect because React PureComponents only do a shallow comparison of the previous and next props and state. Here is a more detailed explanation of how this works from the [Official React Documentation on Pure Components](https://reactjs.org/docs/react-api.html#reactpurecomponent).
+In the `MegaPComponent`, by setting the `pText` value as a prop, and by making the `MegaPComponent` extend from the `React.PureComponent` class, it will now only do a render when the `pText` value changes. You can apply this optimization technique to any component where you want to avoid "wasted" renders. In some cases, you may need to adjust the `shouldComponentUpdate` React component method in order to achieve the same effect because React PureComponents only do a shallow comparison of the previous and next props and state. Here is a more detailed explanation of how this works from the [Official React Documentation on Pure Components](https://reactjs.org/docs/react-api.html#reactpurecomponent).
 
 ---
 
