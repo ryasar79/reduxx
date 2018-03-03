@@ -537,7 +537,7 @@ module.exports = class Container extends React.Component {
         return(
             <div style={divStyle}>
 
-                <MegaPComponent>
+                <MegaPComponent/>
 
             </div>
         );
@@ -601,7 +601,7 @@ module.exports = class Container extends React.Component {
         return(
             <div style={divStyle}>
 
-                <MegaPComponent pText={pText}>
+                <MegaPComponent pText={pText}/>
 
             </div>
         );
