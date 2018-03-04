@@ -24,35 +24,54 @@ describe( MODULE_PATH, function() {
             initialState: [
 
                 {
-                    key1: 'monkey',
-                    key2: 'favoriteFood',
-                    key3: 'favoriteDesert',
-                    key4: 'favoriteDesertTime',
+                    keys: [
+
+                        'monkey',
+                        'favoriteFood',
+                        'favoriteDessert',
+                        'favoriteDessertTime'
+                    ],
+
                     value: 'anytime',
                 },
                 {
-                    key1: 'monkey',
-                    key2: 'favoriteFood',
-                    key3: 'favoriteDesert',
+                    keys: [
+
+                        'monkey',
+                        'favoriteFood',
+                        'favoriteDessert',
+                    ],
                     value: 'banana split',
                 },
                 {
-                    key1: 'monkey',
-                    key2: 'favoriteFood',
+                    keys: [
+
+                        'monkey',
+                        'favoriteFood',
+                    ],
                     value: 'banana',
                 },
                 {
-                    key1: 'monkey',
+                    keys: [
+
+                        'monkey'
+                    ],
                     value: true,
                 },
                 {
-                    key1: 'monkey',
-                    key2: 'height',
+                    keys: [
+
+                        'monkey',
+                        'height',
+                    ],
                     value: '69cm',
                 },
                 {
-                    key1: 'hippo',
-                    key2: 'favoriteFood',
+                    keys: [
+
+                        'hippo',
+                        'favoriteFood',
+                    ],
                     value: 'watermelon',
                 }
             ]
@@ -68,13 +87,13 @@ describe( MODULE_PATH, function() {
 
                     '@reduxXKey': 'monkey-favoriteFood',
 
-                    favoriteDesert: {
+                    favoriteDessert: {
 
-                        '@reduxXKey': 'monkey-favoriteFood-favoriteDesert',
+                        '@reduxXKey': 'monkey-favoriteFood-favoriteDessert',
 
-                        favoriteDesertTime: {
+                        favoriteDessertTime: {
 
-                            '@reduxXKey': 'monkey-favoriteFood-favoriteDesert-favoriteDesertTime',
+                            '@reduxXKey': 'monkey-favoriteFood-favoriteDessert-favoriteDessertTime',
                         }
                     }
                 },
@@ -107,7 +126,7 @@ describe( MODULE_PATH, function() {
 
                 getGuid: getGuidStub,
 
-                getKeyName: (number => `key${ number }`),
+                // getKeyName: (number => `key${ number }`),
             },
 
             constants: {
@@ -130,35 +149,54 @@ describe( MODULE_PATH, function() {
             initialState: [
 
                 {
-                    key1: 'monkey',
-                    key2: 'favoriteFood',
-                    key3: 'favoriteDesert',
-                    key4: 'favoriteDesertTime',
+                    keys: [
+
+                        'monkey',
+                        'favoriteFood',
+                        'favoriteDessert',
+                        'favoriteDessertTime'
+                    ],
+
                     value: 'anytime',
                 },
                 {
-                    key1: 'monkey',
-                    key2: 'favoriteFood',
-                    key3: 'favoriteDesert',
+                    keys: [
+
+                        'monkey',
+                        'favoriteFood',
+                        'favoriteDessert',
+                    ],
                     value: 'banana split',
                 },
                 {
-                    key1: 'monkey',
-                    key2: 'favoriteFood',
+                    keys: [
+
+                        'monkey',
+                        'favoriteFood',
+                    ],
                     value: 'banana',
                 },
                 {
-                    key1: 'monkey',
+                    keys: [
+
+                        'monkey'
+                    ],
                     value: true,
                 },
                 {
-                    key1: 'monkey',
-                    key2: 'height',
+                    keys: [
+
+                        'monkey',
+                        'height',
+                    ],
                     value: '69cm',
                 },
                 {
-                    key1: 'hippo',
-                    key2: 'favoriteFood',
+                    keys: [
+
+                        'hippo',
+                        'favoriteFood',
+                    ],
                     value: 'watermelon',
                 }
             ]
@@ -174,11 +212,11 @@ describe( MODULE_PATH, function() {
 
                     '@reduxXKey': 'xxx',
 
-                    favoriteDesert: {
+                    favoriteDessert: {
 
                         '@reduxXKey': 'xxx',
 
-                        favoriteDesertTime: {
+                        favoriteDessertTime: {
 
                             '@reduxXKey': 'xxx',
                         }
@@ -201,42 +239,5 @@ describe( MODULE_PATH, function() {
                 },
             }
         });
-    });
-
-    it( 'invalid initial state input', function() {
-
-        let error = null;
-
-        try {
-
-            getStateKeyMapper({
-
-                initialState: [
-
-                    {
-                        key1: 'monkey',
-                        value: 'banana',
-                    },
-                    {
-                        key2: 'height',
-                        value: '69cm',
-                    },
-                    {
-                        key1: 'hippo',
-                        key2: 'favoriteFood',
-                        value: 'watermelon',
-                    }
-                ]
-            });
-
-        } catch( err ) {
-
-            error = err
-        }
-
-        expect( error.message ).to.equal(
-
-            'incorrect ReduxX initial state setup'
-        );
     });
 });

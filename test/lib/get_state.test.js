@@ -29,8 +29,8 @@ describe( MODULE_PATH, function() {
 
                         'monkey': true,
                         'monkey-favoriteFood': 'banana',
-                        'monkey-favoriteFood-favoriteDesert': 'banana split',
-                        'monkey-favoriteFood-favoriteDesert-favoriteDesertTime': 'anytime',
+                        'monkey-favoriteFood-favoriteDessert': 'banana split',
+                        'monkey-favoriteFood-favoriteDessert-favoriteDessertTime': 'anytime',
                         'monkey-height': null,
                         'hippo-favoriteFood': 'watermelon',
                     }
@@ -47,13 +47,13 @@ describe( MODULE_PATH, function() {
 
                         '@reduxXKey': 'monkey-favoriteFood',
 
-                        favoriteDesert: {
+                        favoriteDessert: {
 
-                            '@reduxXKey': 'monkey-favoriteFood-favoriteDesert',
+                            '@reduxXKey': 'monkey-favoriteFood-favoriteDessert',
 
-                            favoriteDesertTime: {
+                            favoriteDessertTime: {
 
-                                '@reduxXKey': 'monkey-favoriteFood-favoriteDesert-favoriteDesertTime',
+                                '@reduxXKey': 'monkey-favoriteFood-favoriteDessert-favoriteDessertTime',
                             }
                         }
                     },
@@ -78,24 +78,30 @@ describe( MODULE_PATH, function() {
 
         const value1 = getState({
 
-            key1: 'monkey',
-            key2: 'favoriteFood',
-            key3: 'favoriteDesert'
+            keys: [
+
+                'monkey',
+                'favoriteFood',
+                'favoriteDessert'
+            ]
         });
 
         expect( value1 ).to.equal( 'banana split' );
 
         const value2 = getState({
 
-            key1: 'monkey',
-            key2: 'favoriteFood',
+            keys: [
+
+                'monkey',
+                'favoriteFood',
+            ]
         });
 
         expect( value2 ).to.equal( 'banana' );
 
         const value3 = getState({
 
-            key1: 'monkey',
+            keys: 'monkey',
         });
 
         expect( value3 ).to.equal( true );
@@ -113,8 +119,8 @@ describe( MODULE_PATH, function() {
 
                         'monkey': true,
                         'monkey-favoriteFood': 'banana',
-                        'monkey-favoriteFood-favoriteDesert': 'banana split',
-                        'monkey-favoriteFood-favoriteDesert-favoriteDesertTime': 'anytime',
+                        'monkey-favoriteFood-favoriteDessert': 'banana split',
+                        'monkey-favoriteFood-favoriteDessert-favoriteDessertTime': 'anytime',
                         'monkey-height': null,
                         'hippo-favoriteFood': 'watermelon',
                     }
@@ -131,13 +137,13 @@ describe( MODULE_PATH, function() {
 
                         '@reduxXKey': 'monkey-favoriteFood',
 
-                        favoriteDesert: {
+                        favoriteDessert: {
 
-                            '@reduxXKey': 'monkey-favoriteFood-favoriteDesert',
+                            '@reduxXKey': 'monkey-favoriteFood-favoriteDessert',
 
-                            favoriteDesertTime: {
+                            favoriteDessertTime: {
 
-                                '@reduxXKey': 'monkey-favoriteFood-favoriteDesert-favoriteDesertTime',
+                                '@reduxXKey': 'monkey-favoriteFood-favoriteDessert-favoriteDessertTime',
                             }
                         }
                     },
@@ -166,8 +172,12 @@ describe( MODULE_PATH, function() {
 
             getState({
 
-                key1: 'monkey',
-                key2: 'favoriteFoodie'
+                keys: [
+
+                    'monkeyz',
+                    'favoriteFood',
+                    'favoriteDessert'
+                ]
             });
 
         } catch( err ) {
@@ -177,7 +187,55 @@ describe( MODULE_PATH, function() {
 
         expect( error.message ).to.equal(
 
-            'error in ReduxX getState: invalid key(s) specified'
+            'invalid ReduxX key specified'
+        );
+
+        let error2 = null;
+
+        try {
+
+            getState({
+
+                keys: [
+
+                    'monkey',
+                    'favoriteFoodz',
+                    'favoriteDessert'
+                ]
+            });
+
+        } catch( err ) {
+
+            error2 = err
+        }
+
+        expect( error2.message ).to.equal(
+
+            'invalid ReduxX key specified'
+        );
+
+        let error3 = null;
+
+        try {
+
+            getState({
+
+                keys: [
+
+                    'monkey',
+                    'favoriteFood',
+                    'favoriteDessertz'
+                ]
+            });
+
+        } catch( err ) {
+
+            error3 = err
+        }
+
+        expect( error3.message ).to.equal(
+
+            'invalid ReduxX key specified'
         );
     });
 
@@ -197,13 +255,13 @@ describe( MODULE_PATH, function() {
 
                         '@reduxXKey': 'monkey-favoriteFood',
 
-                        favoriteDesert: {
+                        favoriteDessert: {
 
-                            '@reduxXKey': 'monkey-favoriteFood-favoriteDesert',
+                            '@reduxXKey': 'monkey-favoriteFood-favoriteDessert',
 
-                            favoriteDesertTime: {
+                            favoriteDessertTime: {
 
-                                '@reduxXKey': 'monkey-favoriteFood-favoriteDesert-favoriteDesertTime',
+                                '@reduxXKey': 'monkey-favoriteFood-favoriteDessert-favoriteDessertTime',
                             }
                         }
                     },
@@ -232,8 +290,12 @@ describe( MODULE_PATH, function() {
 
             getState({
 
-                key1: 'monkey',
-                key2: 'favoriteFoodie'
+                keys: [
+
+                    'monkey',
+                    'favoriteFood',
+                    'favoriteDessert'
+                ]
             });
 
         } catch( err ) {

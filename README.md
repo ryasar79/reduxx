@@ -113,18 +113,25 @@ and to get and set the state, you just need to do this:
 
 const mainPicture = reduxX.getState({
 
-    key1: 'user',
-    key2: 'profile',
-    key3: 'mainPicture'
+    keys: [
+
+        'user',
+        'profile',
+        'mainPicture'
+    ]
 });
 
 // smoothly set a global state value with ReduxX:
 
 reduxX.setState({
 
-    key1: 'user',
-    key2: 'profile',
-    key3: 'mainPicture',
+    keys: [
+
+        'user',
+        'profile',
+        'mainPicture',
+    ],
+
     value: 'https://image.png'
 });
 
@@ -164,23 +171,37 @@ module.exports = ReduxX({
     initialState: [
 
         {
-            key1: 'monkey',
-            key2: 'favoriteFood',
+            keys: [
+
+                'monkey',
+                'favoriteFood',
+            ],
+
             value: 'banana',
         },
         {
-            key1: 'monkey',
+            // can put a string for the "keys" for single key values
+            keys: 'monkey',
+
             value: 'curious george',
         },
         {
-            key1: 'monkey',
-            key2: 'height',
+            keys: [
+
+                'monkey',
+                'height',
+            ],
+
             value: '69cm',
         },
         {
-            key1: 'hippo',
-            key2: 'status',
-            key3: 'mood',
+            keys: [
+
+                'hippo',
+                'status',
+                'mood',
+            ],
+
             value: 'hungry',
         }
     ]    
@@ -268,15 +289,23 @@ function handleClick() {
     reduxX.setState(
 
         {
-            key1: 'monkey',
-            key2: 'favoriteFood',
+            keys: [
+
+                'monkey',
+                'favoriteFood',
+            ],
+
             value: 'apple',
         },
         {
-            key1: 'hippo',
-            key2: 'status',
-            key3: 'mood',
-            value: 'full',
+            keys: [
+
+                'hippo',
+                'status',
+                'mood',
+            ],
+
+            value: 'full'
         }
     );
 
@@ -284,8 +313,11 @@ function handleClick() {
 
     const monkeyHeight = reduxX.getState({
 
-        key1: 'monkey',
-        key2: 'height'
+        keys: [
+
+            'monkey',
+            'height'
+        ],
     });
 
     console.log(

@@ -35,8 +35,8 @@ describe( MODULE_PATH, function() {
 
                         'monkey': true,
                         'monkey-favoriteFood': 'banana',
-                        'monkey-favoriteFood-favoriteDesert': 'banana split',
-                        'monkey-favoriteFood-favoriteDesert-favoriteDesertTime': 'anytime',
+                        'monkey-favoriteFood-favoriteDessert': 'banana split',
+                        'monkey-favoriteFood-favoriteDessert-favoriteDessertTime': 'anytime',
                         'monkey-height': null,
                         'hippo-favoriteFood': 'watermelon',
                     }
@@ -53,13 +53,13 @@ describe( MODULE_PATH, function() {
 
                         '@reduxXKey': 'monkey-favoriteFood',
 
-                        favoriteDesert: {
+                        favoriteDessert: {
 
-                            '@reduxXKey': 'monkey-favoriteFood-favoriteDesert',
+                            '@reduxXKey': 'monkey-favoriteFood-favoriteDessert',
 
-                            favoriteDesertTime: {
+                            favoriteDessertTime: {
 
-                                '@reduxXKey': 'monkey-favoriteFood-favoriteDesert-favoriteDesertTime',
+                                '@reduxXKey': 'monkey-favoriteFood-favoriteDessert-favoriteDessertTime',
                             }
                         }
                     },
@@ -85,22 +85,30 @@ describe( MODULE_PATH, function() {
         setState(
 
             {
-                key1: 'monkey',
-                key2: 'favoriteFood',
-                key3: 'favoriteDesert',
-                value: 'apple',
+                keys: [
+
+                    'monkey',
+                    'favoriteFood',
+                    'favoriteDessert',
+                ],
+
+                value: 'apple'
             },
             {
-                key1: 'monkey',
+                keys: 'monkey',
                 value: 2,
             },
             {
-                key1: 'hippo',
-                key2: 'favoriteFood',
-                value: 'megaBanana',
+                keys: [
+
+                    'hippo',
+                    'favoriteFood',
+                ],
+
+                value: 'megaBanana'
             },
             {
-                key1: 'hippo',
+                keys: 'hippo',
             }
         );
 
@@ -108,7 +116,7 @@ describe( MODULE_PATH, function() {
         expect( setStateStub.args[0].length ).to.equal( 1 );
         expect( setStateStub.args[0][0] ).to.eql({
 
-            'monkey-favoriteFood-favoriteDesert': 'apple',
+            'monkey-favoriteFood-favoriteDessert': 'apple',
             'hippo-favoriteFood': 'megaBanana',
             'monkey': 2,
             'hippo': undefined,
@@ -133,13 +141,20 @@ describe( MODULE_PATH, function() {
             setState(
 
                 {
-                    key1: 'monkey',
-                    key2: 'favoriteFood',
+                    keys: [
+
+                        'monkey',
+                        'favoriteFood',
+                    ],
+
                     value: 'apple',
                 },
                 {
-                    key1: 'hippo',
-                    key2: 'favoriteFood',
+                    keys: [
+
+                        'hippo',
+                        'favoriteFood',
+                    ],
                     value: undefined,
                 }
             );
@@ -169,8 +184,8 @@ describe( MODULE_PATH, function() {
 
                         'monkey': true,
                         'monkey-favoriteFood': 'banana',
-                        'monkey-favoriteFood-favoriteDesert': 'banana split',
-                        'monkey-favoriteFood-favoriteDesert-favoriteDesertTime': 'anytime',
+                        'monkey-favoriteFood-favoriteDessert': 'banana split',
+                        'monkey-favoriteFood-favoriteDessert-favoriteDessertTime': 'anytime',
                         'monkey-height': null,
                         'hippo-favoriteFood': 'watermelon',
                     }
@@ -187,13 +202,13 @@ describe( MODULE_PATH, function() {
 
                         '@reduxXKey': 'monkey-favoriteFood',
 
-                        favoriteDesert: {
+                        favoriteDessert: {
 
-                            '@reduxXKey': 'monkey-favoriteFood-favoriteDesert',
+                            '@reduxXKey': 'monkey-favoriteFood-favoriteDessert',
 
-                            favoriteDesertTime: {
+                            favoriteDessertTime: {
 
-                                '@reduxXKey': 'monkey-favoriteFood-favoriteDesert-favoriteDesertTime',
+                                '@reduxXKey': 'monkey-favoriteFood-favoriteDessert-favoriteDessertTime',
                             }
                         }
                     },
@@ -223,8 +238,10 @@ describe( MODULE_PATH, function() {
             setState(
 
                 {
-                    key1: 'monkey',
-                    key2: 'favoriteFoodz',
+                    keys: [
+                        'monkey',
+                        'favoriteFoodz',
+                    ],
                     value: 'apple',
                 }
             );
@@ -236,7 +253,7 @@ describe( MODULE_PATH, function() {
 
         expect( error.message ).to.equal(
 
-            'error in ReduxX setState: invalid key specified'
+            'invalid ReduxX key specified'
         );
     });
 });

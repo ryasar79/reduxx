@@ -24,35 +24,54 @@ describe( MODULE_PATH, function() {
             initialState: [
 
                 {
-                    key1: 'monkey',
-                    key2: 'favoriteFood',
-                    key3: 'favoriteDesert',
-                    key4: 'favoriteDesertTime',
-                    value: 'anytime',
+                    keys: [
+
+                        'monkey',
+                        'favoriteFood',
+                        'favoriteDesert',
+                        'favoriteDesertTime',
+                    ],
+
+                    value: 'anytime'
                 },
                 {
-                    key1: 'monkey',
-                    key2: 'favoriteFood',
-                    key3: 'favoriteDesert',
+                    keys: [
+
+                        'monkey',
+                        'favoriteFood',
+                        'favoriteDesert',
+                    ],
+
                     value: 'banana split',
                 },
                 {
-                    key1: 'monkey',
-                    key2: 'favoriteFood',
+                    keys: [
+
+                        'monkey',
+                        'favoriteFood',
+                    ],
+
                     value: 'banana',
                 },
                 {
-                    key1: 'monkey',
+                    keys: 'monkey',
                     value: true,
                 },
                 {
-                    key1: 'monkey',
-                    key2: 'height',
+                    keys: [
+
+                        'monkey',
+                        'height',
+                    ],
                     value: '69cm',
                 },
                 {
-                    key1: 'hippo',
-                    key2: 'favoriteFood',
+                    keys: [
+
+                        'hippo',
+                        'favoriteFood',
+                    ],
+
                     value: 'watermelon',
                 }
             ]
@@ -61,41 +80,59 @@ describe( MODULE_PATH, function() {
         expect( result ).to.eql([
 
             {
-                key1: 'monkey',
-                key2: 'favoriteFood',
-                key3: 'favoriteDesert',
-                key4: 'favoriteDesertTime',
-                value: 'anytime',
+                keys: [
+
+                    'monkey',
+                    'favoriteFood',
+                    'favoriteDesert',
+                    'favoriteDesertTime',
+                ],
+
+                value: 'anytime'
             },
             {
-                key1: 'monkey',
-                key2: 'favoriteFood',
-                key3: 'favoriteDesert',
+                keys: [
+
+                    'monkey',
+                    'favoriteFood',
+                    'favoriteDesert',
+                ],
                 value: 'banana split',
             },
             {
-                key1: 'monkey',
-                key2: 'favoriteFood',
+                keys: [
+
+                    'monkey',
+                    'favoriteFood',
+                ],
                 value: 'banana',
             },
             {
-                key1: 'monkey',
+                keys: [
+
+                    'monkey'
+                ],
                 value: true,
             },
             {
-                key1: 'monkey',
-                key2: 'height',
+                keys: [
+
+                    'monkey',
+                    'height',
+                ],
                 value: '69cm',
             },
             {
-                key1: 'hippo',
-                key2: 'favoriteFood',
+                keys: [
+                    'hippo',
+                    'favoriteFood',
+                ],
                 value: 'watermelon',
             }
         ]);
     });
 
-    it( 'error in setup, initial state is not an array', function() {
+    it( 'error in setup, initial state is not an array or string', function() {
 
         let error = null;
 
