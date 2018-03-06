@@ -209,11 +209,9 @@ module.exports = ReduxX({
 ```
 > Notes:
 >
-> a) ReduxX assumes React is installed
+> a) you can use any number of keys
 >
-> b) you can use any number of keys
->
-> c) technically you can put this reduxx.js file anywhere, but it makes the most sense to put it in your root folder based on how you access it (in Step 3)
+> b) technically you can put this reduxx.js file anywhere, but it makes the most sense to put it in your root folder based on how you access it (in Step 3)
 >
 >
 
@@ -226,18 +224,11 @@ In the most parent component itself, the component that contains all your other 
 
 const React = require( 'react' );
 
-
-// Step 2: a) Import the following functions
+// Step 2: a) Import the following setupReduxX function
 //            from the file you created in Step 1.
-const {
-
-    setGlobalStateStorageInstance,
-    setInitialState,
-    createApp,
-
-} = require( './reduxx.js' );
 // Note: this particular path assumes the reduxx.js file
 //       is in the same directory as this file
+const { setupReduxX } = require( './reduxx.js' );
 
 
 // Your "most parent" component`
@@ -247,27 +238,13 @@ module.exports = class App extends React.Component {
 
         super( props );
 
-        // Step 2: b) set the state as an object
-        this.state = {};
-
-        // Step 2: c) Add this function here,
-        setGlobalStateStorageInstance( this );
-    }
-
-    componentDidMount() {
-
-        // Step 2: d) Also Add this function here,
-        setInitialState();
+        // Step 2: c) Add the setupReduxX function here, pass in "this"
+        setupReduxX( this );
     }
 
     render() {
 
-        // Step 2: e) Add this function here,
-        //            and just pass in your app's components
-        return createApp(
-
-            <YourAppComponentsHere/>
-        );
+        ...
     }
 }
 ```

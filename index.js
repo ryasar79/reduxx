@@ -2,15 +2,13 @@
 
 const {
 
-    createApp,
+    setupReduxX,
     getConfiguredInitialState,
     getStateKeyMapper,
     getState,
     setState,
     getGlobalStateStorageInstance,
     tools,
-    setGlobalStateStorageInstance,
-    setInitialState
 
 } = require( './lib/index.js' );
 
@@ -38,12 +36,7 @@ module.exports = Object.freeze(
 
         return Object.freeze({
 
-            setGlobalStateStorageInstance: setGlobalStateStorageInstance.bind({
-
-                reduxXCore,
-            }),
-
-            setInitialState: setInitialState.bind({
+            setupReduxX: setupReduxX.bind({
 
                 reduxXCore,
                 initialState,
@@ -73,11 +66,6 @@ module.exports = Object.freeze(
                     reduxXCore
                 });
             },
-
-            createApp: createApp.bind({
-
-                reduxXCore,
-            }),
         });
     }
 );

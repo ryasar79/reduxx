@@ -24,8 +24,7 @@ describe( MODULE_PATH, function() {
 
     let getStateFunction;
     let setStateFunction;
-    let setInitialStateFunction;
-    let setGlobalStateStorageInstanceFunction;
+    let setupReduxXFunction;
 
     function getModule( values ) {
 
@@ -49,6 +48,15 @@ describe( MODULE_PATH, function() {
         //     values.getStateStorageComponentResults
         // );
 
+        setupReduxXFunction = function() {
+
+            return {
+
+                setupReduxX: 'yes',
+                self: this
+            };
+        };
+
         getStateFunction = function() {
 
             return {
@@ -62,31 +70,6 @@ describe( MODULE_PATH, function() {
             return {
 
                 setState: 'yes',
-                self: this
-            };
-        };
-        setInitialStateFunction = function() {
-
-            return {
-
-                setInitialState: 'yes',
-                self: this
-            };
-        };
-        setGlobalStateStorageInstanceFunction = function() {
-
-            return {
-
-                setGlobalStateStorageInstance: 'yes',
-                self: this
-            };
-        };
-
-        const createAppFunction = function() {
-
-            return {
-
-                createApp: 'yes',
                 self: this
             };
         };
@@ -110,9 +93,7 @@ describe( MODULE_PATH, function() {
             getStateKeyMapper: getStateKeyMapperStub,
             getState: getStateFunction,
             setState: setStateFunction,
-            setGlobalStateStorageInstance: setGlobalStateStorageInstanceFunction,
-            setInitialState: setInitialStateFunction,
-            createApp: createAppFunction
+            setupReduxX: setupReduxXFunction,
         };
 
         const proxyquireStubs = {
@@ -218,35 +199,24 @@ describe( MODULE_PATH, function() {
             }
         });
 
-        const setInitialStateResult = reduxX.setInitialState();
+        const setupReduxXResult = reduxX.setupReduxX();
 
-        expect( setInitialStateResult ).eql({
+        expect( setupReduxXResult ).eql({
 
-            setInitialState: 'yes',
+            setupReduxX: 'yes',
             self: {
 
+                initialState: [
+
+                    {
+                        theInitialState: 'yep'
+                    },
+                ],
                 reduxXCore: {},
                 stateKeyMapper: {
 
                     stateKeyMapper: 'yea'
                 },
-                initialState: [
-
-                    {
-                        'theInitialState': 'yep'
-                    }
-                ]
-            }
-        });
-
-        const setGlobalStateStorageInstanceResult = reduxX.setGlobalStateStorageInstance();
-
-        expect( setGlobalStateStorageInstanceResult ).eql({
-
-            setGlobalStateStorageInstance: 'yes',
-            self: {
-
-                reduxXCore: {},
             }
         });
 
@@ -260,17 +230,6 @@ describe( MODULE_PATH, function() {
         expect( getGlobalStateStorageInstanceStub.args[0][0] ).to.eql({
 
             reduxXCore: {}
-        });
-
-        const createAppResult = reduxX.createApp();
-
-        expect( createAppResult ).eql({
-
-            createApp: 'yes',
-            self: {
-
-                reduxXCore: {},
-            }
         });
     });
 });
