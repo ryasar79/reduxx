@@ -246,7 +246,10 @@ module.exports = class App extends React.Component {
 
         super( props );
 
-        // Step 2: b) Add this function here,
+        // Step 2: b) set the state as an empty object
+        this.state = {};
+
+        // Step 2: c) Add this function here,
         setGlobalStateStorageInstance( this );
     }
 
@@ -257,7 +260,7 @@ module.exports = class App extends React.Component {
 
     componentDidMount() {
 
-        // Step 2: c) Also Add this function here,
+        // Step 2: d) Also Add this function here,
         setInitialState();
     }
 }
