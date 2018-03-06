@@ -2,6 +2,7 @@
 
 const {
 
+    createApp,
     getConfiguredInitialState,
     getStateKeyMapper,
     getState,
@@ -71,7 +72,12 @@ module.exports = Object.freeze(
 
                     reduxXCore
                 });
-            }
+            },
+
+            createApp: createApp.bind({
+
+                reduxXCore,
+            }),
         });
     }
 );

@@ -232,7 +232,8 @@ const React = require( 'react' );
 const {
 
     setGlobalStateStorageInstance,
-    setInitialState
+    setInitialState,
+    createApp,
 
 } = require( './reduxx.js' );
 // Note: this particular path assumes the reduxx.js file
@@ -253,15 +254,20 @@ module.exports = class App extends React.Component {
         setGlobalStateStorageInstance( this );
     }
 
-    render() {
-
-        ...
-    }
-
     componentDidMount() {
 
         // Step 2: d) Also Add this function here,
         setInitialState();
+    }
+
+    render() {
+
+        // Step 2: e) Add this function here,
+        //            and just pass in your app's components
+        return createApp(
+
+            <YourAppComponentsHere/>
+        );
     }
 }
 ```

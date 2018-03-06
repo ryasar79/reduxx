@@ -82,6 +82,15 @@ describe( MODULE_PATH, function() {
             };
         };
 
+        const createAppFunction = function() {
+
+            return {
+
+                createApp: 'yes',
+                self: this
+            };
+        };
+
         const mockLibIndex = {
 
             tools: {
@@ -103,6 +112,7 @@ describe( MODULE_PATH, function() {
             setState: setStateFunction,
             setGlobalStateStorageInstance: setGlobalStateStorageInstanceFunction,
             setInitialState: setInitialStateFunction,
+            createApp: createAppFunction
         };
 
         const proxyquireStubs = {
@@ -163,9 +173,6 @@ describe( MODULE_PATH, function() {
                 },
             ],
         });
-
-
-
 
         expect( getStateKeyMapperStub.args.length ).to.equal( 1 );
         expect( getStateKeyMapperStub.args[0].length ).to.equal( 1 );
@@ -246,6 +253,24 @@ describe( MODULE_PATH, function() {
         expect( reduxX.globalStateStorageInstance ).to.eql({
 
             gssi: 'yes'
+        });
+
+        expect( getGlobalStateStorageInstanceStub.args.length ).to.equal( 1 );
+        expect( getGlobalStateStorageInstanceStub.args[0].length ).to.equal( 1 );
+        expect( getGlobalStateStorageInstanceStub.args[0][0] ).to.eql({
+
+            reduxXCore: {}
+        });
+
+        const createAppResult = reduxX.createApp();
+
+        expect( createAppResult ).eql({
+
+            createApp: 'yes',
+            self: {
+
+                reduxXCore: {},
+            }
         });
     });
 });

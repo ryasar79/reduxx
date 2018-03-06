@@ -142,6 +142,7 @@ describe( MODULE_PATH, function() {
             'monkey-favoriteFood-favoriteDessert-favoriteDessertTime': 'anytime',
             'monkey-height': null,
             'hippo-favoriteFood': 'watermelon',
+            '@reduxXInitialStateSetupComplete': true,
         });
     });
 

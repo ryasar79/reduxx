@@ -47,6 +47,11 @@ describe( MODULE_PATH, function() {
             mgs: 'yes'
         };
 
+        const mockCreateApp = {
+
+            mca: 'yes'
+        };
+
         const mockSetState = {
 
             mss: 'yes'
@@ -64,6 +69,7 @@ describe( MODULE_PATH, function() {
 
         const proxyquireStubs = {
 
+            './create_app.js': mockCreateApp,
             './get_configured_initial_state.js': mockGetConfiguredInitialState,
             './get_state_key_mapper.js': mockGetStateKeyMapper,
             './set_global_state_storage_instance.js': mockSetGlobalStateStorageInstance,
@@ -119,6 +125,10 @@ describe( MODULE_PATH, function() {
             tools: {
 
                 mt: 'yes'
+            },
+            createApp: {
+
+                mca: 'yes'
             },
         });
     });
