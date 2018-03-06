@@ -246,7 +246,7 @@ module.exports = class App extends React.Component {
 
         super( props );
 
-        // Step 2: b) set the state as an empty object
+        // Step 2: b) set the state as an object
         this.state = {};
 
         // Step 2: c) Add this function here,
