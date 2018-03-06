@@ -231,7 +231,7 @@ const React = require( 'react' );
 const { setupReduxX } = require( './reduxx.js' );
 
 
-// Your "most parent" component`
+// Your "most parent" component
 module.exports = class App extends React.Component {
 
     constructor( props ) {
