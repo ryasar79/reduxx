@@ -238,7 +238,8 @@ module.exports = class App extends React.Component {
 
         super( props );
 
-        // Step 2: c) Add the setupReduxX function here, pass in "this"
+        // Step 2: b) Add the setupReduxX function here,
+        //            pass in "this" as the first argument
         setupReduxX( this );
     }
 
