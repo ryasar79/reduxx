@@ -388,7 +388,7 @@ setState(
 
     {
         keys: [ 'user', 'name' ],  
-        value: 'React state library author'
+        value: 'Danny'
     },
     {
         keys: [ 'user' ],  
