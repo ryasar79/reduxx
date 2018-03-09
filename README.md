@@ -111,12 +111,8 @@ and to get and set the state, you just need to do this:
 ```.js
 // cleanly get a global state value with ReduxX:
 
-const mainPicture = reduxX.getState(
+const mainPicture = reduxX.getState( 'user', 'profile', 'mainPicture' );
 
-    'user',
-    'profile',
-    'mainPicture'
-);
 
 // smoothly set a global state value with ReduxX:
 
