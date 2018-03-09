@@ -25,7 +25,7 @@
 - [Obscure Your State Keys](#obscure-your-state-keys)
 - [Old Fashioned State Managment](#old-fashioned-state-managment)
 - [Optimize Your ReduxX App](#optimize-your-reduxx-app)
-- [Example of ReduxX Usage](#examples-of-reduxx-usage)
+- [Examples of ReduxX Usage](#examples-of-reduxx-usage)
 
 ## Why Use ReduxX:
 
@@ -694,7 +694,7 @@ module.exports = class Container extends React.Component {
 In the `MegaPComponent`, by setting the `pText` value as a prop, and by making the `MegaPComponent` extend from the `React.PureComponent` class, it will now only do a render when the `pText` value changes. You can apply this optimization technique to any component where you want to avoid "wasted" renders. In some cases, you may need to adjust the `shouldComponentUpdate` React component method in order to achieve the same effect because React PureComponents only do a shallow comparison of the previous and next props and state. Here is a more detailed explanation of how this works from the [Official React Documentation on Pure Components](https://reactjs.org/docs/react-api.html#reactpurecomponent).
 
 
-### Example of ReduxX Usage
+### Examples of ReduxX Usage
 
 - [NeverCodeAlone.ca](https://nevercodealone.ca): a sample website using ReduxX ([GitHub repo with code](https://github.com/msteckyefantis/never_code_alone))
 
