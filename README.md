@@ -336,7 +336,7 @@ All you need to do is require your `./reduxx.js` file you created in Step 1 and 
 
 ### Alternate Input Formats for the ReduxX setState and getState Functions
 
-For your convinence, and for better code readability, the ReduxX `setState` and `getState` functions offer several way to set and get values to and from the global state.
+For your convinence, and for better code readability, the ReduxX `setState` and `getState` functions offer several ways to set and get values to and from the global state.
 
 
 ```.js
@@ -377,7 +377,7 @@ setState({ keys: 'user', value: { id: 69 } });
 setState({ keys [ 'user' ], value: { id: 69 } });
 
 //  The following two setState invocations are equivalent
-// (these invocations involve setting multiple values at once)
+//  (these invocations involve setting multiple values at once)
 setState(
 
     [ 'user', 'name' ], 'Danny',
@@ -391,7 +391,7 @@ setState(
         value: 'React state library author'
     },
     {
-        keys [ 'user' ],  
+        keys: [ 'user' ],  
         value: { id: 69 }
     },
     {
