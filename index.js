@@ -43,10 +43,6 @@ module.exports = Object.freeze(
                 stateKeyMapper
             }),
 
-            stateKeyMapper,
-
-            REDUXX_SPECIAL_KEY: tools.constants.REDUXX_SPECIAL_KEY,
-
             getState: getState.bind({
 
                 reduxXCore,
@@ -58,6 +54,10 @@ module.exports = Object.freeze(
                 reduxXCore,
                 stateKeyMapper
             }),
+
+            stateKeyMapper,
+
+            REDUXX_SPECIAL_KEY: tools.constants.REDUXX_SPECIAL_KEY,
 
             get globalStateStorageInstance() {
 

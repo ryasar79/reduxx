@@ -1,8 +1,8 @@
 'use strict';
 
-const ROOT_PATH = '../../';
+const ROOT_PATH = '../../../';
 
-const MODULE_PATH = 'lib/set_state';
+const MODULE_PATH = 'lib/set_state/index';
 
 const FULL_MODULE_PATH = ROOT_PATH + MODULE_PATH;
 

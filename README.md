@@ -21,11 +21,11 @@
 - [Step 3: Easily Get and Set Values to the Global State](#step-3-easily-get-and-set-values-to-the-global-state)
 
 #### 3. [Bonus Features](#bonus-features)
-
+- [Alternate Input Formats for the ReduxX setState and getState Functions](#alternate-input-formats-for-the-reduxx-setstate-and-getstate-functions)
 - [Obscure Your State Keys](#obscure-your-state-keys)
 - [Old Fashioned State Managment](#old-fashioned-state-managment)
 - [Optimize Your ReduxX App](#optimize-your-reduxx-app)
-
+- [Example of ReduxX Usage](#examples-of-reduxx-usage)
 
 ## Why Use ReduxX:
 
@@ -99,7 +99,7 @@ with ReduxX, the same state as above is automatically generated and it will look
 ```
 ...
 accountSettings-EmailVerified: true
-user: 'dandan69',
+user: 'dandan69'
 user-profile-firstName: 'Danny'
 user-profile-mainPicture: null
 user-profile-mainPicture-isPublic: true
@@ -111,34 +111,33 @@ and to get and set the state, you just need to do this:
 ```.js
 // cleanly get a global state value with ReduxX:
 
-const mainPicture = reduxX.getState({
+const mainPicture = reduxX.getState(
 
-    keys: [
-
-        'user',
-        'profile',
-        'mainPicture'
-    ]
-});
+    'user',
+    'profile',
+    'mainPicture'
+);
 
 // smoothly set a global state value with ReduxX:
 
-reduxX.setState({
+reduxX.setState(
 
-    keys: [
-
+    [
         'user',
         'profile',
         'mainPicture',
     ],
 
-    value: 'https://image.png'
-});
-
-
-// Note: you can use any number of keys
-// to set and get values from the global state
+    'https://image.png'
+);
 ```
+> Notes:
+>
+> a) with ReduxX, you can use any number of keys
+>
+> b) Check out the [Alternate Input Formats for the ReduxX setState and getState Functions](#alternate-input-formats-for-the-reduxx-setstate-and-getstate-functions) section for other ways to use the `getState` and `setState` functions
+>
+>
 
 
 #### Why is ReduxX better than the other old fashioned React state management libraries?
@@ -298,14 +297,11 @@ function handleClick() {
 
     // get the global state for an item like this:
 
-    const monkeyHeight = reduxX.getState({
-
-        keys: [
-
-            'monkey',
-            'height'
-        ],
-    });
+    const monkeyHeight = reduxX.getState(
+        
+        'monkey',
+        'height'
+    );
 
     console.log(
 
@@ -337,6 +333,76 @@ All you need to do is require your `./reduxx.js` file you created in Step 1 and 
 
 ---
 ## Bonus Features
+
+### Alternate Input Formats for the ReduxX setState and getState Functions
+
+For your convinence, and for better code readability, the ReduxX `setState` and `getState` functions offer several way to set and get values to and from the global state.
+
+
+```.js
+'use strict';
+
+const {
+
+	getState,
+	setState,
+
+} = require( /*path to reduxx.js file, the file created in Step 1*/ );
+
+/*
+   Different input formats for reduxX.getState:
+*/
+
+//  The following four getState invocations are equivalent  
+getState( 'user' );
+getState( [ 'user' ] );
+getState({ keys: 'user' });
+getState({ keys: [ 'user' ] });
+
+
+//  The following three getState invocations are equivalent  
+getState( 'user', 'profile' );
+getState( [ 'user', 'profile' ] );
+getState({ keys: [ 'user', 'profile' ] });
+
+
+/*
+   Different input formats for reduxX.setState:
+*/
+
+//  The following four setState invocations are equivalent  
+setState( 'user', { id: 69 } );
+setState( [ 'user' ], { id: 69 } );
+setState({ keys: 'user', value: { id: 69 } });
+setState({ keys [ 'user' ], value: { id: 69 } });
+
+//  The following two setState invocations are equivalent
+// (these invocations involve setting multiple values at once)
+setState(
+
+    [ 'user', 'name' ], 'Danny',
+    'user', { id: 69 },
+    [ 'user', 'game' ], 'React state library author'
+);
+setState(
+
+    {
+        keys: [ 'user', 'name' ],  
+        value: 'React state library author'
+    },
+    {
+        keys [ 'user' ],  
+        value: { id: 69 }
+    },
+    {
+        keys: [ 'user', 'game' ],  
+        value: 'React state library author'
+    }
+);
+```
+
+
+
 
 ### Obscure Your State Keys
 
@@ -626,6 +692,11 @@ module.exports = class Container extends React.Component {
 }
 ```
 In the `MegaPComponent`, by setting the `pText` value as a prop, and by making the `MegaPComponent` extend from the `React.PureComponent` class, it will now only do a render when the `pText` value changes. You can apply this optimization technique to any component where you want to avoid "wasted" renders. In some cases, you may need to adjust the `shouldComponentUpdate` React component method in order to achieve the same effect because React PureComponents only do a shallow comparison of the previous and next props and state. Here is a more detailed explanation of how this works from the [Official React Documentation on Pure Components](https://reactjs.org/docs/react-api.html#reactpurecomponent).
+
+
+### Example of ReduxX Usage
+
+- [NeverCodeAlone.ca](https://nevercodealone.ca): a sample website using ReduxX ([GitHub repo with code](https://github.com/msteckyefantis/never_code_alone))
 
 ---
 

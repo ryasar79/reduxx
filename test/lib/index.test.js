@@ -27,16 +27,6 @@ describe( MODULE_PATH, function() {
             gskm: 'yes'
         };
 
-        // const getStateStorageComponent = {
-        //
-        //     msmzc: 'yes'
-        // };
-
-        // const mockSetGlobalStateStorageInstance = {
-        //
-        //     mggsc: 'yes'
-        // };
-
         const mockGetGlobalStateStorageInstance = {
 
             mggsc: 'yes'
@@ -62,24 +52,15 @@ describe( MODULE_PATH, function() {
             mt: 'yes'
         };
 
-        // const mockSetInitialState = {
-        //
-        //     msis: 'yes',
-        // };
-
         const proxyquireStubs = {
 
             './setup_reduxx/index.js': mockSetupReduxX,
-            // './create_app.js': mockCreateApp,
             './get_configured_initial_state.js': mockGetConfiguredInitialState,
             './get_state_key_mapper.js': mockGetStateKeyMapper,
-            // './set_global_state_storage_instance.js': mockSetGlobalStateStorageInstance,
             './get_global_state_storage_instance.js': mockGetGlobalStateStorageInstance,
-            './get_state.js': mockGetState,
-            './set_state.js': mockSetState,
-            // './get_state_storage_component/index.js': getStateStorageComponent,
+            './get_state/index.js': mockGetState,
+            './set_state/index.js': mockSetState,
             './tools.js': mockTools,
-            // './set_initial_state.js': mockSetInitialState
         };
 
         return proxyquire( FULL_MODULE_PATH, proxyquireStubs );
