@@ -293,11 +293,7 @@ function handleClick() {
 
     // get the global state for an item like this:
 
-    const monkeyHeight = reduxX.getState(
-        
-        'monkey',
-        'height'
-    );
+    const monkeyHeight = reduxX.getState( 'monkey', 'height' );
 
     console.log(
 
