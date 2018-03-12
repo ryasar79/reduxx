@@ -165,6 +165,8 @@ module.exports = ReduxX({
             // can put a string for the "keys" for single key values
             keys: 'monkey',
 
+            // the value can be of any type,
+            // just like using regular React state
             value: { name: 'Curious George', bff: 'Donkey Kong' },
         },
         {
