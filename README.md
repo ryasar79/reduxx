@@ -165,7 +165,7 @@ module.exports = ReduxX({
             // can put a string for the "keys" for single key values
             keys: 'monkey',
 
-            value: 'curious george',
+            value: { name: 'Curious George', bff: 'Donkey Kong' },
         },
         {
             keys: [ 'monkey', 'height' ],
