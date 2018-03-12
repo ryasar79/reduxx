@@ -116,16 +116,7 @@ const mainPicture = reduxX.getState( 'user', 'profile', 'mainPicture' );
 
 // smoothly set a global state value with ReduxX:
 
-reduxX.setState(
-
-    [
-        'user',
-        'profile',
-        'mainPicture',
-    ],
-
-    'https://image.png'
-);
+reduxX.setState( [ 'user', 'profile', 'mainPicture' ], 'https://image.png' );
 ```
 > Notes:
 >
@@ -166,11 +157,7 @@ module.exports = ReduxX({
     initialState: [
 
         {
-            keys: [
-
-                'monkey',
-                'favoriteFood',
-            ],
+            keys: [ 'monkey', 'favoriteFood' ],
 
             value: 'banana',
         },
@@ -181,21 +168,12 @@ module.exports = ReduxX({
             value: 'curious george',
         },
         {
-            keys: [
-
-                'monkey',
-                'height',
-            ],
+            keys: [ 'monkey', 'height' ],
 
             value: '69cm',
         },
         {
-            keys: [
-
-                'hippo',
-                'status',
-                'mood',
-            ],
+            keys: [ 'hippo', 'status', 'mood' ],
 
             value: 'hungry',
         }
@@ -271,21 +249,12 @@ function handleClick() {
     reduxX.setState(
 
         {
-            keys: [
-
-                'monkey',
-                'favoriteFood',
-            ],
+            keys: [ 'monkey', 'favoriteFood' ],
 
             value: 'apple',
         },
         {
-            keys: [
-
-                'hippo',
-                'status',
-                'mood',
-            ],
+            keys: [ 'hippo', 'status', 'mood' ],
 
             value: 'full'
         }
@@ -328,7 +297,7 @@ All you need to do is require your `./reduxx.js` file you created in Step 1 and 
 
 ### Alternate Input Formats for the ReduxX setState and getState Functions
 
-For your convinence, and for better code readability, the ReduxX `setState` and `getState` functions offer several ways to set and get values to and from the global state.
+For your convenience, and for better code readability, the ReduxX `setState` and `getState` functions offer several ways to set and get values to and from the global state.
 
 
 ```.js
@@ -336,8 +305,8 @@ For your convinence, and for better code readability, the ReduxX `setState` and 
 
 const {
 
-	getState,
-	setState,
+    getState,
+    setState,
 
 } = require( /*path to reduxx.js file, the file created in Step 1*/ );
 
