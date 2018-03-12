@@ -313,33 +313,33 @@ const {
 } = require( /*path to reduxx.js file, the file created in Step 1*/ );
 
 /*
-   Different input formats for reduxX.getState:
+   Different input formats for reduxX.getState
 */
 
-//  The following four getState invocations are equivalent  
+//  The following four getState invocations are equivalent:
 getState( 'user' );
 getState( [ 'user' ] );
 getState({ keys: 'user' });
 getState({ keys: [ 'user' ] });
 
 
-//  The following three getState invocations are equivalent  
+//  The following three getState invocations are equivalent:
 getState( 'user', 'profile' );
 getState( [ 'user', 'profile' ] );
 getState({ keys: [ 'user', 'profile' ] });
 
 
 /*
-   Different input formats for reduxX.setState:
+   Different input formats for reduxX.setState
 */
 
-//  The following four setState invocations are equivalent  
+//  The following four setState invocations are equivalent:
 setState( 'user', { id: 69 } );
 setState( [ 'user' ], { id: 69 } );
 setState({ keys: 'user', value: { id: 69 } });
 setState({ keys [ 'user' ], value: { id: 69 } });
 
-//  The following two setState invocations are equivalent
+//  The following two setState invocations are equivalent:
 //  (these invocations involve setting multiple values at once)
 setState(
 
