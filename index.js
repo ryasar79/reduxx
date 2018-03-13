@@ -36,11 +36,7 @@ module.exports = Object.freeze(
 
         const boundGetGlobalStateStorageInstance = (
 
-            getGlobalStateStorageInstance.bind(
-
-                null,
-                { reduxXCore }
-            )
+            getGlobalStateStorageInstance.bind( null, { reduxXCore } )
         );
 
         return Object.freeze({
