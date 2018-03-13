@@ -415,9 +415,7 @@ module.exports = ReduxX({
 
 ### Old Fashioned State Managment
 
-You can also access and alter the global state manually.
-The globalStateStorageInstance (and its state)
-is just a normal React Component instance (and state).
+You can also access and alter the global state manually. The `store` (or equivalently the `globalStateStorageInstance`) and its state, is just a normal React Component instance and state.
 
 ```.js
 'use strict';
