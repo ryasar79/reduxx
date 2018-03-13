@@ -225,9 +225,19 @@ describe( MODULE_PATH, function() {
             gssi: 'yes'
         });
 
-        expect( getGlobalStateStorageInstanceStub.args.length ).to.equal( 1 );
+        expect( reduxX.store ).to.eql({
+
+            gssi: 'yes'
+        });
+
+        expect( getGlobalStateStorageInstanceStub.args.length ).to.equal( 2 );
         expect( getGlobalStateStorageInstanceStub.args[0].length ).to.equal( 1 );
         expect( getGlobalStateStorageInstanceStub.args[0][0] ).to.eql({
+
+            reduxXCore: {}
+        });
+        expect( getGlobalStateStorageInstanceStub.args[1].length ).to.equal( 1 );
+        expect( getGlobalStateStorageInstanceStub.args[1][0] ).to.eql({
 
             reduxXCore: {}
         });

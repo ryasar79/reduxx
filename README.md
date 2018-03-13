@@ -435,19 +435,18 @@ function handleClick() {
        Old Fashioned State Setting and Getting:
     */
 
-    const { globalStateStorageInstance } = reduxX;
+    const { store } = reduxX;
+    // Note that the above line is a shorthand for and is equivalent to:
+    // const { globalStateStorageInstance } = reduxX;
 
     // You can get and set regular state keys
     // in the global state storage component instance:
 
-    globalStateStorageInstance.setState({
-
-        hello: 'world'
-    });
+    store.setState({ hello: 'world' });
 
     setTimeout( () => {
 
-        const world = globalStateStorageInstance.state.hello;
+        const world = store.state.hello;
 
         console.log( 'hello:', world, '🌏🐙🐼👽🐲🌍' );
 
@@ -464,12 +463,7 @@ function handleClick() {
         for more information about that topic.
     */
 
-    const {
-
-        stateKeyMapper,
-        REDUXX_SPECIAL_KEY
-
-    } = reduxX;
+    const { stateKeyMapper, REDUXX_SPECIAL_KEY } = reduxX;
 
     // setting the state:
     // this will produce the same state change as in Step 3
@@ -488,23 +482,20 @@ function handleClick() {
 
     ] = 'full';
 
-    globalStateStorageInstance.setState( newState );
+    store.setState( newState );
 
     // getting the state:
     // once again its the same as getting the state like in Step 3
 
     const monkeyHeight = (
 
-        globalStateStorageInstance.state[
+        store.state[
 
             stateKeyMapper.monkey.height[ REDUXX_SPECIAL_KEY ]
         ]
     );
 
-    console.log(
-
-        `The reduxX monkey is ${ monkeyHeight } tall!`
-    );
+    console.log( `The reduxX monkey is ${ monkeyHeight } tall!` );
 
     // should log: The reduxX monkey is 69cm tall!
 }

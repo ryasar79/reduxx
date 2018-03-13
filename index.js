@@ -61,10 +61,12 @@ module.exports = Object.freeze(
 
             get globalStateStorageInstance() {
 
-                return getGlobalStateStorageInstance({
+                return getGlobalStateStorageInstance({ reduxXCore });
+            },
 
-                    reduxXCore
-                });
+            get store() {
+
+                return getGlobalStateStorageInstance({ reduxXCore });
             },
         });
     }
