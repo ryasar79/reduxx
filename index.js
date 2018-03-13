@@ -34,6 +34,15 @@ module.exports = Object.freeze(
             obscureStateKeys
         });
 
+        const getBoundGlobalStateStorageInstance = (
+
+            getGlobalStateStorageInstance.bind(
+
+                null,
+                { reduxXCore }
+            )
+        );
+
         return Object.freeze({
 
             setupReduxX: setupReduxX.bind({
@@ -61,12 +70,12 @@ module.exports = Object.freeze(
 
             get globalStateStorageInstance() {
 
-                return getGlobalStateStorageInstance({ reduxXCore });
+                return getBoundGlobalStateStorageInstance();
             },
 
             get store() {
 
-                return getGlobalStateStorageInstance({ reduxXCore });
+                return getBoundGlobalStateStorageInstance();
             },
         });
     }
