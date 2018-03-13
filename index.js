@@ -34,7 +34,7 @@ module.exports = Object.freeze(
             obscureStateKeys
         });
 
-        const getBoundGlobalStateStorageInstance = (
+        const boundGetGlobalStateStorageInstance = (
 
             getGlobalStateStorageInstance.bind(
 
@@ -70,12 +70,12 @@ module.exports = Object.freeze(
 
             get globalStateStorageInstance() {
 
-                return getBoundGlobalStateStorageInstance();
+                return boundGetGlobalStateStorageInstance();
             },
 
             get store() {
 
-                return getBoundGlobalStateStorageInstance();
+                return boundGetGlobalStateStorageInstance();
             },
         });
     }
