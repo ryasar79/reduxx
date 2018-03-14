@@ -72,7 +72,7 @@ Alternatively, you can use nested React state to have nicer variable names to de
     a single property of the pictures object
     while preserving the other properties
 */
-globalStateComponent.setState( previousState => {
+globalStateStorageInstance.setState( previousState => {
 
     return {
 
