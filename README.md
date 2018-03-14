@@ -468,43 +468,26 @@ function handleClick() {
 
     const newState = {};
 
-    newState[
+    const monkeyFavFoodKey = stateKeyMapper.monkey.favoriteFood[ REDUXX_SPECIAL_KEY ];
 
-        stateKeyMapper.monkey.favoriteFood[ REDUXX_SPECIAL_KEY ]
+    newState[ monkeyFavFoodKey ] = 'apple';
 
-    ] = 'apple';
+    const hippoMoodKey = stateKeyMapper.hippo.status.mood[ REDUXX_SPECIAL_KEY ];
 
-    newState[
-
-        stateKeyMapper.hippo.status.mood[ REDUXX_SPECIAL_KEY ]
-
-    ] = 'full';
+    newState[ hippoMoodKey ] = 'full';
 
     store.setState( newState );
 
     // getting the state:
     // once again its the same as getting the state like in Step 3
 
-    const monkeyHeight = (
+    const monkeyHeightKey = stateKeyMapper.monkey.height[ REDUXX_SPECIAL_KEY ];
 
-        store.state[
-
-            stateKeyMapper.monkey.height[ REDUXX_SPECIAL_KEY ]
-        ]
-    );
+    const monkeyHeight = store.state[ monkeyHeightKey ];
 
     console.log( `The reduxX monkey is ${ monkeyHeight } tall!` );
 
     // should log: The reduxX monkey is 69cm tall!
-}
-
-
-module.exports = class SomeDiv extends React.Component {
-
-    render() {
-
-        return <div onClick={this.handleClick} />;
-    }
 }
 ```
 
@@ -513,7 +496,7 @@ module.exports = class SomeDiv extends React.Component {
 
 One of ReduxX's *principles* is to be very easy to learn and to work in a similar way to React's regular state. As a result, optimizing your web app that uses ReduxX is similar to optimizing any other React app.
 
-One thing to note is having a global state in the most parent component means that all the children of that parent component can re-render upon **any** state change. This re-rendering occurs even if those children don't need to be changed themselves due to a state change (the component will render the same element but it won't change the DOM because the new rendered element was the same as the last). This results in "wasted" renders. As noted in the [Official React Optimization Documentation](https://reactjs.org/docs/optimizing-performance.html#avoid-reconciliation), these "wasted" renders in many cases don't affect performance.
+One thing to note is having a global state in the most parent component means that all the children of that parent component can re-render upon **any** state change. This re-rendering occurs even if those children don't need to be changed themselves due to a state change (the component will render the same element but it won't change the DOM because the newly rendered element was the same as the last). This results in "wasted" renders. As noted in the [Official React Optimization Documentation](https://reactjs.org/docs/optimizing-performance.html#avoid-reconciliation), these "wasted" renders in many cases don't affect performance.
 
 In the case where you would like to optimize your ReduxX app, here is a way to optimize your components to avoid unnecessary re-rendering:
 
@@ -529,18 +512,14 @@ First of all, here is what our original unoptimized "p" component looks like, le
 
 const React = require( 'react' );
 
-const {
-
-    globalStateStorageInstance
-
-} = require( '../path to reduxx.js file created in Step 1' );
+const { store } = require( '../path to reduxx.js file created in Step 1' );
 
 
 module.exports = class MegaPComponent extends React.Component {
 
     render() {
 
-        const { pText } = globalStateStorageInstance.state;
+        const { pText } = store.state;
 
         return <p> {pText} </p>;
     }
@@ -556,18 +535,14 @@ const React = require( 'react' );
 
 const MegaPComponent = require( '...path to MegaPComponent' );
 
-const {
-
-    globalStateStorageInstance
-
-} = require( /*path to reduxx.js file, the file created in Step 1*/ );
+const { store } = require( /* path to reduxx.js file created in Step 1 */ );
 
 
 module.exports = class Container extends React.Component {
 
     render() {
 
-        const { backgroundColor } = globalStateStorageInstance.state;
+        const { backgroundColor } = store.state;
 
         const divStyle = { backgroundColor };
 
@@ -613,23 +588,14 @@ const React = require( 'react' );
 
 const MegaPComponent = require( '...path to MegaPComponent' );
 
-const {
-
-    globalStateStorageInstance
-
-} = require( /*path to reduxx.js file, the file created in Step 1*/ );
+const { store } = require( /* path to reduxx.js file created in Step 1 */ );
 
 
 module.exports = class Container extends React.Component {
 
     render() {
 
-        const {
-
-            backgroundColor,
-            pText
-
-        } = globalStateStorageInstance.state;
+        const { backgroundColor, pText } = store.state;
 
         const divStyle = { backgroundColor };
 
