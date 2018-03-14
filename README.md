@@ -479,7 +479,7 @@ function handleClick() {
     store.setState( newState );
 
     // getting the state:
-    // once again its the same as getting the state like in Step 3
+    // once again it's the same as getting the state like in Step 3
 
     const monkeyHeightKey = stateKeyMapper.monkey.height[ REDUXX_SPECIAL_KEY ];
 
