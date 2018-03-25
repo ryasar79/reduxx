@@ -616,8 +616,12 @@ In the `MegaPComponent`, by setting the `pText` value as a prop, and by making t
 
 - [NeverCodeAlone.ca](https://nevercodealone.ca): a sample website using ReduxX ([GitHub repo with code](https://github.com/msteckyefantis/never_code_alone))
 
+- [Easy React App](https://github.com/msteckyefantis/easy_react_app): a base website framework made with React, React Router, Webpack, and ReduxX.
+
+- [LessonShop.net](https://lessonshop.net): a lessons marketplace built in React that uses ReduxX for state management.
+
 ---
 
 
-Check out [LessonShop.net](https://lessonshop.net) to take or teach coding lessons!!
+Check out [LessonShop.net](https://lessonshop.net) to take or teach coding lessons!
 Market yourself as a developer teacher for free and get free marketing!
