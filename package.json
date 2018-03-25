@@ -1,6 +1,6 @@
 {
   "name": "reduxx",
-  "version": "10.2.9",
+  "version": "10.2.10",
   "description": "ReduxX is a lightweight yet super-powerful, very easy to learn, and very easy to set up React state management library.",
   "main": "index.js",
   "scripts": {
