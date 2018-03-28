@@ -134,7 +134,7 @@ describe( MODULE_PATH, function() {
             'monkey-favoriteFood': 'banana',
             'monkey-favoriteFood-favoriteDessert': 'banana split',
             'monkey-favoriteFood-favoriteDessert-favoriteDessertTime': 'anytime',
-            'monkey-height': null,
+            'monkey-height': undefined,
             'hippo-favoriteFood': 'watermelon',
         });
     });
@@ -240,6 +240,8 @@ describe( MODULE_PATH, function() {
                         'monkey',
                         'height',
                     ],
+
+                    value: null,
                     // value: '69cm',
                 },
                 {
