@@ -39,7 +39,10 @@
     "module",
     "clean",
     "uncomplicated",
-    "painless"
+    "painless",
+    "light",
+    "lightweight",
+    "basic"
   ],
   "author": "Michael Stecky-Efantis",
   "license": "BSD-3-Clause",
