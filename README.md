@@ -279,7 +279,7 @@ module.exports = class SomeDiv extends React.Component {
 
     render() {
 
-        return <div onClick={this.handleClick} />;
+        return <div onClick={ handleClick } />;
     }
 }
 ```
