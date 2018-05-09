@@ -515,14 +515,14 @@ First of all, here is what our original unoptimized "p" component looks like, le
 
 const React = require( 'react' );
 
-const { store } = require( '../path to reduxx.js file created in Step 1' );
+const reduxX = require( '../path to reduxx.js file created in Step 1' );
 
 
 module.exports = class MegaPComponent extends React.Component {
 
     render() {
 
-        const { pText } = store.state;
+        const { pText } = reduxX.store.state;
 
         return <p> {pText} </p>;
     }
@@ -538,14 +538,14 @@ const React = require( 'react' );
 
 const MegaPComponent = require( '...path to MegaPComponent' );
 
-const { store } = require( /* path to reduxx.js file created in Step 1 */ );
+const reduxX = require( /* path to reduxx.js file created in Step 1 */ );
 
 
 module.exports = class Container extends React.Component {
 
     render() {
 
-        const { backgroundColor } = store.state;
+        const { backgroundColor } = reduxX.store.state;
 
         const divStyle = { backgroundColor };
 
@@ -591,14 +591,14 @@ const React = require( 'react' );
 
 const MegaPComponent = require( '...path to MegaPComponent' );
 
-const { store } = require( /* path to reduxx.js file created in Step 1 */ );
+const reduxX = require( /* path to reduxx.js file created in Step 1 */ );
 
 
 module.exports = class Container extends React.Component {
 
     render() {
 
-        const { backgroundColor, pText } = store.state;
+        const { backgroundColor, pText } = reduxX.store.state;
 
         const divStyle = { backgroundColor };
 
