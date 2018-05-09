@@ -9,6 +9,8 @@
 
 #### ReduxX is a lightweight yet super-powerful, very easy to learn, and very easy to set up React state management library.
 
+##### [Click here to try a live demo on CodeSandbox.io (with code!🐉)](https://codesandbox.io/s/94q0wljp9o)
+
 
 ### Table of Contents:
 
@@ -291,6 +293,9 @@ This example also includes a `reduxX.getState` invocation. You can use this func
 Wow that's it, <b>so easy!</b>
 
 All you need to do is require your `./reduxx.js` file you created in Step 1 and then use `reduxX.setState` and `reduxX.getState` to manage your global state (like in Step 3).
+
+
+[Click here to try the live demo on CodeSandbox.io🐉](htps://codesandbox.io/s/94q0wljp9o)
 
 ![ReduxX Rocks!](https://media1.tenor.com/images/8d99bca02126d5d1e16a6000efb34e7b/tenor.gif "Jar Jar Approves!")
 
