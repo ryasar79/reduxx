@@ -23,7 +23,7 @@
 #### 3. [Bonus Features](#bonus-features)
 - [Alternate Input Formats for the ReduxX setState and getState Functions](#alternate-input-formats-for-the-reduxx-setstate-and-getstate-functions)
 - [Obscure Your State Keys](#obscure-your-state-keys)
-- [Old Fashioned State Management](#old-fashioned-state-managment)
+- [Old Fashioned State Management](#old-fashioned-state-management)
 - [Optimize Your ReduxX App](#optimize-your-reduxx-app)
 - [Examples of ReduxX Usage](#examples-of-reduxx-usage)
 
