@@ -512,16 +512,18 @@ First of all, here is what our original unoptimized "p" component looks like, le
 
 const React = require( 'react' );
 
-const reduxX = require( '../path to reduxx.js file created in Step 1' );
+const { getStore } = require( /* path to reduxx.js file created in Step 1 */ );
 
 
 module.exports = class MegaPComponent extends React.Component {
 
     render() {
 
-        const { pText } = reduxX.store.state;
+        const store = getStore();
 
-        return <p> {pText} </p>;
+        const { pText } = store.state;
+
+        return <p> { pText } </p>;
     }
 }
 ```
@@ -535,19 +537,21 @@ const React = require( 'react' );
 
 const MegaPComponent = require( '...path to MegaPComponent' );
 
-const reduxX = require( /* path to reduxx.js file created in Step 1 */ );
+const { getStore } = require( /* path to reduxx.js file created in Step 1 */ );
 
 
 module.exports = class Container extends React.Component {
 
     render() {
 
-        const { backgroundColor } = reduxX.store.state;
+        const store = getStore();
+
+        const { backgroundColor } = store.state;
 
         const divStyle = { backgroundColor };
 
         return(
-            <div style={divStyle}>
+            <div style={ divStyle }>
 
                 <MegaPComponent/>
 
@@ -573,7 +577,7 @@ module.exports = class MegaPComponent extends React.PureComponent {
 
         const { pText } = this.props;
 
-        return <p> {pText} </p>;
+        return <p> { pText } </p>;
     }
 }
 
@@ -588,21 +592,23 @@ const React = require( 'react' );
 
 const MegaPComponent = require( '...path to MegaPComponent' );
 
-const reduxX = require( /* path to reduxx.js file created in Step 1 */ );
+const { getStore } = require( /* path to reduxx.js file created in Step 1 */ );
 
 
 module.exports = class Container extends React.Component {
 
     render() {
 
-        const { backgroundColor, pText } = reduxX.store.state;
+        const store = getStore();
+
+        const { backgroundColor, pText } = store.state;
 
         const divStyle = { backgroundColor };
 
         return(
-            <div style={divStyle}>
+            <div style={ divStyle }>
 
-                <MegaPComponent pText={pText}/>
+                <MegaPComponent pText={ pText }/>
 
             </div>
         );
