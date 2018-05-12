@@ -426,7 +426,7 @@ You can also access and alter the global state manually. Use `reduxX.getStore()`
 
 const React = require( 'react' );
 
-const { getStore } = require( /*path to reduxx.js file, the file created in Step 1*/ );
+const reduxX = require( /*path to reduxx.js file, the file created in Step 1*/ );
 
 
 function handleClick() {
@@ -435,7 +435,7 @@ function handleClick() {
        Old Fashioned State Setting and Getting:
     */
 
-    const store = getStore();
+    const store = reduxX.getStore();
 
     // You can get and set regular React state keys
     // in the global state storage component instance:
