@@ -40,7 +40,7 @@ module.exports = Object.freeze(
             obscureStateKeys
         });
 
-        const legacyGetGlobalStateStorageInstance = Object.freeze( ({
+        const legacyGetGlobalStateStorageInstance = Object.freeze(({
 
             propertyName,
 
@@ -53,7 +53,7 @@ module.exports = Object.freeze(
                 `instead of reduxX.${ propertyName }`
             );
 
-            return getGlobalStateStorageInstance({ reduxXCore })
+            return getGlobalStateStorageInstance({ reduxXCore });
         });
 
         return Object.freeze({
@@ -83,7 +83,7 @@ module.exports = Object.freeze(
 
             getStore: () => {
 
-                return getGlobalStateStorageInstance({ reduxXCore })
+                return getGlobalStateStorageInstance({ reduxXCore });
             },
 
             // deprecated
