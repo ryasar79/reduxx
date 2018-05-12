@@ -8,7 +8,13 @@ const {
     getState,
     setState,
     getGlobalStateStorageInstance,
-    tools,
+    tools: {
+        
+        constants: {
+
+            REDUXX_SPECIAL_KEY
+        }   
+    },
 
 } = require( './lib/index.js' );
 
@@ -34,10 +40,21 @@ module.exports = Object.freeze(
             obscureStateKeys
         });
 
-        const boundGetGlobalStateStorageInstance = (
+        const legacyGetGlobalStateStorageInstance = Object.freeze( ({
 
-            getGlobalStateStorageInstance.bind( null, { reduxXCore } )
-        );
+            propertyName,
+
+        }) => {
+
+            console.warn(
+                
+                'ReduxX depreciation warning: ' +
+                'please use the reduxX.getStore() function ' +
+                `instead of reduxX.${ propertyName }`
+            );
+
+            return getGlobalStateStorageInstance({ reduxXCore })
+        });
 
         return Object.freeze({
 
@@ -62,16 +79,29 @@ module.exports = Object.freeze(
 
             stateKeyMapper,
 
-            REDUXX_SPECIAL_KEY: tools.constants.REDUXX_SPECIAL_KEY,
+            REDUXX_SPECIAL_KEY,
 
-            get globalStateStorageInstance() {
+            getStore: () => {
 
-                return boundGetGlobalStateStorageInstance();
+                return getGlobalStateStorageInstance({ reduxXCore })
             },
 
+            // deprecated
+            get globalStateStorageInstance() {
+
+                return legacyGetGlobalStateStorageInstance({
+
+                    propertyName: 'globalStateStorageInstance'                    
+                });
+            },
+
+            // deprecated
             get store() {
 
-                return boundGetGlobalStateStorageInstance();
+                return legacyGetGlobalStateStorageInstance({
+
+                    propertyName: 'store'                    
+                });
             },
         });
     }

@@ -229,8 +229,12 @@ describe( MODULE_PATH, function() {
 
             gssi: 'yes'
         });
+        expect( reduxX.getStore() ).to.eql({
 
-        expect( getGlobalStateStorageInstanceStub.args.length ).to.equal( 2 );
+            gssi: 'yes'
+        });
+
+        expect( getGlobalStateStorageInstanceStub.args.length ).to.equal( 3 );
         expect( getGlobalStateStorageInstanceStub.args[0].length ).to.equal( 1 );
         expect( getGlobalStateStorageInstanceStub.args[0][0] ).to.eql({
 
@@ -238,6 +242,11 @@ describe( MODULE_PATH, function() {
         });
         expect( getGlobalStateStorageInstanceStub.args[1].length ).to.equal( 1 );
         expect( getGlobalStateStorageInstanceStub.args[1][0] ).to.eql({
+
+            reduxXCore: {}
+        });
+        expect( getGlobalStateStorageInstanceStub.args[2].length ).to.equal( 1 );
+        expect( getGlobalStateStorageInstanceStub.args[2][0] ).to.eql({
 
             reduxXCore: {}
         });

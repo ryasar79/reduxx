@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/reduxx.svg)](https://badge.fury.io/js/reduxx) [![Build Status](https://travis-ci.org/msteckyefantis/reduxx.svg?branch=master)](https://travis-ci.org/msteckyefantis/reduxx)
 
-[![ReduxX](https://s18.postimg.org/643pjzgyx/Redux_X_1.png)](https://lessonshop.net)
+[![ReduxX](https://s3.amazonaws.com/lessonshop.net/other/reduxx.png)](https://lessonshop.net)
 ### Similar to SpaceX and iPhoneX, ReduxX is the **next generation** React state management tool.
 
 **(with 100% code coverage😉👍🏿👍🏽👍🏻)**
@@ -23,7 +23,7 @@
 #### 3. [Bonus Features](#bonus-features)
 - [Alternate Input Formats for the ReduxX setState and getState Functions](#alternate-input-formats-for-the-reduxx-setstate-and-getstate-functions)
 - [Obscure Your State Keys](#obscure-your-state-keys)
-- [Old Fashioned State Managment](#old-fashioned-state-managment)
+- [Old Fashioned State Management](#old-fashioned-state-managment)
 - [Optimize Your ReduxX App](#optimize-your-reduxx-app)
 - [Examples of ReduxX Usage](#examples-of-reduxx-usage)
 
@@ -415,10 +415,9 @@ module.exports = ReduxX({
 });
 ```
 
+### Old Fashioned State Management
 
-### Old Fashioned State Managment
-
-You can also access and alter the global state manually. The `store` (or equivalently the `globalStateStorageInstance`) with its state, is just a normal React Component instance and state.
+You can also access and alter the global state manually. Use `reduxX.getStore()` to get the global state storage instance (the store) with its state. The store is just a normal React Component instance that has a normal React state.
 
 ```.js
 'use strict';
@@ -427,7 +426,7 @@ You can also access and alter the global state manually. The `store` (or equival
 
 const React = require( 'react' );
 
-const reduxX = require( /*path to reduxx.js file, the file created in Step 1*/ );
+const { getStore } = require( /*path to reduxx.js file, the file created in Step 1*/ );
 
 
 function handleClick() {
@@ -436,11 +435,9 @@ function handleClick() {
        Old Fashioned State Setting and Getting:
     */
 
-    const { store } = reduxX;
-    // Note that the above line is a shorthand for and is equivalent to:
-    // const { globalStateStorageInstance } = reduxX;
+    const store = getStore();
 
-    // You can get and set regular state keys
+    // You can get and set regular React state keys
     // in the global state storage component instance:
 
     store.setState({ hello: 'world' });
