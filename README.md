@@ -453,26 +453,25 @@ function handleClick() {
     }, 0 );
 
     /*
-        Using the stateKeyMapper and
-        using the REDUXX_SPECIAL_KEY,
+        Using the stateKeyMapper and the KEY,
         you can work with regular ReduxX type keys
         OR obscured state keys.
         See the "Obscure Your State Keys" section above
         for more information about that topic.
     */
 
-    const { stateKeyMapper, REDUXX_SPECIAL_KEY } = reduxX;
+    const { stateKeyMapper, KEY } = reduxX;
 
     // setting the state:
     // this will produce the same state change as in Step 3
 
     const newState = {};
 
-    const monkeyFavFoodKey = stateKeyMapper.monkey.favoriteFood[ REDUXX_SPECIAL_KEY ];
+    const monkeyFavFoodKey = stateKeyMapper.monkey.favoriteFood[ KEY ];
 
     newState[ monkeyFavFoodKey ] = 'apple';
 
-    const hippoMoodKey = stateKeyMapper.hippo.status.mood[ REDUXX_SPECIAL_KEY ];
+    const hippoMoodKey = stateKeyMapper.hippo.status.mood[ KEY ];
 
     newState[ hippoMoodKey ] = 'full';
 
@@ -481,7 +480,7 @@ function handleClick() {
     // getting the state:
     // once again it's the same as getting the state like in Step 3
 
-    const monkeyHeightKey = stateKeyMapper.monkey.height[ REDUXX_SPECIAL_KEY ];
+    const monkeyHeightKey = stateKeyMapper.monkey.height[ KEY ];
 
     const monkeyHeight = store.state[ monkeyHeightKey ];
 
@@ -630,4 +629,4 @@ In the `MegaPComponent`, by setting the `pText` value as a prop, and by making t
 
 
 Check out [LessonShop.net](https://lessonshop.net) to take or teach coding lessons!
-Market yourself as a developer teacher for free and get free marketing!
+Promote your personal brand as a developer or as a developer teacher for free!

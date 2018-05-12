@@ -48,7 +48,7 @@ module.exports = Object.freeze(
 
             console.warn(
                 
-                'ReduxX depreciation warning: ' +
+                'ReduxX deprecation warning: ' +
                 'please use the reduxX.getStore() function ' +
                 `instead of reduxX.${ propertyName }`
             );
@@ -77,13 +77,26 @@ module.exports = Object.freeze(
                 stateKeyMapper
             }),
 
-            stateKeyMapper,
-
-            REDUXX_SPECIAL_KEY,
-
             getStore: () => {
 
                 return getGlobalStateStorageInstance({ reduxXCore });
+            },
+
+            stateKeyMapper,
+
+            KEY: REDUXX_SPECIAL_KEY,
+
+            // deprecated
+            get REDUXX_SPECIAL_KEY() {
+                
+                console.warn(
+                
+                    'ReduxX deprecation warning: ' +
+                    'please use reduxX.KEY ' +
+                    `instead of reduxX.REDUXX_SPECIAL_KEY`
+                );
+    
+                return REDUXX_SPECIAL_KEY;
             },
 
             // deprecated
