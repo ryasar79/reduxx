@@ -422,7 +422,8 @@ module.exports = ReduxX({
 
 In [Step 1](#step-1-install-reduxx-and-set-your-initial-global-state), we set up our initial state with an array of
 objects that each have a `keys` and a `value` property. We can alternatively set up our initial state with an object.
-This can be more suitable for ReduxX apps with a larger number of state keys because it easily allows you to organize your initial state in a modular way (it easily allows you to put sections of your initial state in different files if you want).
+This can be more suitable for ReduxX apps with a larger number of state keys because it easily allows you to organize
+your initial state in a modular way (because it easily allows you to put sections of your initial state in different files if you want).
 
 The below code shows you how to use the *Object Form for Initial State* to set the same initial state as in Step 1.
 
