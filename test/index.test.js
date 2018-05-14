@@ -128,6 +128,8 @@ describe( MODULE_PATH, function() {
             },
         });
 
+        expect( ReduxX.VALUE ).to.equal( 'abc' );
+        
         const reduxX = ReduxX({
 
             initialState,
@@ -142,6 +144,7 @@ describe( MODULE_PATH, function() {
 
 
         expect( reduxX.REDUXX_SPECIAL_KEY ).to.equal( 'abc' );
+        expect( reduxX.KEY ).to.equal( 'abc' );
 
         expect( getConfiguredInitialStateStub.args.length ).to.equal( 1 );
         expect( getConfiguredInitialStateStub.args[0].length ).to.equal( 1 );
