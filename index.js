@@ -116,8 +116,8 @@ const ReduxX = ({
             });
         },
     });
-}
+};
 
 ReduxX.VALUE = REDUXX_SPECIAL_KEY;
 
-module.exports = Object.freeze( ReduxX )
+module.exports = Object.freeze( ReduxX );
