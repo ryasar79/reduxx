@@ -17,7 +17,7 @@ const configureInitialState = require( FULL_MODULE_PATH );
 // TODO: stub out get functions to isolate file code
 describe( MODULE_PATH, function() {
 
-    it( 'normal operation: regular array type initial state provided', function() {
+    it( 'normal operation: array form initial state provided', function() {
 
         const result = configureInitialState({
 
@@ -132,7 +132,7 @@ describe( MODULE_PATH, function() {
         ]);
     });
 
-    it( 'normal operation: regular Object Form initial state provided', function() {
+    it( 'normal operation: Object Form initial state provided', function() {
 
         const VALUE = '@reduxXKey';
 
@@ -204,13 +204,16 @@ describe( MODULE_PATH, function() {
         ]);
     });
 
-    it( 'error in setup, initial state is not an array or string', function() {
+    it( 'error in setup, initial state is not an array or object', function() {
 
         let error = null;
 
         try {
 
-            configureInitialState({});
+            configureInitialState({
+
+                initialState: 'woo ricflair'
+            });
 
         } catch( err ) {
 
