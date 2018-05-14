@@ -425,7 +425,7 @@ objects that each have a `keys` and a `value` property. We can alternatively set
 This can be more suitable for ReduxX apps with a larger number of state keys because it easily allows you to organize
 your initial state in a modular way (because it easily allows you to put sections of your initial state in different files if you want).
 
-The below code shows you how to use the *Object Form for Initial State* to set the same initial state as in Step 1.
+The below code shows you how to use the *Object Form* for Initial State to set the same initial state as in Step 1:
 
 ```.js
 'use strict';
