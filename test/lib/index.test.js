@@ -55,7 +55,7 @@ describe( MODULE_PATH, function() {
         const proxyquireStubs = {
 
             './setup_reduxx/index.js': mockSetupReduxX,
-            './get_configured_initial_state.js': mockGetConfiguredInitialState,
+            './get_configured_initial_state/index.js': mockGetConfiguredInitialState,
             './get_state_key_mapper.js': mockGetStateKeyMapper,
             './get_global_state_storage_instance.js': mockGetGlobalStateStorageInstance,
             './get_state/index.js': mockGetState,

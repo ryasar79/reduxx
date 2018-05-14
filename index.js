@@ -19,103 +19,105 @@ const {
 } = require( './lib/index.js' );
 
 
-module.exports = Object.freeze(
+const ReduxX = ({
 
-    ({
+    initialState,
+    obscureStateKeys,
+
+}) => {
+
+    initialState = getConfiguredInitialState({
+
         initialState,
-        obscureStateKeys,
+    });
+
+    const reduxXCore = {};
+
+    const stateKeyMapper = getStateKeyMapper({
+
+        initialState,
+        obscureStateKeys
+    });
+
+    const legacyGetGlobalStateStorageInstance = Object.freeze(({
+
+        propertyName,
 
     }) => {
 
-        initialState = getConfiguredInitialState({
+        console.warn(
+            
+            'ReduxX deprecation warning: ' +
+            'please use the reduxX.getStore() function ' +
+            `instead of reduxX.${ propertyName }`
+        );
 
+        return getGlobalStateStorageInstance({ reduxXCore });
+    });
+
+    return Object.freeze({
+
+        setupReduxX: setupReduxX.bind({
+
+            reduxXCore,
             initialState,
-        });
+            stateKeyMapper
+        }),
 
-        const reduxXCore = {};
+        getState: getState.bind({
 
-        const stateKeyMapper = getStateKeyMapper({
+            reduxXCore,
+            stateKeyMapper
+        }),
 
-            initialState,
-            obscureStateKeys
-        });
+        setState: setState.bind({
 
-        const legacyGetGlobalStateStorageInstance = Object.freeze(({
+            reduxXCore,
+            stateKeyMapper
+        }),
 
-            propertyName,
-
-        }) => {
-
-            console.warn(
-                
-                'ReduxX deprecation warning: ' +
-                'please use the reduxX.getStore() function ' +
-                `instead of reduxX.${ propertyName }`
-            );
+        getStore: () => {
 
             return getGlobalStateStorageInstance({ reduxXCore });
-        });
+        },
 
-        return Object.freeze({
+        stateKeyMapper,
 
-            setupReduxX: setupReduxX.bind({
+        KEY: REDUXX_SPECIAL_KEY,
 
-                reduxXCore,
-                initialState,
-                stateKeyMapper
-            }),
+        // deprecated
+        get REDUXX_SPECIAL_KEY() {
+            
+            console.warn(
+            
+                'ReduxX deprecation warning: ' +
+                'please use reduxX.KEY ' +
+                `instead of reduxX.REDUXX_SPECIAL_KEY`
+            );
 
-            getState: getState.bind({
+            return REDUXX_SPECIAL_KEY;
+        },
 
-                reduxXCore,
-                stateKeyMapper
-            }),
+        // deprecated
+        get globalStateStorageInstance() {
 
-            setState: setState.bind({
+            return legacyGetGlobalStateStorageInstance({
 
-                reduxXCore,
-                stateKeyMapper
-            }),
+                propertyName: 'globalStateStorageInstance'                    
+            });
+        },
 
-            getStore: () => {
+        // deprecated
+        get store() {
 
-                return getGlobalStateStorageInstance({ reduxXCore });
-            },
+            return legacyGetGlobalStateStorageInstance({
 
-            stateKeyMapper,
+                propertyName: 'store'                    
+            });
+        },
+    });
+}
 
-            KEY: REDUXX_SPECIAL_KEY,
+ReduxX.VALUE = REDUXX_SPECIAL_KEY;
 
-            // deprecated
-            get REDUXX_SPECIAL_KEY() {
-                
-                console.warn(
-                
-                    'ReduxX deprecation warning: ' +
-                    'please use reduxX.KEY ' +
-                    `instead of reduxX.REDUXX_SPECIAL_KEY`
-                );
-    
-                return REDUXX_SPECIAL_KEY;
-            },
-
-            // deprecated
-            get globalStateStorageInstance() {
-
-                return legacyGetGlobalStateStorageInstance({
-
-                    propertyName: 'globalStateStorageInstance'                    
-                });
-            },
-
-            // deprecated
-            get store() {
-
-                return legacyGetGlobalStateStorageInstance({
-
-                    propertyName: 'store'                    
-                });
-            },
-        });
-    }
-);
+module.exports = Object.freeze( ReduxX )

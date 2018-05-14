@@ -23,6 +23,7 @@
 #### 3. [Bonus Features](#bonus-features)
 - [Alternate Input Formats for the ReduxX setState and getState Functions](#alternate-input-formats-for-the-reduxx-setstate-and-getstate-functions)
 - [Obscure Your State Keys](#obscure-your-state-keys)
+- [Object Form for Initial State](#object-form-for-initial-state)
 - [Old Fashioned State Management](#old-fashioned-state-management)
 - [Optimize Your ReduxX App](#optimize-your-reduxx-app)
 - [Examples of ReduxX Usage](#examples-of-reduxx-usage)
@@ -187,7 +188,8 @@ module.exports = ReduxX({
 > a) you can use any number of keys
 >
 > b) technically you can put this reduxx.js file anywhere, but it makes the most sense to put it in your root folder based on how you access it (in Step 3)
->
+> 
+> c) you can alternatively use the [Object Form for Initial State](#object-form-for-initial-state)
 >
 
 ### Step 2: Set up ReduxX
@@ -414,6 +416,58 @@ module.exports = ReduxX({
     ],    
 });
 ```
+
+
+### Object Form for Initial State
+
+In [Step 1](#step-1-install-reduxx-and-set-your-initial-global-state), we set up our initial state with an array of
+objects that each have a `keys` and a `value` property. We can alternatively set up our initial state with an object.
+This can be more suitable for ReduxX apps with a larger number of state keys because it easily allows you to organize your initial state in a modular way (it easily allows you to put sections of your initial state in different files if you want).
+
+The below code shows you how to use the *Object Form for Initial State* to set the same initial state as in Step 1.
+
+```.js
+'use strict';
+
+const ReduxX = require( 'reduxx' );
+
+// use the ReduxX VALUE key to set the initial state value for the specified key
+const { VALUE } = ReduxX;
+
+
+module.exports = ReduxX({
+
+    initialState: {
+
+        monkey: {
+
+            [VALUE]: { name: 'Curious George', bff: 'Donkey Kong' },
+
+            favoriteFood: {
+
+                [VALUE]: 'banana'
+            },
+
+            height: {
+
+                [VALUE]: '69cm'
+            }
+        },
+
+        hippo: {
+
+            status: {
+
+                mood: {
+
+                    [VALUE]: 'hungry'
+                }
+            }
+        }
+    }
+});
+```
+
 
 ### Old Fashioned State Management
 

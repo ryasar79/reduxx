@@ -1,6 +1,6 @@
 'use strict';
 
-const ROOT_PATH = '../../';
+const ROOT_PATH = '../../../';
 
 const MODULE_PATH = 'lib/get_configured_initial_state';
 
@@ -14,7 +14,7 @@ const expect = require( 'chai' ).expect;
 
 const configureInitialState = require( FULL_MODULE_PATH );
 
-
+// TODO: stub out get functions to isolate file code
 describe( MODULE_PATH, function() {
 
     it( 'normal operation: regular array type initial state provided', function() {
@@ -128,6 +128,78 @@ describe( MODULE_PATH, function() {
                     'favoriteFood',
                 ],
                 value: 'watermelon',
+            }
+        ]);
+    });
+
+    it( 'normal operation: regular Object Form initial state provided', function() {
+
+        const VALUE = '@reduxXKey';
+
+        const result = configureInitialState({
+
+            initialState: {
+
+                monkey: {
+        
+                    [VALUE]: { name: 'Curious George', bff: 'Donkey Kong' },
+        
+                    favoriteFood: {
+        
+                        [VALUE]: 'banana'
+                    },
+        
+                    height: {
+        
+                        [VALUE]: '69cm'
+                    }
+                },
+        
+                hippo: {
+        
+                    status: {
+        
+                        mood: {
+        
+                            [VALUE]: 'hungry'
+                        }
+                    }
+                }
+            }
+        });
+
+        expect( result ).to.eql([
+
+            {
+                keys: [
+
+                    'monkey'
+                ],
+                value: { name: 'Curious George', bff: 'Donkey Kong' },
+            },
+            {
+                keys: [
+
+                    'monkey',
+                    'favoriteFood',
+                ],
+                value: 'banana',
+            },
+            {
+                keys: [
+
+                    'monkey',
+                    'height',
+                ],
+                value: '69cm',
+            },
+            {
+                keys: [
+                    'hippo',
+                    'status',
+                    'mood'
+                ],
+                value: 'hungry',
             }
         ]);
     });
