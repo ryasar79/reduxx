@@ -1,10 +1,11 @@
 {
   "name": "reduxx",
-  "version": "11.1.7",
+  "version": "12.0.0",
   "description": "ReduxX is a lightweight yet super-powerful, very easy to learn, and very easy to set up React state management library.",
-  "main": "index.js",
+  "main": "dist",
   "scripts": {
-    "test": "./test/scripts/test_with_coverage.sh"
+    "test": "./test/scripts/test_with_coverage.sh",
+    "build": "parcel build index.js"
   },
   "repository": {
     "type": "git",
@@ -54,6 +55,7 @@
     "chai": "^4.1.2",
     "istanbul": "^0.4.5",
     "mocha": "^5.0.1",
+    "parcel": "^1.9.7",
     "proxyquire": "^1.8.0",
     "sinon": "^4.4.2"
   }

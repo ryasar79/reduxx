@@ -57,3 +57,11 @@ test
 .env
 .jshintrc
 .travis.yml
+
+#Non production code
+index.js
+lib
+
+# Parcel files
+.cache
+dist/index.map
