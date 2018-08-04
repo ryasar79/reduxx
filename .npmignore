@@ -64,4 +64,3 @@ lib
 
 # Parcel files
 .cache
-dist/index.map
