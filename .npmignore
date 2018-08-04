@@ -59,8 +59,9 @@ test
 .travis.yml
 
 #Non production code
-index.js
+/index.js
 lib
 
-# Parcel files
+# Parcel bundle
 .cache
+/dist/index.map
