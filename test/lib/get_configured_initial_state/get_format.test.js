@@ -29,11 +29,11 @@ describe( MODULE_PATH, function() {
             initialState: { ricFlair: 'wooo' },
             expectedResult: 'object_format'
         },
-        {
-            type: 'buffer',
-            initialState: new Buffer([123]),
-            expectedResult: 'invalid_format'
-        },
+        // {
+        //     type: 'buffer',
+        //     initialState: new Buffer([123]),
+        //     expectedResult: 'invalid_format'
+        // },
         {
             type: 'undefined',
             initialState: undefined,
